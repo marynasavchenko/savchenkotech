@@ -6,5 +6,15 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://savchenko.tech/about/</link>
+      <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/about/</guid>
+      <description>I am Maryna Savchenko: software engineer, true believer in Software craftsmanship, Clean code and TDD. Enjoy learning and working with new programming languages, listening to IT podcasts, working on exciting and ambitious projects.
+I started this blog to share my experience and thoughts about software engineering practices, technologies and skill set improvement.</description>
+    </item>
+    
   </channel>
 </rss>
