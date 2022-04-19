@@ -5,7 +5,20 @@
     <link>https://savchenko.tech/</link>
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning framework</title>
+      <link>https://savchenko.tech/posts/learningframework/</link>
+      <pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/learningframework/</guid>
+      <description>Learning is the crucial tool on the road to mastery and true driver of the software craftsman career.
+I believe that effective learning contains of components so called learning framework. This framework can be applied to any kind of learning. It does not meter if it is learning the language or preparing for the OCP (Oracle Certified Professional) exam.
+So, what are those components?
+1. Reflect Analyzing what works and what doesn&amp;rsquo;t can make any learning path much easier.</description>
+    </item>
+    
     <item>
       <title>About Maryna</title>
       <link>https://savchenko.tech/about/</link>
