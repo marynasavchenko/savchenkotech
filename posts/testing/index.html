@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Once again about the testing - savchenko.tech</title>
+<meta name="description" content="Once again about testing">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=39d9985052665cf2160bfacc521e15113432a417">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=39d9985052665cf2160bfacc521e15113432a417">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=39d9985052665cf2160bfacc521e15113432a417">
+<link rel="alternate" href="/index.xml?c=39d9985052665cf2160bfacc521e15113432a417" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Once again about the testing - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/testing/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="Once again about testing">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Once again about the testing - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/testing/"></meta>
+<meta name="twitter:description" content="Once again about testing"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=39d9985052665cf2160bfacc521e15113432a417">
+<link rel="stylesheet" href="/css/color.css?c=39d9985052665cf2160bfacc521e15113432a417">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=39d9985052665cf2160bfacc521e15113432a417">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/categories/">Categories</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Once again about the testing</h2>
+
+<span class="sub">2022-01-21</span>
+
+
+
+
+
+
+
+
+<p>Effective software testing should minimize the amount of defects and maximize stability of the product.
+Achieving it in practice can be quite effortful. What to test? How many test cases? Who should test?</p>
+<p>Questions what to test and on which level can be answered by testing pyramid.</p>
+<h3 id="1-unit-testing">1. Unit testing</h3>
+<p>Unit testing is a type of testing where system under test is an individual unit and is done during the coding phase.
+A unit may be an individual method, module or object.</p>
+<p>Advantages:</p>
+<ul>
+<li>Speed: unit tests are fast (one usually takes several milliseconds)</li>
+<li>Control: unit test are easy to control by providing different inputs and asserting output</li>
+<li>Relatively easy to write: usually additional set up is not required. Exceptions may be the use of frameworks.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Disconnection with reality: unit tests do not fully represent the real execution</li>
+<li>Many bugs can not be caught in unit tests, only on higher testing levels</li>
+</ul>
+<h3 id="2-integration-testing">2. Integration testing</h3>
+<p>Integration testing is the test level used to test the integration between the code and external parties (very often database).</p>
+<ul>
+<li>The main advantages of an integration test is the ability to catch more bugs and if necessary debug the application to identify the problem.</li>
+<li>The main disadvantage is that this type of tests is more difficult to write.</li>
+</ul>
+<h3 id="3-system-testing">3. System testing</h3>
+<p>System Testing is testing the system as a whole. This type of test checks if given input X, the system will provide output Y.</p>
+<p>Advantages:</p>
+<ul>
+<li>Very realistic</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Slow</li>
+<li>Harder to write</li>
+<li>Flaky</li>
+</ul>
+<h3 id="what-to-test-on-different-levels">What to test on different levels?</h3>
+<p>That can depend on many peculiarities of the software system. Guides that works for me:</p>
+<ul>
+<li>all business logic should be covered by unit tests - no exceptions</li>
+<li>part that are using database should be covered by integration tests</li>
+<li>at least one system test should be present to check that system is working</li>
+</ul>
+<p>Additional sources:</p>
+<ol>
+<li><a href="https://www.manning.com/books/effective-software-testing">Effective software testing by Maurício Aniche</a></li>
+<li><a href="https://www.manning.com/books/unit-testing">Unit Testing Principles, Practices, and Patterns by Vladimir Khorikov</a></li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/learningframework/">Learning framework</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>
