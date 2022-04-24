@@ -6,7 +6,18 @@
     <description>Recent content in Posts on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Team framework - my view on team collaboration</title>
+      <link>https://savchenko.tech/posts/teamwork/</link>
+      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/teamwork/</guid>
+      <description>As a team framework I see established practices that are a base for an effective team collaboration. This set of practices should solve next problems:
+ Prioritizing values Resolving competing values Resolving conflicting views Reducing time on discussing how things need to be done  I see Extreme programming as a perfect starting point for team framework.
+A philosophy of this methodology is based on the values of communication, simplicity, feedback, courage, and respect.</description>
+    </item>
+    
     <item>
       <title>Once again about the testing</title>
       <link>https://savchenko.tech/posts/testing/</link>
