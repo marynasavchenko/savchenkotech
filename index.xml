@@ -6,18 +6,7 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Is gRPC a nail in the coffin of REST?</title>
-      <link>https://savchenko.tech/posts/grpc/</link>
-      <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://savchenko.tech/posts/grpc/</guid>
-      <description>There is no software system these days that works in isolation without messaging through communication protocols. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.
-The most common way to build request-response style communication is RESTful services. However, REST can be inefficient and error-prone to use in microservices. We would need something more scalable, loosely coupled and efficient. That is where gRPC will shine.
- gRPC (the “g” stands for something different in every gRPC release) is an inter-process communication technology that allows you to connect, invoke, operate, and debug distributed heterogeneous applications as easily as making a local function call.</description>
-    </item>
-    
+    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Team framework - my view on team collaboration</title>
       <link>https://savchenko.tech/posts/teamwork/</link>
@@ -27,15 +16,6 @@ The most common way to build request-response style communication is RESTful ser
       <description>Team framework is an established set of practices that creates a solid base for an effective collaboration. It is the way to productivity and happiness of each team member.
 This set of practices should solve next problems:
  Prioritizing values Resolving competing values (for example, excellence vs pragmatism, flexibility vs predictability) Resolving conflicting views (for example, what to test and on which level) Reducing time on discussing how things need to be done  I see Extreme programming as a perfect starting point for team framework.</description>
-    </item>
-    
-    <item>
-      <title>Test</title>
-      <link>https://savchenko.tech/posts/test/</link>
-      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://savchenko.tech/posts/test/</guid>
-      <description>Test</description>
     </item>
     
     <item>
