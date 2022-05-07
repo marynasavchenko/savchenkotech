@@ -6,11 +6,11 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Is gRPC a nail in the coffin of REST?</title>
       <link>https://savchenko.tech/posts/grpc/</link>
-      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/grpc/</guid>
       <description>There is no software system these days that works in isolation without messaging through communication protocols. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.
