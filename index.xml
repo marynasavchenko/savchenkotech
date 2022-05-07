@@ -6,7 +6,18 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Is gRPC a nail in the coffin of REST?</title>
+      <link>https://savchenko.tech/posts/grpcvsrest/</link>
+      <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/grpcvsrest/</guid>
+      <description>There is no software system these days that works in isolation without messaging through communication protocols. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.
+The most common way to build request-response style communication is RESTful services. However, REST can be inefficient and error-prone to use in microservices. We would need something more scalable, loosely coupled and efficient. That is where gRPC will shine.
+ gRPC (the “g” stands for something different in every gRPC release) is an inter-process communication technology that allows you to connect, invoke, operate, and debug distributed heterogeneous applications as easily as making a local function call.</description>
+    </item>
+    
     <item>
       <title>Team framework - my view on team collaboration</title>
       <link>https://savchenko.tech/posts/teamwork/</link>
