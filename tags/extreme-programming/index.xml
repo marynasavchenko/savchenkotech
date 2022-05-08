@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>extreme programming on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/extreme-programming/</link>
+    <description>Recent content in extreme programming on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/extreme-programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Team framework - my view on team collaboration</title>
+      <link>https://savchenko.tech/posts/teamwork/</link>
+      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/teamwork/</guid>
+      <description>Team framework is an established set of practices that creates a solid base for an effective collaboration. It is the way to productivity and happiness of each team member.
+This set of practices should solve next problems:
+ Prioritizing values Resolving competing values (for example, excellence vs pragmatism, flexibility vs predictability) Resolving conflicting views (for example, what to test and on which level) Reducing time on discussing how things need to be done  I see Extreme programming as a perfect starting point for team framework.</description>
+    </item>
+    
+  </channel>
+</rss>
