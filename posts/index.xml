@@ -6,7 +6,17 @@
     <description>Recent content in Posts on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gRPC server side implementation using Spring</title>
+      <link>https://savchenko.tech/posts/grpcservice/</link>
+      <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/grpcservice/</guid>
+      <description>This article is describing how to create gRPC service implementation using Spring Boot. To achieve that you need to complete 3 tasks:
+ Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC.  1. Generation of Proto model and service definition It will be Maven project. So, first you need to add all necessary dependencies to pom.xml. For generating java source files from .</description>
+    </item>
+    
     <item>
       <title>Tips for more effective communication</title>
       <link>https://savchenko.tech/posts/effectivecommunication/</link>
