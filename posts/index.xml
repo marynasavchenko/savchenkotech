@@ -6,7 +6,17 @@
     <description>Recent content in Posts on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SOLID</title>
+      <link>https://savchenko.tech/posts/solid/</link>
+      <pubDate>Fri, 25 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/solid/</guid>
+      <description>When building software systems we need to think about the cost of maintenance and change. Some design smells that can increase such costs are:
+ rigidity - when tight coupling leads to major rebuild and makes it harder to make changes fragility - when inappropriate and insufficient isolation of software parts leads to one change cause other unrelated modules crash or misbehave immobility - when software structures can not be reused  To avoid these design smells and make our software easy to change, understand and reuse we need a guide how to combine functions, data structures and classes - design principles.</description>
+    </item>
+    
     <item>
       <title>gRPC server side implementation using Spring</title>
       <link>https://savchenko.tech/posts/grpcservice/</link>

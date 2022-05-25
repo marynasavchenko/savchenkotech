@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>SOLID - savchenko.tech</title>
+<meta name="description" content="gRPC">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=0f5cc2c34ffe11f0ef3dceef120757be1f741af7">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=0f5cc2c34ffe11f0ef3dceef120757be1f741af7">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=0f5cc2c34ffe11f0ef3dceef120757be1f741af7">
+<link rel="alternate" href="/index.xml?c=0f5cc2c34ffe11f0ef3dceef120757be1f741af7" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="SOLID - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/solid/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="gRPC">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="SOLID - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/solid/"></meta>
+<meta name="twitter:description" content="gRPC"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=0f5cc2c34ffe11f0ef3dceef120757be1f741af7">
+<link rel="stylesheet" href="/css/color.css?c=0f5cc2c34ffe11f0ef3dceef120757be1f741af7">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=0f5cc2c34ffe11f0ef3dceef120757be1f741af7">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>SOLID</h2>
+
+<span class="sub">2022-02-25</span>
+
+
+
+
+
+
+
+
+<p>When building software systems we need to think about the cost of maintenance and change. Some design smells that 
+can increase such costs are:</p>
+<ul>
+<li>rigidity - when tight coupling leads to major rebuild and makes it harder to make changes</li>
+<li>fragility - when inappropriate and insufficient isolation of software parts leads to one change cause other
+unrelated modules crash or misbehave</li>
+<li>immobility - when software structures can not be reused</li>
+</ul>
+<p>To avoid these design smells and make our software easy to change, understand and reuse we need 
+a guide how to combine functions, data structures and classes - design principles.</p>
+<p>That is where SOLID principles come into play.</p>
+<h3 id="1-the-single-responsibility-principle">1. The Single responsibility principle</h3>
+<p>The main idea of this principle is to separate classes and 
+methods that each source file can have only one reason to change. 
+The benefit of such separation is low coupling and low fragility.</p>
+<h3 id="2-the-open-closed-principle">2. The Open-Closed Principle</h3>
+<p>A software artifact should be open for extension but closed for modification
+For example, use of interfaces and dependency injection allows extending behavior without changing existing classes.</p>
+<h3 id="3-the-liskov-substitution-principle">3. The Liskov Substitution Principle</h3>
+<p>Software systems should be built from substitutable (interchangeable) parts.
+If superclass does something, subclass should do it too (it should be substitutable for the superclass).
+Example of the violation of LSP will be when subtype does less than superclass. Then you need to add additional 
+polluting behavior to your system.</p>
+<h3 id="4-the-interface-segregation-principle">4. The Interface Segregation Principle</h3>
+<p>Do not depend on things that you don’t use.
+Interface should have only methods that specific client use. 
+Violation of this principle would be &ldquo;Fat class&rdquo;.</p>
+<h3 id="5-the-dependency-inversion-principle">5. The Dependency Inversion Principle</h3>
+<p>The code that implements high-level policy should not depend on the code that implements low-level details.</p>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/solid/">solid</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/grpcservice/">gRPC server side implementation using Spring</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>
