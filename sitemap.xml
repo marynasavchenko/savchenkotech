@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://savchenko.tech/posts/paradigms/</loc>
+    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://savchenko.tech/posts/</loc>
-    <lastmod>2022-02-25T00:00:00+00:00</lastmod>
+    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/programming-paradigms/</loc>
+    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/</loc>
-    <lastmod>2022-02-25T00:00:00+00:00</lastmod>
+    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/posts/solid/</loc>
-    <lastmod>2022-02-25T00:00:00+00:00</lastmod>
+    <loc>https://savchenko.tech/tags/</loc>
+    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/solid/</loc>
     <lastmod>2022-02-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/tags/</loc>
+    <loc>https://savchenko.tech/posts/solid/</loc>
     <lastmod>2022-02-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/grpc/</loc>
@@ -50,10 +56,10 @@
     <loc>https://savchenko.tech/tags/testing/</loc>
     <lastmod>2022-01-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/tags/learning/</loc>
+    <loc>https://savchenko.tech/posts/learningframework/</loc>
     <lastmod>2022-01-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/posts/learningframework/</loc>
+    <loc>https://savchenko.tech/tags/learning/</loc>
     <lastmod>2022-01-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/about/</loc>

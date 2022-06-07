@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Common programming paradigms overview - savchenko.tech</title>
+<meta name="description" content="Programming paradigms">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=161fb117b9ed3b998389b9a4de48d68465e014c0">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=161fb117b9ed3b998389b9a4de48d68465e014c0">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=161fb117b9ed3b998389b9a4de48d68465e014c0">
+<link rel="alternate" href="/index.xml?c=161fb117b9ed3b998389b9a4de48d68465e014c0" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Common programming paradigms overview - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/paradigms/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="Programming paradigms">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Common programming paradigms overview - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/paradigms/"></meta>
+<meta name="twitter:description" content="Programming paradigms"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=161fb117b9ed3b998389b9a4de48d68465e014c0">
+<link rel="stylesheet" href="/css/color.css?c=161fb117b9ed3b998389b9a4de48d68465e014c0">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=161fb117b9ed3b998389b9a4de48d68465e014c0">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Common programming paradigms overview</h2>
+
+<span class="sub">2022-03-04</span>
+
+
+
+
+
+
+
+
+<p>Programming paradigms are ways of programming that are reflected in language features.
+They tell us which structures to use and when to use them.</p>
+<p>There are 3 such main paradigms:</p>
+<ul>
+<li>
+<p>structured programming</p>
+</li>
+<li>
+<p>object-orient programming</p>
+</li>
+<li>
+<p>functional programming.</p>
+</li>
+</ul>
+<p>Most languages are multi-paradigm but levels of restrictions/enforcing can be different. 
+For example, both Java and Scala support object-orient and functional programming. At the same time level of enforcement 
+of the functional paradigm in Scala is much higher.</p>
+<p>Programming paradigms show us what not to do by imposing discipline.</p>
+<h3 id="1-structured-programming">1. Structured programming</h3>
+<p><strong>Structured programming imposes discipline on direct transfer of control.</strong></p>
+<p>It allows modules to be functionally decomposed. 
+The main value of this decomposition is ability to create falsifiable units. We can use tests to prove small functions 
+incorrect.</p>
+<p>At the architectural level functional decomposition is considered one of the best practices.</p>
+<h3 id="2-object-orient-oo-programming">2. Object-orient (OO) programming</h3>
+<p><strong>Object-oriented programming imposes discipline on indirect transfer of control.</strong></p>
+<p>Understanding of the principles of OO design is one more way to create good architecture.
+The basics of OO are: encapsulation, inheritance and polymorphism.</p>
+<p><strong>Encapsulation</strong> draws a line between data and functions that are hidden and functions that are known.
+An example of encapsulation would be the private data members and the public member functions of a class.
+But we can not say that OO depends on strong encapsulation. Some OO languages have little or no enforced encapsulation
+(like Python, JavaScript and Ruby).</p>
+<p><strong>Inheritance</strong> is a redeclaration of a group of variables and functions within an enclosing scope.
+So data structures can be reused and extended in more convenient way.</p>
+<p>Application of <strong>polymorphism</strong> allows us to invert any source code dependency. 
+With full control over the direction of all the source code dependencies plugin architecture can be used anywhere.</p>
+<h3 id="3-functional-programming">3. Functional programming</h3>
+<p><strong>Functional programming imposes discipline upon assignment.</strong></p>
+<p>It restricts varying of variables. Mutating of variables lead to problems like race conditions, 
+deadlock conditions, and concurrent update.
+You cannot have concurrent update problem if no variable is ever updated.</p>
+<p>One of the common approaches in regard to immutability is to divide application to mutable and immutable components.
+Another strategy to create entirely immutable application is to use event sourcing. With event sourcing we do not save 
+state, only transactions. When the state is needed, we apply all the transactions from the beginning of time.
+This strategy wii require enough storage and enough processor power.</p>
+<p>Sources:</p>
+<p><a href="https://www.amazon.de/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164">Clean Architecture: A Craftsman&rsquo;s Guide to Software Structure and Design: A Craftsman&rsquo;s Guide to Software Structure and Design by Robert C. Martin</a></p>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/programming-paradigms/">Programming paradigms</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/solid/">SOLID principles</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>
