@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Waiting for Loom&#39;s virtual threads... - savchenko.tech</title>
+<meta name="description" content="loom">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=7bffaeebea36fb052b3ad35cdcf99cda0853716c">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=7bffaeebea36fb052b3ad35cdcf99cda0853716c">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=7bffaeebea36fb052b3ad35cdcf99cda0853716c">
+<link rel="alternate" href="/index.xml?c=7bffaeebea36fb052b3ad35cdcf99cda0853716c" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Waiting for Loom&#39;s virtual threads... - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/loom/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="loom">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Waiting for Loom&#39;s virtual threads... - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/loom/"></meta>
+<meta name="twitter:description" content="loom"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=7bffaeebea36fb052b3ad35cdcf99cda0853716c">
+<link rel="stylesheet" href="/css/color.css?c=7bffaeebea36fb052b3ad35cdcf99cda0853716c">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=7bffaeebea36fb052b3ad35cdcf99cda0853716c">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Waiting for Loom&#39;s virtual threads...</h2>
+
+<span class="sub">2022-03-26</span>
+
+
+
+
+
+
+
+
+<p>Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping). 
+This means that every <code>Thread.start()</code> creates a new OS thread.</p>
+<p>High-performance web server is expected to handle tens of thousands concurrent connections.
+And thread-per-connection architecture fails in this case.</p>
+<p>So, there are 2 main disadvantages to the current model used in Java:</p>
+<ul>
+<li>threads are expensive to create</li>
+<li>threads limit can be reached very easily.</li>
+</ul>
+<p>Project Loom is tackling this disadvantages. 
+The goal of Project loom is to enable easy-to-use, high-throughput lightweight concurrency and new programming models on the Java platform.
+It will be done by removing involvement of the OS in the lifecycle of a virtual thread.
+So, large-scale JVM applications will not be restricted to a few thousand OS threads.</p>
+<h3 id="some-terminology">Some terminology</h3>
+<p>Loom introduces next new constructs:</p>
+<ul>
+<li>Virtual threads</li>
+<li>Continuations</li>
+</ul>
+<p><strong>Virtual thread</strong> is an implementation of threads provided by the Java runtime.
+They are not one-to-one wrappers over OS threads.</p>
+<p>Virtual thread has 2 components: continuation and scheduler.</p>
+<p>A <strong>continuation</strong> is a sequence of instructions that execute sequentially, and may suspend itself.</p>
+<p>A <strong>scheduler</strong> assigns continuations to CPU cores, replacing a paused one with another that&rsquo;s ready to run, 
+and ensuring that a continuation that is ready to resume will eventually be assigned to a CPU core.</p>
+<p>A <strong>carrier thread</strong> is an OS thread that on which a virtual thread executes.
+Over its lifetime, a single virtual thread may run on several different carrier threads.</p>
+<h3 id="creating-virtual-threads">Creating virtual threads</h3>
+<p>New syntax is not differ much from already existing threads functionality. This should not complicate adjusting of 
+an existing code.</p>
+<p>New method is added for creating executor service. It creates 1 virtual thread per task.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ExecutorService executorService <span style="color:#f92672">=</span> Executors<span style="color:#f92672">.</span><span style="color:#a6e22e">newVirtualThreadPerTaskExecutor</span><span style="color:#f92672">();</span>
+</span></span></code></pre></div><p>And there is a builder on Thread class.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">virtual</span><span style="color:#f92672">().</span><span style="color:#a6e22e">task</span><span style="color:#f92672">(</span>r<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+</span></span></code></pre></div><p>So, I am reading &ldquo;Java concurrency in practice&rdquo;&hellip; and hoping that Loom will be released with Java 19 this fall.</p>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/java/">java</a>
+	
+	<a class="post-tag" href="/tags/loom/">loom</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/patternmatching/">Pattern matching in Java</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "java"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-03-26</div>
+  <div class="post-title"><a href="/posts/loom/">Waiting for Loom&#39;s virtual threads...</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-03-10</div>
+  <div class="post-title"><a href="/posts/patternmatching/">Pattern matching in Java</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href="/tags/">other tags</a>
+          
+      </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>

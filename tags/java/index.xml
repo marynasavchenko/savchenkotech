@@ -6,7 +6,19 @@
     <description>Recent content in java on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Waiting for Loom&#39;s virtual threads...</title>
+      <link>https://savchenko.tech/posts/loom/</link>
+      <pubDate>Sat, 26 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/loom/</guid>
+      <description>Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping). This means that every Thread.start() creates a new OS thread.
+High-performance web server is expected to handle tens of thousands concurrent connections. And thread-per-connection architecture fails in this case.
+So, there are 2 main disadvantages to the current model used in Java:
+ threads are expensive to create threads limit can be reached very easily.</description>
+    </item>
+    
     <item>
       <title>Pattern matching in Java</title>
       <link>https://savchenko.tech/posts/patternmatching/</link>
