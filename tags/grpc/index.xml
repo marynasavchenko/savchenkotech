@@ -13,8 +13,10 @@
       <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/grpcservice/</guid>
-      <description>This article is describing how to create gRPC service implementation using Spring Boot. To achieve that you need to complete 3 tasks:
- Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC.  1. Generation of Proto model and service definition It will be Maven project. So, first you need to add all necessary dependencies to pom.xml. For generating java source files from .</description>
+      <description>This article is describing how to create gRPC service implementation using Spring Boot.
+You can find more details about gRPC in &amp;ldquo;Is gRPC a better choice over REST?&amp;rdquo;.
+To create gRPC service you need to complete 3 tasks:
+ Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC.  1. Generation of Proto model and service definition It will be Maven project.</description>
     </item>
     
     <item>
