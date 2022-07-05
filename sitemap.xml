@@ -2,23 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://savchenko.tech/tags/java/</loc>
-    <lastmod>2022-03-26T00:00:00+00:00</lastmod>
+    <loc>https://savchenko.tech/tags/clean-code/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/tags/loom/</loc>
-    <lastmod>2022-03-26T00:00:00+00:00</lastmod>
+    <loc>https://savchenko.tech/posts/cleancode/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/posts/</loc>
-    <lastmod>2022-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/</loc>
-    <lastmod>2022-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/</loc>
-    <lastmod>2022-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/java/</loc>
+    <lastmod>2022-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/loom/</loc>
+    <lastmod>2022-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/posts/loom/</loc>
-    <lastmod>2022-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/pattern-matching/</loc>
     <lastmod>2022-03-10T00:00:00+00:00</lastmod>
