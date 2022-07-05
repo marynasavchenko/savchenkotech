@@ -14,10 +14,10 @@
 
 <meta name="author" content="">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=f52cae02b637bf9b3d05c6d1c9435b61c4c9bdfe">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=f52cae02b637bf9b3d05c6d1c9435b61c4c9bdfe">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=f52cae02b637bf9b3d05c6d1c9435b61c4c9bdfe">
-<link rel="alternate" href="/index.xml?c=f52cae02b637bf9b3d05c6d1c9435b61c4c9bdfe" type="application/rss+xml" title="RSS" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=4b155ef4fbf297a09c330e39e940a8f8e98c8785">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=4b155ef4fbf297a09c330e39e940a8f8e98c8785">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=4b155ef4fbf297a09c330e39e940a8f8e98c8785">
+<link rel="alternate" href="/index.xml?c=4b155ef4fbf297a09c330e39e940a8f8e98c8785" type="application/rss+xml" title="RSS" />
 <meta property="og:title" content="SOLID principles - savchenko.tech">
 </meta>
 <meta property="og:url" content="https://savchenko.tech/posts/solid/">
@@ -37,8 +37,8 @@
 <meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=f52cae02b637bf9b3d05c6d1c9435b61c4c9bdfe">
-<link rel="stylesheet" href="/css/color.css?c=f52cae02b637bf9b3d05c6d1c9435b61c4c9bdfe">
+<link rel="stylesheet" href="/css/main.css?c=4b155ef4fbf297a09c330e39e940a8f8e98c8785">
+<link rel="stylesheet" href="/css/color.css?c=4b155ef4fbf297a09c330e39e940a8f8e98c8785">
 
 
 
@@ -72,7 +72,7 @@ font-size: 115%
 
   
   <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=f52cae02b637bf9b3d05c6d1c9435b61c4c9bdfe">
+    <img class="header-image" src="/images/header-image.jpg?c=4b155ef4fbf297a09c330e39e940a8f8e98c8785">
   </div>
   
 
@@ -106,8 +106,9 @@ font-size: 115%
 
 
 
-<p>When building software systems we need to think about the cost of maintenance and change. Some design smells that 
-can increase such costs are:</p>
+<p>When building software systems we need to avoid a mess at any cost. 
+The more messy software is, the more expensive is to change and maintain it.</p>
+<p>Main design smells that lead to costs increase are:</p>
 <ul>
 <li>rigidity - when tight coupling leads to major rebuild and makes it harder to make changes</li>
 <li>fragility - when inappropriate and insufficient isolation of software parts leads to one change cause other
@@ -116,7 +117,7 @@ unrelated modules crash or misbehave</li>
 </ul>
 <p>To avoid these design smells and make our software easy to change, understand and reuse we need 
 a guide how to combine functions, data structures and classes - design principles.</p>
-<p>That is where SOLID principles come into play.</p>
+<p>That is where <strong>SOLID principles</strong> come into play.</p>
 <h3 id="1-the-single-responsibility-principle">1. The Single responsibility principle</h3>
 <p>The main idea of this principle is to separate classes and 
 methods that each source file can have only one reason to change. 
