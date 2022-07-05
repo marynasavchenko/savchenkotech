@@ -13,12 +13,13 @@
       <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/paradigms/</guid>
-      <description>Programming paradigms are ways of programming that are reflected in language features. They tell us which structures to use and when to use them.
+      <description>Why do we care about programming paradigms?
+The answer is they help us to align with architectural concerns like boundaries, location and accessing data and algorithm foundation in the modules.
+Programming paradigms are ways of programming that are reflected in language features. They tell us which structures to use and when to use them.
 There are 3 such main paradigms:
   structured programming
   object-orient programming
-  functional programming.
-  Most languages are multi-paradigm but levels of restrictions/enforcing can be different. For example, both Java and Scala support object-orient and functional programming. At the same time level of enforcement of the functional paradigm in Scala is much higher.</description>
+  functional programming.</description>
     </item>
     
   </channel>
