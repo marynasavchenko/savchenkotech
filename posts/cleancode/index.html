@@ -14,10 +14,10 @@
 
 <meta name="author" content="">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=c0975aca9a2e0108f3664f56cde32b3a92eb6fc0">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=c0975aca9a2e0108f3664f56cde32b3a92eb6fc0">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=c0975aca9a2e0108f3664f56cde32b3a92eb6fc0">
-<link rel="alternate" href="/index.xml?c=c0975aca9a2e0108f3664f56cde32b3a92eb6fc0" type="application/rss+xml" title="RSS" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
+<link rel="alternate" href="/index.xml?c=023c68a682f29ae17a5a89cabd9c850268a30c46" type="application/rss+xml" title="RSS" />
 <meta property="og:title" content="Clean code notes - savchenko.tech">
 </meta>
 <meta property="og:url" content="https://savchenko.tech/posts/cleancode/">
@@ -37,8 +37,8 @@
 <meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=c0975aca9a2e0108f3664f56cde32b3a92eb6fc0">
-<link rel="stylesheet" href="/css/color.css?c=c0975aca9a2e0108f3664f56cde32b3a92eb6fc0">
+<link rel="stylesheet" href="/css/main.css?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
+<link rel="stylesheet" href="/css/color.css?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
 
 
 
@@ -72,7 +72,7 @@ font-size: 115%
 
   
   <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=c0975aca9a2e0108f3664f56cde32b3a92eb6fc0">
+    <img class="header-image" src="/images/header-image.jpg?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
   </div>
   
 
@@ -106,6 +106,39 @@ font-size: 115%
 
 
 
+<h3 id="names">Names</h3>
+<p>Meaningful names increase readability.</p>
+<p>Names that communicate intent increase readability</p>
+<h3 id="functions">Functions</h3>
+<p>DO&rsquo;s:</p>
+<ul>
+<li>Function should do 1 thing.</li>
+<li>If a function is too big, it should be extracted into a class.</li>
+<li>few arguments as possible (no more than 3)</li>
+</ul>
+<p>DONT&rsquo;s</p>
+<ul>
+<li>do not pass boolean as an argument</li>
+<li>do not use output argument, use return statement</li>
+<li>do not do defensive programming (check for null)</li>
+</ul>
+<h3 id="command---query-separation">Command - Query separation</h3>
+<p>Function should either do something or return something not both. Command returns void or throw an exception and has
+side effects. Query returns a value and does not have a side effects.</p>
+<p><code>Side effect - when a function changes the variable that outlives the function's call</code></p>
+<h3 id="law-of-demeter">Law of Demeter</h3>
+<p>Module should have knowledge only about immediate collaborators.
+An example of violation Law of Demeter would be:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>transaction<span style="color:#f92672">.</span><span style="color:#a6e22e">getCustomer</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAddress</span><span style="color:#f92672">();</span> 
+</span></span></code></pre></div><p>Transaction isn&rsquo;t supposed to have knowledge about address.</p>
+<h3 id="error-handling">Error handling</h3>
+<p>DO&rsquo;s:</p>
+<p>DON&rsquo;Ts</p>
+<ul>
+<li>don&rsquo;t pass null</li>
+<li>don&rsquo;t return null</li>
+</ul>
+<h3 id="clean-tests">Clean tests</h3>
 
 
 

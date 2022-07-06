@@ -14,8 +14,8 @@
       
       <guid>https://savchenko.tech/posts/loom/</guid>
       <description>Since Alan Turing time we came from running one program at a time on bare metal to running millions of java virtual threads. Which is absolutely impressive.
-Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance through reducing (process one task faster) or hiding latency (process another task while waiting) or increasing throughput (process more tasks).
-Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
+Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance in a few ways:
+ reducing latency (process one task faster) hiding latency (process another task while waiting) increasing throughput (process more tasks).  Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
     </item>
     
     <item>

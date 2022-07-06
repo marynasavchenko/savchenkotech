@@ -13,7 +13,11 @@
       <pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/cleancode/</guid>
-      <description></description>
+      <description>Names Meaningful names increase readability.
+Names that communicate intent increase readability
+Functions DO&amp;rsquo;s:
+ Function should do 1 thing. If a function is too big, it should be extracted into a class. few arguments as possible (no more than 3)  DONT&amp;rsquo;s
+ do not pass boolean as an argument do not use output argument, use return statement do not do defensive programming (check for null)  Command - Query separation Function should either do something or return something not both.</description>
     </item>
     
     <item>
@@ -23,8 +27,8 @@
       
       <guid>https://savchenko.tech/posts/loom/</guid>
       <description>Since Alan Turing time we came from running one program at a time on bare metal to running millions of java virtual threads. Which is absolutely impressive.
-Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance through reducing (process one task faster) or hiding latency (process another task while waiting) or increasing throughput (process more tasks).
-Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
+Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance in a few ways:
+ reducing latency (process one task faster) hiding latency (process another task while waiting) increasing throughput (process more tasks).  Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
     </item>
     
     <item>
