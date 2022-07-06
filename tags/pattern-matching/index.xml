@@ -13,9 +13,10 @@
       <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/patternmatching/</guid>
-      <description>Pattern matching is a technique of controlling program flow that only executes a section of code that meets certain criteria. It helps to reduce boilerplate (code that duplicates over and over again) in code.
-Pattern matching with if and instanceOf In code example without pattern matching cast is needed.
- public Integer objectToString(Object object) {  if (object instanceof String) {  String string = (String) object;  return Integer.parseInt(string);  }  if (object instanceof Integer) {  return (Integer) object;  }  return 0;  }  With pattern matching we get immediate cast.</description>
+      <description>To reduce duplication (boilerplate) in code pattern matching with if statements and the instanceof operator was introduced with Java version 16.
+ Pattern matching is a technique of controlling program flow that only executes a section of code that meets certain criteria.
+ Pattern matching with if and instanceOf In code example without pattern matching cast is needed.
+ public Integer objectToString(Object object) {  if (object instanceof String) {  String string = (String) object;  return Integer.</description>
     </item>
     
   </channel>

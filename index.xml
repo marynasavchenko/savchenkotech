@@ -22,10 +22,9 @@
       <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/loom/</guid>
-      <description>Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping). This means that every Thread.start() creates a new OS thread.
-Modern high-performance JVM applications are expected to handle tens of thousands concurrent connections. And thread-per-connection architecture fails in this case.
-So, there are 2 main disadvantages to the current model used in Java:
- threads are expensive to create threads limit can be reached very easily.</description>
+      <description>Since Alan Turing time we came from running one program at a time on bare metal to running millions of java virtual threads. Which is absolutely impressive.
+Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance through reducing (process one task faster) or hiding latency (process another task while waiting) or increasing throughput (process more tasks).
+Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
     </item>
     
     <item>
@@ -34,9 +33,10 @@ So, there are 2 main disadvantages to the current model used in Java:
       <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/patternmatching/</guid>
-      <description>Pattern matching is a technique of controlling program flow that only executes a section of code that meets certain criteria. It helps to reduce boilerplate (code that duplicates over and over again) in code.
-Pattern matching with if and instanceOf In code example without pattern matching cast is needed.
- public Integer objectToString(Object object) {  if (object instanceof String) {  String string = (String) object;  return Integer.parseInt(string);  }  if (object instanceof Integer) {  return (Integer) object;  }  return 0;  }  With pattern matching we get immediate cast.</description>
+      <description>To reduce duplication (boilerplate) in code pattern matching with if statements and the instanceof operator was introduced with Java version 16.
+ Pattern matching is a technique of controlling program flow that only executes a section of code that meets certain criteria.
+ Pattern matching with if and instanceOf In code example without pattern matching cast is needed.
+ public Integer objectToString(Object object) {  if (object instanceof String) {  String string = (String) object;  return Integer.</description>
     </item>
     
     <item>
