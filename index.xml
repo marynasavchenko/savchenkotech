@@ -6,20 +6,7 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Clean code notes</title>
-      <link>https://savchenko.tech/posts/cleancode/</link>
-      <pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://savchenko.tech/posts/cleancode/</guid>
-      <description>Names Meaningful names increase readability.
-Names that communicate intent increase readability
-Functions DO&amp;rsquo;s:
- Function should do 1 thing. If a function is too big, it should be extracted into a class. few arguments as possible (no more than 3)  DONT&amp;rsquo;s
- do not pass boolean as an argument do not use output argument, use return statement do not do defensive programming (check for null)  Command - Query separation Function should either do something or return something not both.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Waiting for Loom&#39;s virtual threads...</title>
       <link>https://savchenko.tech/posts/loom/</link>
