@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Rust. The promise of fearless concurrency - savchenko.tech</title>
+<meta name="description" content="rust">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=c75bda33debc35d6c36385f03a64101c993c9a29">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=c75bda33debc35d6c36385f03a64101c993c9a29">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=c75bda33debc35d6c36385f03a64101c993c9a29">
+<link rel="alternate" href="/index.xml?c=c75bda33debc35d6c36385f03a64101c993c9a29" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Rust. The promise of fearless concurrency - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/rust/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="rust">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Rust. The promise of fearless concurrency - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/rust/"></meta>
+<meta name="twitter:description" content="rust"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=c75bda33debc35d6c36385f03a64101c993c9a29">
+<link rel="stylesheet" href="/css/color.css?c=c75bda33debc35d6c36385f03a64101c993c9a29">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=c75bda33debc35d6c36385f03a64101c993c9a29">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Rust. The promise of fearless concurrency</h2>
+
+<span class="sub">2022-06-30</span>
+
+
+
+
+
+
+
+
+<p>Rust has been getting 1st place in Stack Overflow’s annual developer survey “most loved programming language” since 2016.
+Google develops parts of Android with Rust. Amazon Web Services (AWS) has used Rust since 2017 for its serverless computing offerings, AWS Lambda and AWS Fargate.
+Microsoft writes components of its Azure platform including a security daemon for its Internet of Things (IoT) service.</p>
+<p>Big addition to this popularity wave was Linus Torvald&rsquo;s announcement on <a href="https://events.linuxfoundation.org/open-source-summit-north-america/">Open Source Summit</a> 
+that Rust can be added to the Linux kernel in the next major release.</p>
+<p>So, why Rust is getting so popular?</p>
+<p>Rust was designed by Graydon Hoare while working at Mozilla Research in 2006-2011. It is a multi-paradigm, general-purpose programming language.</p>
+<p>Main features of Rust are:</p>
+<ul>
+<li>
+<p><strong>Performance.</strong></p>
+<p>Rust offers all of your computer’s available performance. It does not rely on a garbage collector to provide its memory safety.
+The Rust compiler aggressively optimizes both the size and speed of your program.</p>
+</li>
+<li>
+<p><strong>Concurrency</strong></p>
+<p>The jewel of Rust’s design is concurrency without data races.
+Because concurrency is much safer to use in Rust, making it a technique you can design into your code from the beginning. 
+There is no global interpreter lock (GIL) to constrain a thread’s speed.
+It also provides high-level abstractions like channels and worker thread pools to make concurrency convenient to use.</p>
+</li>
+<li>
+<p><strong>Memory efficiency</strong></p>
+<p>Rust enables you to create programs that require minimal memory. 
+When needed, you can use fixed-size structures and know exactly how every byte is managed. 
+High-level constructs, such as iteration and generic types, cause minimal runtime overhead.</p>
+</li>
+</ul>
+<p>While Rust sounds like perfect language, it has disadvantages:</p>
+<ul>
+<li>
+<p><strong>Cyclic data structures</strong></p>
+<p>In Rust, it is difficult to model cyclic data like an arbitrary graph structure or doubly-linked list.</p>
+</li>
+<li>
+<p><strong>Compile times</strong></p>
+<p>Rust is slower at compiling code than its peer languages. 
+It has a complex compiler toolchain that receives multiple intermediate representations and sends lots of code to the LLVM compiler.
+It requires whole-of-crate compilation.</p>
+</li>
+<li>
+<p><strong>Learning curve</strong></p>
+<p>Rust is very big! It has a rich type system, several dozen keywords, and includes some features that are unavailable in other languages. 
+These factors all combine to create a steep learning curve.</p>
+</li>
+</ul>
+<p>Many companies have successfully built large software projects in Rust. Rust code is stable, fast, and light on resources.
+It allows you to experiment without fear. 
+Sounds like next learning challenge.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.manning.com/books/rust-in-action">Rust in action by Tim McNamara</a></li>
+<li><a href="https://www.amazon.de/Programming-Rust-Fast-Systems-Development/dp/1492052590/ref=asc_df_1492052590/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=474043209776&amp;hvpos=&amp;hvnetw=g&amp;hvrand=13207285131415204152&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042532&amp;hvtargid=pla-1018945958587&amp;psc=1&amp;th=1&amp;psc=1">Programming Rust: Fast, Safe Systems Development by Jim Blandy, Jason Orendorff, Leonora Tindall</a></li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/system-programming/">system programming</a>
+	
+	<a class="post-tag" href="/tags/rust/">rust</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/loom/">Waiting for Loom&#39;s virtual threads...</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>

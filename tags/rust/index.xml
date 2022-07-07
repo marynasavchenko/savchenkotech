@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/rust/</link>
+    <description>Recent content in rust on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust. The promise of fearless concurrency</title>
+      <link>https://savchenko.tech/posts/rust/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/rust/</guid>
+      <description>Rust has been getting 1st place in Stack Overflow’s annual developer survey “most loved programming language” since 2016. Google develops parts of Android with Rust. Amazon Web Services (AWS) has used Rust since 2017 for its serverless computing offerings, AWS Lambda and AWS Fargate. Microsoft writes components of its Azure platform including a security daemon for its Internet of Things (IoT) service.
+Big addition to this popularity wave was Linus Torvald&amp;rsquo;s announcement on Open Source Summit that Rust can be added to the Linux kernel in the next major release.</description>
+    </item>
+    
+  </channel>
+</rss>
