@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bst on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/bst/</link>
+    <description>Recent content in bst on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/bst/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Binary search tree: Part 1 put, get, size. Algorithms series</title>
+      <link>https://savchenko.tech/posts/bst/</link>
+      <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/bst/</guid>
+      <description>Development of computational infrastructure would not become available without effective searching algorithms. One type of such algorithms is symbol tables. Term symbol table is used to describe a mechanism where we can save information (value) and later retrieve it by specified key. Symbol tables sometimes also referred as dictionaries.
+There are three main classic data structures that can support efficient symbol-table implementations: binary search trees, red -black trees and hash tables.</description>
+    </item>
+    
+  </channel>
+</rss>
