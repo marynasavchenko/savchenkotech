@@ -128,8 +128,7 @@ The problem is that most people do not even come across as they intend to. I am 
       
       <guid>https://savchenko.tech/posts/testing/</guid>
       <description>Effective software testing should minimize the amount of defects and maximize stability of the product. Achieving it in practice can be quite effortful. What to test? How many test cases? Who should test?
-Questions what to test and on which level can be answered by testing pyramid.
-1. Unit testing Unit testing is a type of testing where system under test is an individual unit and is done during the coding phase.</description>
+Questions what to test and on which level can be answered by testing pyramid. 1. Unit testing Unit testing is a type of testing where system under test is an individual unit and is done during the coding phase.</description>
     </item>
     
     <item>
