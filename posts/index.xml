@@ -6,7 +6,20 @@
     <description>Recent content in Posts on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Binary search tree: Part 2 min, floor, delete. Algorithms series</title>
+      <link>https://savchenko.tech/posts/bst2/</link>
+      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/bst2/</guid>
+      <description>An important feature of Binary search tree (BST) is that it allows keeping keys in order. So we are able to apply wide range of operations that involves relative key order.
+In this article we will take a look at some of them.
+As in the previous part we will use TDD to ensure algorithm correctness.
+MIN min() method should return the smallest key.
+ @Test  void shouldReturnMinKeyInBST() {  BinarySearchTree&amp;lt;Integer, String&amp;gt; bst = new BinarySearchTree&amp;lt;&amp;gt;();  bst.</description>
+    </item>
+    
     <item>
       <title>Rust. The promise of fearless concurrency</title>
       <link>https://savchenko.tech/posts/rust/</link>

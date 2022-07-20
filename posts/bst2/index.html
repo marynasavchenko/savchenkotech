@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Binary search tree: Part 2 min, floor, delete. Algorithms series - savchenko.tech</title>
+<meta name="description" content="bst">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=7eeb67b86772019790afeaac35200d933920bf9a">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=7eeb67b86772019790afeaac35200d933920bf9a">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=7eeb67b86772019790afeaac35200d933920bf9a">
+<link rel="alternate" href="/index.xml?c=7eeb67b86772019790afeaac35200d933920bf9a" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Binary search tree: Part 2 min, floor, delete. Algorithms series - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/bst2/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="bst">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Binary search tree: Part 2 min, floor, delete. Algorithms series - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/bst2/"></meta>
+<meta name="twitter:description" content="bst"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=7eeb67b86772019790afeaac35200d933920bf9a">
+<link rel="stylesheet" href="/css/color.css?c=7eeb67b86772019790afeaac35200d933920bf9a">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=7eeb67b86772019790afeaac35200d933920bf9a">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Binary search tree: Part 2 min, floor, delete. Algorithms series</h2>
+
+<span class="sub">2022-07-14</span>
+
+
+
+
+
+
+
+
+<p>An important feature of Binary search tree (BST) is that it allows keeping keys in order. So we are able to apply wide range of
+operations that involves relative key order.</p>
+<p>In this article we will take a look at some of them.</p>
+<p>As in the previous part we will use TDD to ensure algorithm correctness.</p>
+<h3 id="min">MIN</h3>
+<p>min() method should return the smallest key.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnMinKeyInBST</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        BinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> bst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BinarySearchTree<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>23<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value1&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>15<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>56<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value3&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>7<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value4&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>71<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value5&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>7<span style="color:#f92672">,</span> bst<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>The implementation of MIN key is quite simple, we need to go left recursively until left node is null.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Key <span style="color:#a6e22e">min</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> min<span style="color:#f92672">(</span>root<span style="color:#f92672">).</span><span style="color:#a6e22e">key</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> min<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>The implementation of MAX key will be the same, only we need to go recursively right.</p>
+<h3 id="floor-and-ceiling">Floor and ceiling</h3>
+<p>floor() method should return the largest key less than or equal to given key.</p>
+<p>ceiling() method should return smallest key grater than or equal to given key.
+<img src="../../images/bst_floor_ceiling.png" alt="bst_floor_ceiling.png"></p>
+<p>Test cases for floor() should check:</p>
+<ul>
+<li>that floor of an existing key in BST returns same key</li>
+<li>that floor returns the largest key that less than given key</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnFloorWhenGivenKeyIsEqual</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        BinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> bst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BinarySearchTree<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>23<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value1&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>14<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>32<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value3&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>14<span style="color:#f92672">,</span> bst<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>14<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnFloorWhenGivenKeyIsLarger</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            BinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> bst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BinarySearchTree<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>23<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value1&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>14<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>32<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value3&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>36<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value4&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>33<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value5&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>33<span style="color:#f92672">,</span> bst<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>34<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>In the implementation we compare given key to the key of a Node to find Subtree first, and then key that smaller or equals to the key.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Key <span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Node node <span style="color:#f92672">=</span> floor<span style="color:#f92672">(</span>root<span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">,</span> Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> keyCmp <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>keyCmp <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>keyCmp <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> floor<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Node rightNode <span style="color:#f92672">=</span> floor<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>rightNode <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> rightNode<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>ceiling() implementation will be the same as floor() with right, left and &lt;, &gt; interchanged.</p>
+<h3 id="delete">DELETE</h3>
+<p>Deletion in the BST can seem tricky, when you do not stare at those trees few days in a row. 
+First, we need to implement deleteMit() method. So it can be reused later in deletion.</p>
+<p>Test case should check that there is no key present after deletion.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldDeleteMinElement</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        BinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> bst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BinarySearchTree<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>23<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value1&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>14<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>32<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value3&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">deleteMin</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertNull<span style="color:#f92672">(</span>bst<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>14<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>To delete element with a minimal key we need to go through next steps:</p>
+<ul>
+<li>find the minimal node - go left until left node is null</li>
+<li>remove it - replace node to be deleted with the child right node</li>
+<li>update node number</li>
+</ul>
+<p><img src="../../images/bst_delete_min.png" alt="bst_delete_min.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleteMin</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        root <span style="color:#f92672">=</span> deleteMin<span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">deleteMin</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> deleteMin<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">subtreeNodeNumber</span> <span style="color:#f92672">=</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>With the deleteMin() in place we can proceed with delete.</p>
+<p>Test cases for delete() should check:</p>
+<ul>
+<li>that there is no key present</li>
+<li>that successor of deleted element is correct</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldDeleteElementByGivenKey</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        BinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> bst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BinarySearchTree<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>23<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value1&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>14<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>32<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value3&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>36<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value4&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>33<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value5&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>32<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertNull<span style="color:#f92672">(</span>bst<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>32<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">successorShouldBeTheMinKeyInRightSubtree</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        BinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> bst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BinarySearchTree<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>23<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value1&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>14<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>32<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value3&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>36<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value4&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>28<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value5&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>33<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value6&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>45<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value7&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>61<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value8&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>41<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value9&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>50<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value10&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        bst<span style="color:#f92672">.</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>36<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>41<span style="color:#f92672">,</span> bst<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>So, we need next steps to implement deletion:</p>
+<ul>
+<li>find the node by comparing the key</li>
+<li>if node to delete has only one child, we simply replace it with a child node</li>
+<li>save the node to be deleted</li>
+<li>get the successor, which is minimal value of the right subtree min(node.right)</li>
+<li>apply deleteMin() because we need to replace successor&rsquo;s node (left node) with the right node in this subtree</li>
+<li>left link of the successor will be the left node to be deleted
+<img src="../../images/bst_delete.png" alt="bst_delete.png"></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        root <span style="color:#f92672">=</span>delete<span style="color:#f92672">(</span>root<span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">,</span> Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> cmp <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>cmp <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> delete<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>cmp <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> delete<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            Node nodeToDelete <span style="color:#f92672">=</span> node<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// find successor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            node <span style="color:#f92672">=</span> min<span style="color:#f92672">(</span>nodeToDelete<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> nodeToDelete<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> deleteMin<span style="color:#f92672">(</span>nodeToDelete<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">subtreeNodeNumber</span> <span style="color:#f92672">=</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Complete <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/searching/BinarySearchTree.java">implementation</a> 
+with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/java/searching/BinarySearchTreeTest.java">test cases</a> can be found on GitHub.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.amazon.de/Algorithms-Robert-Sedgewick/dp/032157351X/ref=asc_df_032157351X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=310624385211&amp;hvpos=&amp;hvnetw=g&amp;hvrand=4744587760075123991&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-432981821009&amp;psc=1&amp;th=1&amp;psc=1&amp;tag=&amp;ref=&amp;adgrpid=64736366074&amp;hvpone=&amp;hvptwo=&amp;hvadid=310624385211&amp;hvpos=&amp;hvnetw=g&amp;hvrand=4744587760075123991&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-432981821009">Algorithms by Robert Sedgewick</a>.</li>
+<li><a href="https://www.amazon.de/Introduction-Algorithms-fourth-Thomas-Cormen/dp/026204630X/ref=asc_df_026204630X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=526471224369&amp;hvpos=&amp;hvnetw=g&amp;hvrand=13700716644741673088&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-1268844537750&amp;psc=1&amp;th=1&amp;psc=1">Introduction to Algorithms by  Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</a>.</li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/algorithms/">algorithms</a>
+	
+	<a class="post-tag" href="/tags/bst/">bst</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/rust/">Rust. The promise of fearless concurrency</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "algorithms"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-07-14</div>
+  <div class="post-title"><a href="/posts/bst2/">Binary search tree: Part 2 min, floor, delete. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-05-21</div>
+  <div class="post-title"><a href="/posts/bst/">Binary search tree: Part 1 put, get, size. Algorithms series</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href="/tags/">other tags</a>
+          
+      </div>
+        </div>
+    
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "bst"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-07-14</div>
+  <div class="post-title"><a href="/posts/bst2/">Binary search tree: Part 2 min, floor, delete. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-05-21</div>
+  <div class="post-title"><a href="/posts/bst/">Binary search tree: Part 1 put, get, size. Algorithms series</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href="/tags/">other tags</a>
+          
+      </div>
+        </div>
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>
