@@ -6,7 +6,18 @@
     <description>Recent content in Posts on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Red black binary search tree: Part 1 put. Algorithms series</title>
+      <link>https://savchenko.tech/posts/rbbst/</link>
+      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/rbbst/</guid>
+      <description>Red-black tree is a binary search tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &amp;ldquo;balanced&amp;rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).
+Red-black tree has next properties:
+ Every node is RED or BLACK The root id always BlACK Every null leaf is black If a node is RED, then both children are BLACK For each node, all simple paths from the node to descendant leaves contain the same number of BLACK nodes.</description>
+    </item>
+    
     <item>
       <title>Binary search tree: Part 2 min, floor, delete. Algorithms series</title>
       <link>https://savchenko.tech/posts/bst2/</link>
