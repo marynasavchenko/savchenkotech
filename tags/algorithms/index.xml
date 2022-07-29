@@ -6,7 +6,18 @@
     <description>Recent content in algorithms on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Red black binary search tree: Part 2 delete. Algorithms series</title>
+      <link>https://savchenko.tech/posts/rbbst2/</link>
+      <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/rbbst2/</guid>
+      <description>To implement delete() method we need to take care about helper methods first. First we will take a look at deleteMin().
+DELETE MIN Test cases for deleteMin() should check that:
+ minimal element is not present tree is balanced, which means:  there is no more than 1 left RED links in the row there is no right RED link root should be always BLACK     @Test  void shouldDeleteMinElement() {  RedBlackBinarySearchTree&amp;lt;Integer, String&amp;gt; brBinarySearchTree = createRedBlackBST();   brBinarySearchTree.</description>
+    </item>
+    
     <item>
       <title>Red black binary search tree: Part 1 put. Algorithms series</title>
       <link>https://savchenko.tech/posts/rbbst/</link>

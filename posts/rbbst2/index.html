@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Red black binary search tree: Part 2 delete. Algorithms series - savchenko.tech</title>
+<meta name="description" content="Red black bst">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=d4a8cc6c98c40a2547be6b2ca9621ef86b61f382">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=d4a8cc6c98c40a2547be6b2ca9621ef86b61f382">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=d4a8cc6c98c40a2547be6b2ca9621ef86b61f382">
+<link rel="alternate" href="/index.xml?c=d4a8cc6c98c40a2547be6b2ca9621ef86b61f382" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Red black binary search tree: Part 2 delete. Algorithms series - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/rbbst2/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="Red black bst">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Red black binary search tree: Part 2 delete. Algorithms series - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/rbbst2/"></meta>
+<meta name="twitter:description" content="Red black bst"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=d4a8cc6c98c40a2547be6b2ca9621ef86b61f382">
+<link rel="stylesheet" href="/css/color.css?c=d4a8cc6c98c40a2547be6b2ca9621ef86b61f382">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=d4a8cc6c98c40a2547be6b2ca9621ef86b61f382">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Red black binary search tree: Part 2 delete. Algorithms series</h2>
+
+<span class="sub">2022-07-28</span>
+
+
+
+
+
+
+
+
+<p>To implement delete() method we need to take care about helper methods first. 
+First we will take a look at deleteMin().</p>
+<h3 id="delete-min">DELETE MIN</h3>
+<p>Test cases for deleteMin() should check that:</p>
+<ul>
+<li>minimal element is not present</li>
+<li>tree is balanced, which means:
+<ul>
+<li>there is no more than 1 left RED links in the row</li>
+<li>there is no right RED link</li>
+<li>root should be always BLACK</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldDeleteMinElement</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">deleteMin</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertNull<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>8<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">treeShouldBeRebalancedAfterDeleteMin</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">deleteMin</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;23&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        assertFalse<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should be black&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;14&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        assertTrue<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should be red&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;13&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        assertFalse<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should be black &#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;25&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        assertFalse<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should be black&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><img src="../../images/rb_bst_before_del_min.png" alt="rb_bst_before_del_min.png"></p>
+<p>2 more helper methods for achieving balance will be moveRedLeft() and moveRedRight().</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">moveRedLeft</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        flipColors<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> rotateRight<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            node <span style="color:#f92672">=</span> rotateLeft<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            flipColors<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">moveRedRight</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        flipColors<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            node <span style="color:#f92672">=</span> rotateRight<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            flipColors<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>With helper methods in place we can move on with implementation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleteMin</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>isRed<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isRed<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>        root<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> RED<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        root <span style="color:#f92672">=</span> deleteMin<span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> BLACK<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">deleteMin</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>            node <span style="color:#f92672">=</span> moveRedLeft<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> deleteMin<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> balanceBST<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><img src="../../images/rb_bst_after_del_min.png" alt="rb_bst_after_del_min.png"></p>
+<h3 id="delete">DELETE</h3>
+<p>Test cases for delete() will be similar to deleteMin().
+They should check:</p>
+<ul>
+<li>given key is not present</li>
+<li>tree is rebalanced</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldDeleteElementByKey</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>32<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertNull<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>32<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">treeShouldBeRebalancedAfterDelete</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>32<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;14&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;28&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        assertFalse<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should be black&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;23&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        assertTrue<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should be red&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;33&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        assertTrue<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should be red&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Deletion implementation is based on deletion of simple BST. It gets a bit more complicated because we need to keep the 
+balance.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>isRed<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isRed<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>            root<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> RED<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        root <span style="color:#f92672">=</span> delete<span style="color:#f92672">(</span>root<span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> BLACK<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">,</span> Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>key<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                node <span style="color:#f92672">=</span> moveRedLeft<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> delete<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                node <span style="color:#f92672">=</span> rotateRight<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>key<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                node <span style="color:#f92672">=</span> moveRedRight<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>key<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                Node x <span style="color:#f92672">=</span> min<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                node<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                node<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> deleteMin<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> delete<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">,</span> key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> balanceBST<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><img src="../../images/rb_bst_after_del_full.png" alt="rb_bst_after_del_full.png"></p>
+<p>Complete <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/searching/RedBlackBinarySearchTree.java">implementation</a>
+with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/java/searching/RedBlackBinarySearchTreeTest.java">test cases</a> can be found on GitHub.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.amazon.de/Algorithms-Robert-Sedgewick/dp/032157351X/ref=asc_df_032157351X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=310624385211&amp;hvpos=&amp;hvnetw=g&amp;hvrand=4744587760075123991&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-432981821009&amp;psc=1&amp;th=1&amp;psc=1&amp;tag=&amp;ref=&amp;adgrpid=64736366074&amp;hvpone=&amp;hvptwo=&amp;hvadid=310624385211&amp;hvpos=&amp;hvnetw=g&amp;hvrand=4744587760075123991&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-432981821009">Algorithms by Robert Sedgewick</a>.</li>
+<li><a href="https://www.amazon.de/Introduction-Algorithms-fourth-Thomas-Cormen/dp/026204630X/ref=asc_df_026204630X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=526471224369&amp;hvpos=&amp;hvnetw=g&amp;hvrand=13700716644741673088&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-1268844537750&amp;psc=1&amp;th=1&amp;psc=1">Introduction to Algorithms by  Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</a>.</li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/algorithms/">algorithms</a>
+	
+	<a class="post-tag" href="/tags/bst/">bst</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/rbbst/">Red black binary search tree: Part 1 put. Algorithms series</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "algorithms"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-07-28</div>
+  <div class="post-title"><a href="/posts/rbbst2/">Red black binary search tree: Part 2 delete. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-07-22</div>
+  <div class="post-title"><a href="/posts/rbbst/">Red black binary search tree: Part 1 put. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-07-14</div>
+  <div class="post-title"><a href="/posts/bst2/">Binary search tree: Part 2 min, floor, delete. Algorithms series</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href='/tags/algorithms/'>more ...</a>
+          
+      </div>
+        </div>
+    
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "bst"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-07-28</div>
+  <div class="post-title"><a href="/posts/rbbst2/">Red black binary search tree: Part 2 delete. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-07-22</div>
+  <div class="post-title"><a href="/posts/rbbst/">Red black binary search tree: Part 1 put. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-07-14</div>
+  <div class="post-title"><a href="/posts/bst2/">Binary search tree: Part 2 min, floor, delete. Algorithms series</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href='/tags/bst/'>more ...</a>
+          
+      </div>
+        </div>
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>
