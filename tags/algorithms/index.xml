@@ -6,7 +6,18 @@
     <description>Recent content in algorithms on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hash table. Algorithms series</title>
+      <link>https://savchenko.tech/posts/hashtable/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/hashtable/</guid>
+      <description>Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications. One very effective data structures for implementing dictionaries is hash table. The average time to search for an element in hash table is O(1).
+Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &amp;lsquo;i&amp;rsquo; is stored in array entry &amp;lsquo;i&amp;rsquo;.
+Two main parts in hash algorithm are hash function and collision resolution method.</description>
+    </item>
+    
     <item>
       <title>Red black binary search tree: Part 2 delete. Algorithms series</title>
       <link>https://savchenko.tech/posts/rbbst2/</link>

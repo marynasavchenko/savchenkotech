@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hash table on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/hash-table/</link>
+    <description>Recent content in hash table on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/hash-table/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hash table. Algorithms series</title>
+      <link>https://savchenko.tech/posts/hashtable/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/hashtable/</guid>
+      <description>Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications. One very effective data structures for implementing dictionaries is hash table. The average time to search for an element in hash table is O(1).
+Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &amp;lsquo;i&amp;rsquo; is stored in array entry &amp;lsquo;i&amp;rsquo;.
+Two main parts in hash algorithm are hash function and collision resolution method.</description>
+    </item>
+    
+  </channel>
+</rss>
