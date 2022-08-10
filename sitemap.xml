@@ -3,21 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://savchenko.tech/tags/algorithms/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/dfs/</loc>
+    <lastmod>2022-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/dfs/</loc>
+    <lastmod>2022-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/</loc>
+    <lastmod>2022-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/</loc>
+    <lastmod>2022-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/</loc>
+    <lastmod>2022-08-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/hash-table/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/posts/hashtable/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/posts/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/tags/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/bst/</loc>

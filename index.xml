@@ -6,7 +6,20 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Depth first search. Algorithms series</title>
+      <link>https://savchenko.tech/posts/dfs/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/dfs/</guid>
+      <description>Graph algorithms solve many problems in computer science and are fundamental to the field. Depth first search (DFS) is one of them.
+Representation of a graph Before we dive into DFS we need to understand Graph structure and terminology.
+Graph is a set of vertices and a collection of edges that each connect a pair of vertices.
+Examples of a Graph would be:
+ in finance : Currency is a vertex, transaction is an edge in transportation : Street intersection is a vertex, route is an edge  Vertex 1 is connected to Vertex 2 when there is an edge between them.</description>
+    </item>
+    
     <item>
       <title>Hash table. Algorithms series</title>
       <link>https://savchenko.tech/posts/hashtable/</link>
