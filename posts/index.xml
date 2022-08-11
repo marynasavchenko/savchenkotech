@@ -8,12 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 09 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Depth first search. Algorithms series</title>
+      <title>Depth First Search. Algorithms series</title>
       <link>https://savchenko.tech/posts/dfs/</link>
       <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/dfs/</guid>
-      <description>Graph algorithms solve many problems in computer science and are fundamental to the field. Depth first search (DFS) is one of them.
+      <description>Graph algorithms solve many problems in computer science and are fundamental to the field. Depth First Search (DFS) is one of them.
 Representation of a graph Before we dive into DFS we need to understand Graph structure and terminology.
 Graph is a set of vertices and a collection of edges that each connect a pair of vertices.
 Examples of a Graph would be:
@@ -32,7 +32,7 @@ Two main parts in hash algorithm are hash function and collision resolution meth
     </item>
     
     <item>
-      <title>Red black binary search tree: Part 2 delete. Algorithms series</title>
+      <title>Red Black Binary Search Tree: Part 2 delete. Algorithms series</title>
       <link>https://savchenko.tech/posts/rbbst2/</link>
       <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -43,23 +43,23 @@ DELETE MIN Test cases for deleteMin() should check that:
     </item>
     
     <item>
-      <title>Red black binary search tree: Part 1 put. Algorithms series</title>
+      <title>Red Black Binary Search Tree: Part 1 put. Algorithms series</title>
       <link>https://savchenko.tech/posts/rbbst/</link>
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/rbbst/</guid>
-      <description>Red-black tree is a binary search tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &amp;ldquo;balanced&amp;rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).
+      <description>Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &amp;ldquo;balanced&amp;rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).
 Red-black tree has next properties:
  Every node is RED or BLACK The root id always BlACK Every null leaf is black If a node is RED, then both children are BLACK For each node, all simple paths from the node to descendant leaves contain the same number of BLACK nodes.</description>
     </item>
     
     <item>
-      <title>Binary search tree: Part 2 min, floor, delete. Algorithms series</title>
+      <title>Binary Search Tree: Part 2 min, floor, delete. Algorithms series</title>
       <link>https://savchenko.tech/posts/bst2/</link>
       <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/bst2/</guid>
-      <description>An important feature of Binary search tree (BST) is that it allows keeping keys in order. So we are able to apply wide range of operations that involves relative key order.
+      <description>An important feature of Binary Search Tree (BST) is that it allows keeping keys in order. So we are able to apply wide range of operations that involves relative key order.
 In this article we will take a look at some of them.
 As in the previous part we will use TDD to ensure algorithm correctness.
 MIN min() method should return the smallest key.
@@ -77,7 +77,7 @@ Big addition to this popularity wave was Linus Torvald&amp;rsquo;s announcement 
     </item>
     
     <item>
-      <title>Binary search tree: Part 1 put, get, size. Algorithms series</title>
+      <title>Binary Search Tree: Part 1 put, get, size. Algorithms series</title>
       <link>https://savchenko.tech/posts/bst/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
