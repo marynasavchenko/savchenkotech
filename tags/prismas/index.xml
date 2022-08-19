@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prisma&#39;s on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/prismas/</link>
+    <description>Recent content in Prisma&#39;s on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/prismas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prisma&#39;s algorithm. Greedy. Algorithms series</title>
+      <link>https://savchenko.tech/posts/greedy/</link>
+      <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/greedy/</guid>
+      <description>Prim&amp;rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).
+Greedy algorithms is a technique used in designing and analyzing efficient algorithms. They typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice in hope that this choice leads to globally optimal solution.</description>
+    </item>
+    
+  </channel>
+</rss>
