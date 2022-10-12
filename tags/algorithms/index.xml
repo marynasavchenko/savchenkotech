@@ -6,7 +6,19 @@
     <description>Recent content in algorithms on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linked List. Algorithms series</title>
+      <link>https://savchenko.tech/posts/linledlist/</link>
+      <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/linledlist/</guid>
+      <description>A Linked List is fundamental and incredibly useful. It enables implementation of bags, queues and stacks.
+It is a recursive data structure. In the core of Linked List is Node that contains of generic item and reference to the next node.
+Node abstraction would be a nested class in Linked List and would look like this:
+private static class Node&amp;lt;E&amp;gt; {  E value;  Node&amp;lt;E&amp;gt; next;   public Node(E value) {  this.</description>
+    </item>
+    
     <item>
       <title>Prim&#39;s algorithm. Greedy. Algorithms series</title>
       <link>https://savchenko.tech/posts/greedy/</link>
