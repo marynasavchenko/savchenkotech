@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://savchenko.tech/tags/algorithms/</loc>
-    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/bfs/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/test/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/linked-list/</loc>
     <lastmod>2022-09-10T00:00:00+00:00</lastmod>
@@ -11,23 +26,11 @@
     <loc>https://savchenko.tech/posts/linledlist/</loc>
     <lastmod>2022-09-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/posts/</loc>
-    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/</loc>
-    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/tags/</loc>
-    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://savchenko.tech/posts/greedy/</loc>
     <lastmod>2022-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/prismas/</loc>
     <lastmod>2022-08-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/tags/bfs/</loc>
-    <lastmod>2022-08-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/posts/bfs/</loc>
     <lastmod>2022-08-15T00:00:00+00:00</lastmod>
