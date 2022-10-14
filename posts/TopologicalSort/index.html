@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Topological sort. Algorithms series - savchenko.tech</title>
+<meta name="description" content="Topological sort">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=39ddcf6ad74747f8f4e100a103a1cf48803694bb">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=39ddcf6ad74747f8f4e100a103a1cf48803694bb">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=39ddcf6ad74747f8f4e100a103a1cf48803694bb">
+<link rel="alternate" href="/index.xml?c=39ddcf6ad74747f8f4e100a103a1cf48803694bb" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Topological sort. Algorithms series - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/topologicalsort/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="Topological sort">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Topological sort. Algorithms series - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/topologicalsort/"></meta>
+<meta name="twitter:description" content="Topological sort"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=39ddcf6ad74747f8f4e100a103a1cf48803694bb">
+<link rel="stylesheet" href="/css/color.css?c=39ddcf6ad74747f8f4e100a103a1cf48803694bb">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=39ddcf6ad74747f8f4e100a103a1cf48803694bb">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Topological sort. Algorithms series</h2>
+
+<span class="sub">2022-09-24</span>
+
+
+
+
+
+
+
+
+<p>Topological sort can be applied in scheduling problems.</p>
+<p>Those types of problems can be solved when:</p>
+<ul>
+<li>tasks and precedence constraints are defined;</li>
+<li>cycles are detected and removed.</li>
+</ul>
+<p>Implementation of cycle detection can be found <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/graph/CycleInDirectedGraph.java">here</a>.</p>
+<p>Test should check that reverse post order is correct.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnPostOrder</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        DirectedGraph directedGraph <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DirectedGraph<span style="color:#f92672">(</span>4<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        directedGraph<span style="color:#f92672">.</span><span style="color:#a6e22e">addEdge</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 0<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        directedGraph<span style="color:#f92672">.</span><span style="color:#a6e22e">addEdge</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 3<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        directedGraph<span style="color:#f92672">.</span><span style="color:#a6e22e">addEdge</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        TopologicalSort topologicalSort <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TopologicalSort<span style="color:#f92672">(</span>directedGraph<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        LinkedList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> expected <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 1<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>expected<span style="color:#f92672">,</span> topologicalSort<span style="color:#f92672">.</span><span style="color:#a6e22e">getReversePostOrder</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><img src="../../images/topSort.png" alt="topSort.png"></p>
+<p>This problem can be solved quite elegantly with the use of DFS (Depth First Search).
+To get the reverse post order we need to put the vertex on stack (linked list) after the recursive call.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TopologicalSort</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[]</span> visited<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> postOrder<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">TopologicalSort</span><span style="color:#f92672">(</span>DirectedGraph graph<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[</span>graph<span style="color:#f92672">.</span><span style="color:#a6e22e">getNumberOfVertices</span><span style="color:#f92672">()];</span>
+</span></span><span style="display:flex;"><span>        postOrder <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> ver <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> ver <span style="color:#f92672">&lt;</span> graph<span style="color:#f92672">.</span><span style="color:#a6e22e">getNumberOfVertices</span><span style="color:#f92672">();</span> ver<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>visited<span style="color:#f92672">[</span>ver<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                dfs<span style="color:#f92672">(</span>graph<span style="color:#f92672">,</span> ver<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span><span style="color:#f92672">(</span>DirectedGraph graph<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> vertex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        visited<span style="color:#f92672">[</span>vertex<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> conVer <span style="color:#f92672">:</span> graph<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnectionsFor</span><span style="color:#f92672">(</span>vertex<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>visited<span style="color:#f92672">[</span>conVer<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                dfs<span style="color:#f92672">(</span>graph<span style="color:#f92672">,</span> conVer<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        postOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>vertex<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getReversePostOrder</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> postOrder<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Complete <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/graph/TopologicalSort.java">implementation</a> 
+with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/java/graph/TopologicalSortTest.java">test cases</a> can be found on GitHub.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.amazon.de/Algorithms-Robert-Sedgewick/dp/032157351X/ref=asc_df_032157351X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=310624385211&amp;hvpos=&amp;hvnetw=g&amp;hvrand=4744587760075123991&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-432981821009&amp;psc=1&amp;th=1&amp;psc=1&amp;tag=&amp;ref=&amp;adgrpid=64736366074&amp;hvpone=&amp;hvptwo=&amp;hvadid=310624385211&amp;hvpos=&amp;hvnetw=g&amp;hvrand=4744587760075123991&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-432981821009">Algorithms by Robert Sedgewick</a>.</li>
+<li><a href="https://www.amazon.de/Introduction-Algorithms-fourth-Thomas-Cormen/dp/026204630X/ref=asc_df_026204630X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=526471224369&amp;hvpos=&amp;hvnetw=g&amp;hvrand=13700716644741673088&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-1268844537750&amp;psc=1&amp;th=1&amp;psc=1">Introduction to Algorithms by  Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</a>.</li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/algorithms/">algorithms</a>
+	
+	<a class="post-tag" href="/tags/topological-sort/">Topological sort</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/linledlist/">Linked List. Algorithms series</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "algorithms"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-09-24</div>
+  <div class="post-title"><a href="/posts/topologicalsort/">Topological sort. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-09-10</div>
+  <div class="post-title"><a href="/posts/linledlist/">Linked List. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-08-18</div>
+  <div class="post-title"><a href="/posts/greedy/">Prim&#39;s algorithm. Greedy. Algorithms series</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href='/tags/algorithms/'>more ...</a>
+          
+      </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>

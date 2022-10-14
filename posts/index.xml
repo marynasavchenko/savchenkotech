@@ -6,7 +6,20 @@
     <description>Recent content in Posts on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Topological sort. Algorithms series</title>
+      <link>https://savchenko.tech/posts/topologicalsort/</link>
+      <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/topologicalsort/</guid>
+      <description>Topological sort can be applied in scheduling problems.
+Those types of problems can be solved when:
+ tasks and precedence constraints are defined; cycles are detected and removed.  Implementation of cycle detection can be found here.
+Test should check that reverse post order is correct.
+ @Test  void shouldReturnPostOrder() {  DirectedGraph directedGraph = new DirectedGraph(4);  directedGraph.addEdge(1, 0);  directedGraph.addEdge(0, 3);  directedGraph.addEdge(1, 2);   TopologicalSort topologicalSort = new TopologicalSort(directedGraph);  LinkedList&amp;lt;Integer&amp;gt; expected = new LinkedList&amp;lt;&amp;gt;(Arrays.</description>
+    </item>
+    
     <item>
       <title>Linked List. Algorithms series</title>
       <link>https://savchenko.tech/posts/linledlist/</link>
