@@ -14,10 +14,10 @@
 
 <meta name="author" content="">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
-<link rel="alternate" href="/index.xml?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c" type="application/rss+xml" title="RSS" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=762895972766b5ba834686939af4e69e8ea81eab">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=762895972766b5ba834686939af4e69e8ea81eab">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=762895972766b5ba834686939af4e69e8ea81eab">
+<link rel="alternate" href="/index.xml?c=762895972766b5ba834686939af4e69e8ea81eab" type="application/rss+xml" title="RSS" />
 <meta property="og:title" content="Kotlin. Elegance that we missed in Java - savchenko.tech">
 </meta>
 <meta property="og:url" content="https://savchenko.tech/posts/springandkotlin/">
@@ -37,8 +37,8 @@
 <meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
-<link rel="stylesheet" href="/css/color.css?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
+<link rel="stylesheet" href="/css/main.css?c=762895972766b5ba834686939af4e69e8ea81eab">
+<link rel="stylesheet" href="/css/color.css?c=762895972766b5ba834686939af4e69e8ea81eab">
 
 
 
@@ -72,7 +72,7 @@ font-size: 115%
 
   
   <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
+    <img class="header-image" src="/images/header-image.jpg?c=762895972766b5ba834686939af4e69e8ea81eab">
   </div>
   
 
@@ -124,11 +124,14 @@ It is also JVM language, but promised to be improved, concise, readable and beau
 <p>Multiplatform - Kotlin can be used to write native macOS, iOS, and Windows applications; JavaScript and Android applications.</p>
 </li>
 <li>
-<p>interoperability - we can reuse existing Java code by intermixing Java and Kotlin.</p>
+<p>Interoperability - we can reuse existing Java code by intermixing Java and Kotlin.</p>
 </li>
 </ol>
 <p>In this article I will take a short look on Kotlin world on example of simple Spring Boot RESTfull application. 
 Using Spring Boot with Kotlin makes an application even more elegant. Combination of those two gives us &ldquo;double expressiveness&rdquo;.</p>
+<p>This simple CRUD KotlinTutor application will implement next API:</p>
+<p><strong>POST /kotlinquestions/</strong> - Add new Kotlin question.</p>
+<p><strong>GET /kotlinquestions/</strong> - Retrieves all Kotlin questions.</p>
 <p>To generate skeleton of Kotlin Spring Boot application <a href="https://start.spring.io/">Spring initializer</a> can be used.
 After generation, we got an entry point and can run an application.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootApplication</span>
