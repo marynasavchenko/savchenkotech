@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Kotlin. Elegance that we missed in Java - savchenko.tech</title>
+<meta name="description" content="From java to kotlin">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
+<link rel="alternate" href="/index.xml?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Kotlin. Elegance that we missed in Java - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/springandkotlin/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="From java to kotlin">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Kotlin. Elegance that we missed in Java - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/springandkotlin/"></meta>
+<meta name="twitter:description" content="From java to kotlin"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
+<link rel="stylesheet" href="/css/color.css?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=a6dc653d425fc09055574418fc2e71f9cfe38d3c">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Kotlin. Elegance that we missed in Java</h2>
+
+<span class="sub">2022-10-29</span>
+
+
+
+
+
+
+
+
+<p><img src="../../images/kotlin.png" alt="kotlin.png"></p>
+<p>For me, as a software engineer with experience in Java, Kotlin was definitely the language of interest.
+It is also JVM language, but promised to be improved, concise, readable and beautiful.</p>
+<p>So, what are the advantages of Kotlin?</p>
+<ol>
+<li>
+<p>Null safety - null references are detected at compile time.</p>
+</li>
+<li>
+<p>Fluency - fluent code is readable and easier (and cheaper) to maintain.</p>
+</li>
+<li>
+<p>Coroutines - a great way to implement non-blocking calls and gracefully handle exceptions.</p>
+</li>
+<li>
+<p>Multiplatform - Kotlin can be used to write native macOS, iOS, and Windows applications; JavaScript and Android applications.</p>
+</li>
+<li>
+<p>interoperability - we can reuse existing Java code by intermixing Java and Kotlin.</p>
+</li>
+</ol>
+<p>In this article I will take a short look on Kotlin world on example of simple Spring Boot RESTfull application. 
+Using Spring Boot with Kotlin makes an application even more elegant. Combination of those two gives us &ldquo;double expressiveness&rdquo;.</p>
+<p>To generate skeleton of Kotlin Spring Boot application <a href="https://start.spring.io/">Spring initializer</a> can be used.
+After generation, we got an entry point and can run an application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootApplication</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KotlinTutorApplication</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>(args: Array&lt;String&gt;) {
+</span></span><span style="display:flex;"><span>    runApplication&lt;KotlinTutorApplication&gt;(*args)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Kotlin code a bit simpler than Java. No semicolon.
+The main() function in the Kotlin version is a top-level function, instead of being a member of the class.</p>
+<p><strong>Testing</strong></p>
+<p>For testing purposes I will be using <a href="https://kotest.io/">Kotest</a> and <a href="https://mockk.io/">Mockk</a>.
+Kotlin code can be tested also with jUnit. Despite my great love to jUnit I wanted to try new testing tools and follow Kotlin natural style.</p>
+<p>After adding necessary dependencies, we can start with the first test.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-test<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;exclusions&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;exclusion&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;groupId&gt;</span>junit<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;artifactId&gt;</span>junit<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/exclusion&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;exclusion&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;groupId&gt;</span>org.mockito<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;artifactId&gt;</span>mockito-core<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/exclusion&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/exclusions&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>io.kotest.extensions<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>kotest-extensions-spring<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>1.1.0<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>io.kotest<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>kotest-runner-junit5-jvm<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>5.0.0<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>com.ninja-squad<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>springmockk<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>3.0.1<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>Kotest has 10 different styles of test <a href="https://kotest.io/docs/framework/testing-styles.html">layout</a>. I will go for original Kotlin
+ShouldSpec because I am used to add &ldquo;should&rdquo; to test names.
+To activate Spring extension we need to override extensions() function. it is analog to jUnit&rsquo;s @ExtendWith.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootTest</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KotlinTutorApplicationTest</span> : FreeSpec() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">extensions</span>() = listOf(SpringExtension)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">init</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Should load context&#34;</span> {
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Controller</strong></p>
+<p>Next, we will move to creating controller.
+We will start with WebMvcTest to check that endpoints work correctly.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@WebMvcTest</span>(QuestionController<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuestionControllerTest</span>(<span style="color:#66d9ef">var</span> mockMvc: MockMvc) : ShouldSpec() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">extensions</span>() = listOf(SpringExtension)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@MockkBean</span>(relaxed = <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> questionsService: KotlinQuestionService
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">init</span> {
+</span></span><span style="display:flex;"><span>        should(<span style="color:#e6db74">&#34;return all questions&#34;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> question1 = kotlinQuestion()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> question2 = KotlinQuestion(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;question2&#34;</span>, <span style="color:#e6db74">&#34;answer2&#34;</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>            every { questionsService.getAllQuestions() } returns listOf(question1, question2)
+</span></span><span style="display:flex;"><span>            mockMvc.perform(MockMvcRequestBuilders.<span style="color:#66d9ef">get</span>(<span style="color:#e6db74">&#34;/kotlinquestions&#34;</span>))
+</span></span><span style="display:flex;"><span>                .andExpect(status().isOk)
+</span></span><span style="display:flex;"><span>                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+</span></span><span style="display:flex;"><span>                .andExpect(jsonPath(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\$</span><span style="color:#e6db74">.[0].question&#34;</span>).value(question1.question))
+</span></span><span style="display:flex;"><span>                .andExpect(jsonPath(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\$</span><span style="color:#e6db74">.[0].answer&#34;</span>).value(question1.answer))
+</span></span><span style="display:flex;"><span>                .andExpect(jsonPath(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\$</span><span style="color:#e6db74">.[0].questionType&#34;</span>).value(question1.questionType))
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        should(<span style="color:#e6db74">&#34;post question&#34;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> question = kotlinQuestion()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> objectMapper = ObjectMapper()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> json = objectMapper.writeValueAsString(question)
+</span></span><span style="display:flex;"><span>            mockMvc.perform(
+</span></span><span style="display:flex;"><span>                MockMvcRequestBuilders.post(<span style="color:#e6db74">&#34;/kotlinquestions&#34;</span>)
+</span></span><span style="display:flex;"><span>                    .contentType(MediaType.APPLICATION_JSON)
+</span></span><span style="display:flex;"><span>                    .content(json)
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>                .andExpect(status().isOk)
+</span></span><span style="display:flex;"><span>            verify { questionsService.addQuestion(question)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">kotlinQuestion</span>() = KotlinQuestion(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;question1&#34;</span>, <span style="color:#e6db74">&#34;answer1&#34;</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can see that code looks more concise than Java:</p>
+<ul>
+<li>Property KotlinQuestionService of a class QuestionController can be listed in its declaration.</li>
+<li>getQuestions() function body can an expression. Its return type is inferred.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(<span style="color:#e6db74">&#34;/kotlinquestions&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuestionController</span>(<span style="color:#66d9ef">val</span> service: KotlinQuestionService) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getQuestions</span>() = ResponseEntity.ok(service.getAllQuestions())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@PostMapping</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">addQuestion</span>(<span style="color:#a6e22e">@RequestBody</span> kotlinQuestion: KotlinQuestion): ResponseEntity&lt;String&gt; {
+</span></span><span style="display:flex;"><span>        service.addQuestion(kotlinQuestion)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ResponseEntity.ok(<span style="color:#e6db74">&#34;Question is created&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Entity</strong></p>
+<p>Kotlin generates getters automatically, so we do need to write them.
+And, since we marked KotlinQuestion as a data class, we get methods equals(), hashCode(), and toString() also for free.
+As a result we got entity class without any noise.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Entity</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KotlinQuestion</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Id</span> <span style="color:#a6e22e">@GeneratedValue</span> <span style="color:#66d9ef">val</span> id: Long,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> question: String,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> answer: String,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> questionType: Int
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><strong>Service layer</strong></p>
+<p>Service layer might not be necessary for such simple application, but we will create 2 services to see how Service is created 
+with Kotlin and try out more tests with Mockk.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KotlinQuestionServiceTest</span> : ShouldSpec() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@MockK</span>(relaxed = <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> questionRepository: QuestionRepository
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@MockK</span>(relaxed = <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> verificationService: VerificationService
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@InjectMockKs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> kotlinQuestionService: KotlinQuestionService
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">beforeTest</span>(testCase: TestCase) {
+</span></span><span style="display:flex;"><span>        MockKAnnotations.<span style="color:#66d9ef">init</span>(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">afterTest</span>(testCase: TestCase, result: TestResult) {
+</span></span><span style="display:flex;"><span>        clearAllMocks()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">init</span> {
+</span></span><span style="display:flex;"><span>        should(<span style="color:#e6db74">&#34;save question when verified&#34;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> kotlinQuestion = createQuestion()
+</span></span><span style="display:flex;"><span>            every { verificationService.verifyQuestion(kotlinQuestion) } returns <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            every { questionRepository.save(kotlinQuestion) } returns kotlinQuestion
+</span></span><span style="display:flex;"><span>            kotlinQuestionService.addQuestion(kotlinQuestion)
+</span></span><span style="display:flex;"><span>            verify { questionRepository.save(kotlinQuestion) }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        should(<span style="color:#e6db74">&#34;throw an exception when not verified&#34;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> kotlinQuestion = createQuestion()
+</span></span><span style="display:flex;"><span>            every { verificationService.verifyQuestion(kotlinQuestion) } returns <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>            verify(exactly = <span style="color:#ae81ff">0</span>) { questionRepository.save(kotlinQuestion) }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createQuestion</span>(): KotlinQuestion {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> KotlinQuestion(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Question1&#34;</span>, <span style="color:#e6db74">&#34;Answer1&#34;</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KotlinQuestionService</span>(<span style="color:#66d9ef">val</span> questionRepository: QuestionRepository, <span style="color:#66d9ef">val</span> verificationService: VerificationService) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getAllQuestions</span>(): Iterable&lt;KotlinQuestion&gt; = questionRepository.findAll()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">addQuestion</span>(question: KotlinQuestion) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> verified = verificationService.verifyQuestion(question)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (verified) {
+</span></span><span style="display:flex;"><span>            questionRepository.save(question)
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> InvalidPropertiesFormatException(<span style="color:#e6db74">&#34;Question is not valid&#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VerificationServiceTest</span> : ShouldSpec() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">init</span> {
+</span></span><span style="display:flex;"><span>        should(<span style="color:#e6db74">&#34;return true when type in a range 1 to 5&#34;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> verResult = VerificationService().verifyQuestion(createQuestion(<span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>            verResult shouldBe <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        should(<span style="color:#e6db74">&#34;return false when 0&#34;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">val</span> verResult = VerificationService().verifyQuestion(createQuestion(<span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span>            verResult shouldBe <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createQuestion</span>(type: Int): KotlinQuestion {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> KotlinQuestion(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Question1&#34;</span>, <span style="color:#e6db74">&#34;Answer1&#34;</span>, type)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>When statement makes conditional code more elegant. Especially for processing values of different types.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VerificationService</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">verifyQuestion</span>(kotlinQuestion: KotlinQuestion) =
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> (kotlinQuestion.questionType) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1.</span>.<span style="color:#ae81ff">5</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">10</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Spring and Kotlin fit very well together. Spring developers support Kotlin as a first class citizen.
+Hence, we can create the same application with less code.</p>
+<p>Complete <a href="https://github.com/marynasavchenko/kotlintutor/tree/main/kotlintutor/src/main/kotlin/tech/savchenko/kotlintutor">implementation</a>
+with <a href="https://github.com/marynasavchenko/kotlintutor/tree/main/kotlintutor/src/test/kotlin/tech/savchenko/kotlintutor">test cases</a> can be found on GitHub.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://pragprog.com/titles/vskotlin/programming-kotlin/">Programming Kotlin by Venkat Subramaniam</a>.</li>
+<li><a href="https://kotlinlang.org/docs/home.html">Kotlin Docs</a>.</li>
+<li><a href="https://kotest.io/">Kotest Docs</a></li>
+<li><a href="https://mockk.io/">Mockk Docs</a></li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/java/">java</a>
+	
+	<a class="post-tag" href="/tags/kotlin/">kotlin</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/topsort/">Topological sort. Algorithms series</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "java"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-10-29</div>
+  <div class="post-title"><a href="/posts/springandkotlin/">Kotlin. Elegance that we missed in Java</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-04-09</div>
+  <div class="post-title"><a href="/posts/loom/">Waiting for Loom&#39;s virtual threads...</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-03-10</div>
+  <div class="post-title"><a href="/posts/patternmatching/">Pattern matching in Java</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href="/tags/">other tags</a>
+          
+      </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>

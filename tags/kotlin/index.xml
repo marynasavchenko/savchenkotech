@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kotlin on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/kotlin/</link>
+    <description>Recent content in kotlin on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin. Elegance that we missed in Java</title>
+      <link>https://savchenko.tech/posts/springandkotlin/</link>
+      <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/springandkotlin/</guid>
+      <description>For me, as a software engineer with experience in Java, Kotlin was definitely the language of interest. It is also JVM language, but promised to be improved, concise, readable and beautiful.
+So, what are the advantages of Kotlin?
+  Null safety - null references are detected at compile time.
+  Fluency - fluent code is readable and easier (and cheaper) to maintain.
+  Coroutines - a great way to implement non-blocking calls and gracefully handle exceptions.</description>
+    </item>
+    
+  </channel>
+</rss>
