@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloud computing on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/cloud-computing/</link>
+    <description>Recent content in cloud computing on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 12 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/cloud-computing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Cloud. Definition and characteristics</title>
+      <link>https://savchenko.tech/posts/aws/</link>
+      <pubDate>Sat, 12 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/aws/</guid>
+      <description>The need to accelerate building and deploying software and high cost of local data centers are two main reasons for Cloud popularity.
+What is Cloud?
+Simplified, Cloud can be defined as data center that is not yours.
+The National Institute of Standards and Technology (NIST) provides more descriptive definition:
+ Cloud computing is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (networks, virtual machines, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.</description>
+    </item>
+    
+  </channel>
+</rss>
