@@ -14,10 +14,10 @@
 
 <meta name="author" content="">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
-<link rel="alternate" href="/index.xml?c=023c68a682f29ae17a5a89cabd9c850268a30c46" type="application/rss+xml" title="RSS" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=f63d478f8b232878cdd5c0ad52faddc5ff98cbf2">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=f63d478f8b232878cdd5c0ad52faddc5ff98cbf2">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=f63d478f8b232878cdd5c0ad52faddc5ff98cbf2">
+<link rel="alternate" href="/index.xml?c=f63d478f8b232878cdd5c0ad52faddc5ff98cbf2" type="application/rss+xml" title="RSS" />
 <meta property="og:title" content="Clean code notes - savchenko.tech">
 </meta>
 <meta property="og:url" content="https://savchenko.tech/posts/cleancode/">
@@ -37,8 +37,8 @@
 <meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
-<link rel="stylesheet" href="/css/color.css?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
+<link rel="stylesheet" href="/css/main.css?c=f63d478f8b232878cdd5c0ad52faddc5ff98cbf2">
+<link rel="stylesheet" href="/css/color.css?c=f63d478f8b232878cdd5c0ad52faddc5ff98cbf2">
 
 
 
@@ -72,7 +72,7 @@ font-size: 115%
 
   
   <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=023c68a682f29ae17a5a89cabd9c850268a30c46">
+    <img class="header-image" src="/images/header-image.jpg?c=f63d478f8b232878cdd5c0ad52faddc5ff98cbf2">
   </div>
   
 
@@ -97,7 +97,7 @@ font-size: 115%
 
 <h2>Clean code notes</h2>
 
-<span class="sub">2022-05-07</span>
+<span class="sub">2022-12-14</span>
 
 
 
@@ -106,39 +106,66 @@ font-size: 115%
 
 
 
-<h3 id="names">Names</h3>
-<p>Meaningful names increase readability.</p>
-<p>Names that communicate intent increase readability</p>
-<h3 id="functions">Functions</h3>
-<p>DO&rsquo;s:</p>
+<p><img src="../../images/cleanCode.png" alt="cleanCode.png"></p>
+<p>It is hard to find software engineer these days that has never heard of Clean code. At the same time in many organizations code that runs on production 
+brings bugs and pain every day.</p>
+<p>So, what is Clean code and why it is important?</p>
+<p><strong>Clean code</strong> is set of principles for writing clear, understandable, and maintainable code.
+It is not strict rules and applying each principle needs to make sense in concrete situation.</p>
+<p>Two main reasons to use Clean Code principles are:</p>
 <ul>
-<li>Function should do 1 thing.</li>
-<li>If a function is too big, it should be extracted into a class.</li>
-<li>few arguments as possible (no more than 3)</li>
+<li>
+<p>decreasing the cost of maintenance and support of software - easier to make changes, add new functionalities and find defects</p>
+</li>
+<li>
+<p>making life of software engineers simpler.</p>
+</li>
 </ul>
-<p>DONT&rsquo;s</p>
+<p>There is a list of principles that I use frequently.</p>
+<p><strong>1. Meaningful names of variables</strong></p>
 <ul>
-<li>do not pass boolean as an argument</li>
-<li>do not use output argument, use return statement</li>
-<li>do not do defensive programming (check for null)</li>
+<li>one word per concept</li>
+<li>classes and objects should have noun or noun phrase names</li>
+<li>readable and searchable</li>
 </ul>
-<h3 id="command---query-separation">Command - Query separation</h3>
-<p>Function should either do something or return something not both. Command returns void or throw an exception and has
-side effects. Query returns a value and does not have a side effects.</p>
-<p><code>Side effect - when a function changes the variable that outlives the function's call</code></p>
-<h3 id="law-of-demeter">Law of Demeter</h3>
-<p>Module should have knowledge only about immediate collaborators.
-An example of violation Law of Demeter would be:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>transaction<span style="color:#f92672">.</span><span style="color:#a6e22e">getCustomer</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAddress</span><span style="color:#f92672">();</span> 
-</span></span></code></pre></div><p>Transaction isn&rsquo;t supposed to have knowledge about address.</p>
-<h3 id="error-handling">Error handling</h3>
-<p>DO&rsquo;s:</p>
-<p>DON&rsquo;Ts</p>
+<p><strong>2. Small methods</strong></p>
 <ul>
-<li>don&rsquo;t pass null</li>
-<li>don&rsquo;t return null</li>
+<li>one level of abstraction per method</li>
+<li>method should do one thing</li>
 </ul>
-<h3 id="clean-tests">Clean tests</h3>
+<p><strong>3. Avoid flag argument</strong></p>
+<ul>
+<li>
+<p>create separate methods, should be a part of API</p>
+</li>
+<li>
+<p><a href="https://martinfowler.com/bliki/FlagArgument.html#:~:text=A%20flag%20argument%20is%20a,operation%20depending%20on%20its%20value">more about FlagArgument on Martin Fowler&rsquo;s blog</a></p>
+</li>
+</ul>
+<p><strong>4. Command query separation</strong></p>
+<ul>
+<li>each method should be only command or query</li>
+<li>command performs an action, do not return anything and has a side effect</li>
+<li>query returns a value, does not perform an action and does not have a side effect</li>
+</ul>
+<p><strong>5. DRY – do not repeat yourself</strong></p>
+<ul>
+<li>create helper method</li>
+</ul>
+<p><strong>6. Null, do not pass, do not return</strong></p>
+<ul>
+<li>use Null object pattern (needs to be passed through the system without consequences)</li>
+</ul>
+<p><strong>7. Clean tests</strong></p>
+<ul>
+<li>one assertion per test</li>
+<li>DAMP (descriptive and meaningful phases) over DRY</li>
+</ul>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.amazon.de/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin</a>.</li>
+<li><a href="https://www.amazon.de/-/en/Robert-C-Martin/dp/0137081073">The Clean Coder: A Code of Conduct for Professional Programmers by Robert C. Martin</a>.</li>
+</ol>
 
 
 
@@ -165,7 +192,7 @@ An example of violation Law of Demeter would be:</p>
 
 <div class="content-footer-item neighbor">
 	
-	<div class="prev-post">Prev: <a href="/posts/loom/">Waiting for Loom&#39;s virtual threads...</a></div>
+	<div class="prev-post">Prev: <a href="/posts/aws/">AWS Cloud. Definition and characteristics</a></div>
 	
 	
 </div>

@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://savchenko.tech/tags/clean-code/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/cleancode/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://savchenko.tech/tags/aws/</loc>
     <lastmod>2022-11-12T00:00:00+00:00</lastmod>
   </url><url>
@@ -9,15 +24,6 @@
     <lastmod>2022-11-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/cloud-computing/</loc>
-    <lastmod>2022-11-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/posts/</loc>
-    <lastmod>2022-11-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/</loc>
-    <lastmod>2022-11-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/tags/</loc>
     <lastmod>2022-11-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/java/</loc>
