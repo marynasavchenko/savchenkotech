@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Why square is not a rectangle: Liskov substitution principle - savchenko.tech</title>
+<meta name="description" content="clean code">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=9bb6d49143c32d4bcc33f43dccab431f99748bf7">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=9bb6d49143c32d4bcc33f43dccab431f99748bf7">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=9bb6d49143c32d4bcc33f43dccab431f99748bf7">
+<link rel="alternate" href="/index.xml?c=9bb6d49143c32d4bcc33f43dccab431f99748bf7" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Why square is not a rectangle: Liskov substitution principle - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/liskov/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="clean code">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Why square is not a rectangle: Liskov substitution principle - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/liskov/"></meta>
+<meta name="twitter:description" content="clean code"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=9bb6d49143c32d4bcc33f43dccab431f99748bf7">
+<link rel="stylesheet" href="/css/color.css?c=9bb6d49143c32d4bcc33f43dccab431f99748bf7">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&amp;amp;subset=korean" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Candara;
+font-size: 115%
+}
+body {
+font-family: '', Candara;
+font-size: 115%
+}
+code {
+font-family: '', Candara;
+font-size: 115%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=9bb6d49143c32d4bcc33f43dccab431f99748bf7">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Why square is not a rectangle: Liskov substitution principle</h2>
+
+<span class="sub">2023-02-19</span>
+
+
+
+
+
+
+
+
+<p>Liskov substitution principle (LSP) is one of the five <a href="https://savchenko.tech/posts/solid/">SOLID principles</a>.
+It is based on the concept of &ldquo;substitutability&rdquo;. Principle allows using code to be written in terms of the supertype specification,
+yet work correctly when using objects of the subtype.</p>
+<blockquote>
+<p>&ldquo;What is wanted here is something like the following substitution property: 
+If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, 
+the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.1&rdquo;</p>
+<p>Barbara Liskov, 1988</p>
+</blockquote>
+<p>In other words software systems should be built from substitutable (interchangeable) parts.
+If superclass does something, subclass should do it too (it should be substitutable for the superclass).</p>
+<p><strong>What is the problem with rectangle being derived from square?</strong></p>
+<p>Let&rsquo;s create Rectangle and Square classes with calculateArea() method on parent Rectangle class.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rectangle</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">double</span> height<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">double</span> weight<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Rectangle</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> height<span style="color:#f92672">,</span> <span style="color:#66d9ef">double</span> weight<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> height<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">weight</span> <span style="color:#f92672">=</span> weight<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calculateArea</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> height <span style="color:#f92672">*</span> weight<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Square</span> <span style="color:#66d9ef">extends</span> Rectangle <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Square</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> side<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>side<span style="color:#f92672">,</span> side<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Tests for calculating area for both Rectangle and Square are green. No obvious problem so far.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldCalculateRectangleArea</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Rectangle rectangle <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Rectangle<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> 4<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> area <span style="color:#f92672">=</span> rectangle<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateArea</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>8<span style="color:#f92672">,</span> area<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldCalculateSquareArea</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Rectangle rectangle <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Square<span style="color:#f92672">(</span>4<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> area <span style="color:#f92672">=</span> rectangle<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateArea</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>16<span style="color:#f92672">,</span> area<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>The problem appears when there is a need to mutate separately height and weight.
+<img src="../../images/lsp.png" alt="lsp.png"></p>
+<p>This will make setters for height and weight available on Square also and can end up in incorrectly modified shape.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldSetWeightOfRectangle</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            Rectangle rectangle <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Rectangle<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> 4<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            rectangle<span style="color:#f92672">.</span><span style="color:#a6e22e">setWeight</span><span style="color:#f92672">(</span>6<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            assertEquals<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> rectangle<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>            assertEquals<span style="color:#f92672">(</span>6<span style="color:#f92672">,</span> rectangle<span style="color:#f92672">.</span><span style="color:#a6e22e">getWeight</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldSetSideOfSquare</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            Rectangle square <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Square<span style="color:#f92672">(</span>4<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            square<span style="color:#f92672">.</span><span style="color:#a6e22e">setWeight</span><span style="color:#f92672">(</span>6<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// different values, should not be happening
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            assertEquals<span style="color:#f92672">(</span>6<span style="color:#f92672">,</span> square<span style="color:#f92672">.</span><span style="color:#a6e22e">getWeight</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>            assertEquals<span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> square<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Of course, the problem can be solved with additional check on caller&rsquo;s side. But this is not how we want to use polymorphism.</p>
+<p>Violation of Liskov substitution principle can lead to pollution of the system with extra logic which will make code more fragile and 
+less readable.</p>
+<p>Implementation with tests can be found on <a href="https://github.com/marynasavchenko/patternskata/tree/main/src/main/java/liskov">GitHub</a>.</p>
+<p>Sources:</p>
+<ol>
+<li>
+<p><a href="https://www.amazon.com/Program-Development-Java-Specification-Object-Oriented/dp/0201657686">Program Development in Java: Abstraction, Specification, and Object-Oriented Design by Barbara Liskov and John Guttag</a></p>
+</li>
+<li>
+<p><a href="https://www.amazon.de/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164">Clean Architecture: A Craftsman&rsquo;s Guide to Software Structure and Design: A Craftsman&rsquo;s Guide to Software Structure and Design by Robert C. Martin</a></p>
+</li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/solid/">solid</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/cleancode/">Clean code notes</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "solid"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2023-02-19</div>
+  <div class="post-title"><a href="/posts/liskov/">Why square is not a rectangle: Liskov substitution principle</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-02-25</div>
+  <div class="post-title"><a href="/posts/solid/">SOLID principles</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href="/tags/">other tags</a>
+          
+      </div>
+        </div>
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>
