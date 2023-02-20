@@ -14,10 +14,10 @@
 
 <meta name="author" content="">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=94045489ab586abada68db19df75650f915c6a06">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=94045489ab586abada68db19df75650f915c6a06">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=94045489ab586abada68db19df75650f915c6a06">
-<link rel="alternate" href="/index.xml?c=94045489ab586abada68db19df75650f915c6a06" type="application/rss+xml" title="RSS" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=6323a8c4b1c892eeda37befcbab0b6dc9ffc7ed4">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=6323a8c4b1c892eeda37befcbab0b6dc9ffc7ed4">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=6323a8c4b1c892eeda37befcbab0b6dc9ffc7ed4">
+<link rel="alternate" href="/index.xml?c=6323a8c4b1c892eeda37befcbab0b6dc9ffc7ed4" type="application/rss+xml" title="RSS" />
 <meta property="og:title" content="Why Square Is Not A Rectangle: Liskov Substitution Principle - savchenko.tech">
 </meta>
 <meta property="og:url" content="https://savchenko.tech/posts/liskov/">
@@ -37,8 +37,8 @@
 <meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=94045489ab586abada68db19df75650f915c6a06">
-<link rel="stylesheet" href="/css/color.css?c=94045489ab586abada68db19df75650f915c6a06">
+<link rel="stylesheet" href="/css/main.css?c=6323a8c4b1c892eeda37befcbab0b6dc9ffc7ed4">
+<link rel="stylesheet" href="/css/color.css?c=6323a8c4b1c892eeda37befcbab0b6dc9ffc7ed4">
 
 
 
@@ -72,7 +72,7 @@ font-size: 100%
 
   
   <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=94045489ab586abada68db19df75650f915c6a06">
+    <img class="header-image" src="/images/header-image.jpg?c=6323a8c4b1c892eeda37befcbab0b6dc9ffc7ed4">
   </div>
   
 
@@ -174,7 +174,9 @@ If superclass does something, subclass should do it too (it should be substituta
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            assertEquals<span style="color:#f92672">(</span>6<span style="color:#f92672">,</span> square<span style="color:#f92672">.</span><span style="color:#a6e22e">getWeight</span><span style="color:#f92672">());</span>
 </span></span><span style="display:flex;"><span>            assertEquals<span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> square<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">());</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>Of course, the problem can be solved with additional check on caller&rsquo;s side. But this is not how we want to use polymorphism.</p>
+</span></span></code></pre></div><p>So Square subtype is not substitute Rectangle, because Square has fewer properties yet inherit access methods of super
+class Rectangle.</p>
+<p>Of course, the problem can be solved with additional check on caller&rsquo;s side. But this is not how we want to use polymorphism.</p>
 <p>Violation of Liskov substitution principle can lead to pollution of the system with extra logic which will make code more fragile and 
 less readable.</p>
 <p>Implementation with tests can be found on <a href="https://github.com/marynasavchenko/patternskata/tree/main/src/main/java/liskov">GitHub</a>.</p>
