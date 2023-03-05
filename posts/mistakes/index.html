@@ -9,16 +9,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>The Real Mistake That Needs To Be Fixed - savchenko.tech</title>
+<title>Null Reference Is Not The Mistake That Needs To Be Fixed - savchenko.tech</title>
 <meta name="description" content="mistakes">
 
 <meta name="author" content="">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=9951e6c3638cb0c7ca6151a300f0c9cb33d72dd4">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=9951e6c3638cb0c7ca6151a300f0c9cb33d72dd4">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=9951e6c3638cb0c7ca6151a300f0c9cb33d72dd4">
-<link rel="alternate" href="/index.xml?c=9951e6c3638cb0c7ca6151a300f0c9cb33d72dd4" type="application/rss+xml" title="RSS" />
-<meta property="og:title" content="The Real Mistake That Needs To Be Fixed - savchenko.tech">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=eff579adcff4732b1a11ee1669ce0a740004c836">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=eff579adcff4732b1a11ee1669ce0a740004c836">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=eff579adcff4732b1a11ee1669ce0a740004c836">
+<link rel="alternate" href="/index.xml?c=eff579adcff4732b1a11ee1669ce0a740004c836" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Null Reference Is Not The Mistake That Needs To Be Fixed - savchenko.tech">
 </meta>
 <meta property="og:url" content="https://savchenko.tech/posts/mistakes/">
 <meta property="og:type" content="article">
@@ -30,15 +30,15 @@
 <meta name="twitter:card" content="summary_large_image" /></meta>
 <meta name="twitter:site" content="@"></meta>
 <meta name="twitter:creator" content="@"></meta>
-<meta name="twitter:title" content="The Real Mistake That Needs To Be Fixed - savchenko.tech"></meta>
+<meta name="twitter:title" content="Null Reference Is Not The Mistake That Needs To Be Fixed - savchenko.tech"></meta>
 <meta name="twitter:url" content="https://savchenko.tech/posts/mistakes/"></meta>
 <meta name="twitter:description" content="mistakes"></meta>
 
 <meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=9951e6c3638cb0c7ca6151a300f0c9cb33d72dd4">
-<link rel="stylesheet" href="/css/color.css?c=9951e6c3638cb0c7ca6151a300f0c9cb33d72dd4">
+<link rel="stylesheet" href="/css/main.css?c=eff579adcff4732b1a11ee1669ce0a740004c836">
+<link rel="stylesheet" href="/css/color.css?c=eff579adcff4732b1a11ee1669ce0a740004c836">
 
 
 
@@ -72,7 +72,7 @@ font-size: 100%
 
   
   <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=9951e6c3638cb0c7ca6151a300f0c9cb33d72dd4">
+    <img class="header-image" src="/images/header-image.jpg?c=eff579adcff4732b1a11ee1669ce0a740004c836">
   </div>
   
 
@@ -95,7 +95,7 @@ font-size: 100%
 
 
 
-<h2>The Real Mistake That Needs To Be Fixed</h2>
+<h2>Null Reference Is Not The Mistake That Needs To Be Fixed</h2>
 
 <span class="sub">2023-03-05</span>
 
@@ -107,11 +107,12 @@ font-size: 100%
 
 
 <p><img src="../../images/mistakes.png" alt="mistakes.png"></p>
-<p>Mistakes&hellip;Why am I talking about them? The answer is - Kotlin documentation.
-To be more precise, me stumbling into Tony Hoare being referenced in the Kotlin documentation for the development of Null reference.
-Later I found the same reference in an article about error handling. When I googled it, I found many more places that mentioned so-called 
+<p>Looking through Kotlin documentation made me think about mistakes.</p>
+<p>To be more precise, 
+mentioning development of Null reference by Tony Hoare and how that was a mistake.
+Later I found the same reference in an article about error handling. When I googled it, there were many more places that talked about so-called 
 &ldquo;billion-dollar mistake&rdquo;: articles, pictures of the mountains with a quote (as if it is supposed to be an inspiration), 
-even conference talk. 
+even a conference talk. 
 And I thought that is a lot of criticism for a &ldquo;mistake&rdquo; that was invented in 1965.</p>
 <p>What is a mistake anyway?</p>
 <blockquote>
@@ -121,12 +122,12 @@ And I thought that is a lot of criticism for a &ldquo;mistake&rdquo; that was in
 <p>If we take the second part of this definition it looks like Software development reality to me.
 We are getting the results we do not want all the time. What do we do next? 
 We admit it, understand the reason, adjust and move forward.</p>
-<p>Tony Hoare acknowledged this &quot; mistake&quot;  at a software conference in 2009.
+<p>Tony Hoare acknowledged this &ldquo;mistake&rdquo;  at a software conference in 2009.
 So why criticism keep rolling till this day?</p>
 <p><strong>Charles Antony Richard Hoare</strong> is one of the most productive and prolific computer scientists. 
 He has done incredible work in areas including <a href="https://en.wikipedia.org/wiki/Quicksort">Quicksort,</a> 
 <a href="https://en.wikipedia.org/wiki/Quickselect">Quickselect</a>, <a href="https://en.wikipedia.org/wiki/Hoare_logic">Hoare logic</a> and many others.
-In 1980, he received the <strong>ACM Turing Award</strong> (the most prestigious award given in Computer Science).</p>
+In 1980, he received the ACM (Association for Computing Machinery) <strong>Turing Award</strong> - the most prestigious award given in Computer Science.</p>
 <p>And still his name is being referenced for his &ldquo;mistake&rdquo;. Which might be not really a mistake. 
 Was there a better solution in the context of 1965? I am not sure if there was.</p>
 <p>Blaming others when things go wrong - this is the real mistake we need to fix!
@@ -184,7 +185,7 @@ Should mistakes be acknowledged? For sure! Should they be drugged forever? Absol
           
           <li class="post-item">
   <div class="post-date sub">2023-03-05</div>
-  <div class="post-title"><a href="/posts/mistakes/">The Real Mistake That Needs To Be Fixed</a></div>
+  <div class="post-title"><a href="/posts/mistakes/">Null Reference Is Not The Mistake That Needs To Be Fixed</a></div>
   
 </li>
           

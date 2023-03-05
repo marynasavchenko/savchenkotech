@@ -8,12 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>The Real Mistake That Needs To Be Fixed</title>
+      <title>Null Reference Is Not The Mistake That Needs To Be Fixed</title>
       <link>https://savchenko.tech/posts/mistakes/</link>
       <pubDate>Sun, 05 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://savchenko.tech/posts/mistakes/</guid>
-      <description>Mistakes&amp;hellip;Why am I talking about them? The answer is - Kotlin documentation. To be more precise, me stumbling into Tony Hoare being referenced in the Kotlin documentation for the development of Null reference. Later I found the same reference in an article about error handling. When I googled it, I found many more places that mentioned so-called &amp;ldquo;billion-dollar mistake&amp;rdquo;: articles, pictures of the mountains with a quote (as if it is supposed to be an inspiration), even conference talk.</description>
+      <description>Looking through Kotlin documentation made me think about mistakes.
+To be more precise, mentioning development of Null reference by Tony Hoare and how that was a mistake. Later I found the same reference in an article about error handling. When I googled it, there were many more places that talked about so-called &amp;ldquo;billion-dollar mistake&amp;rdquo;: articles, pictures of the mountains with a quote (as if it is supposed to be an inspiration), even a conference talk.</description>
     </item>
     
     <item>
