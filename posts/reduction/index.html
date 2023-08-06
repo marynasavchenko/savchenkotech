@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Reduction. Algorithm Series - savchenko.tech</title>
+<meta name="description" content="algorithms">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=e0e6daa73f6eea356e51f993f2bc7c9c4c6cce2b">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=e0e6daa73f6eea356e51f993f2bc7c9c4c6cce2b">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=e0e6daa73f6eea356e51f993f2bc7c9c4c6cce2b">
+<link rel="alternate" href="/index.xml?c=e0e6daa73f6eea356e51f993f2bc7c9c4c6cce2b" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Reduction. Algorithm Series - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/reduction/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="algorithms">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Reduction. Algorithm Series - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/reduction/"></meta>
+<meta name="twitter:description" content="algorithms"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=e0e6daa73f6eea356e51f993f2bc7c9c4c6cce2b">
+<link rel="stylesheet" href="/css/color.css?c=e0e6daa73f6eea356e51f993f2bc7c9c4c6cce2b">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Raleway|Cousine&amp;amp;subset=english" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Raleway;
+font-size: 115%
+}
+body {
+font-family: '', Raleway;
+font-size: 115%
+}
+code {
+font-family: '', Cousine;
+font-size: 100%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=e0e6daa73f6eea356e51f993f2bc7c9c4c6cce2b">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Reduction. Algorithm Series</h2>
+
+<span class="sub">2023-08-06</span>
+
+
+
+
+
+
+
+
+<p>Reduction is a basic technique in algorithm design.</p>
+<blockquote>
+<p>A problem <strong>A</strong> <strong>reduces</strong> to problem <strong>B</strong> if we can use an algorithm that solves <strong>B</strong> to develop an algorithm that solves <strong>A</strong>.</p>
+</blockquote>
+<p>This concept should be pretty familiar in software development. For example, when you use method evaluate() of Apache Commons library to solve a problem, 
+your problem is reduced to the one solved by library method.</p>
+<p>Simple example of reduction would be finding a median in a collection. This operation is a common computation in 
+statistics and in various other data-processing applications.</p>
+<p>Finding a median can be reduced to Sorting.</p>
+<p>Let&rsquo;s start with Unit tests that will check two main cases:</p>
+<ul>
+<li>if sorted collection has an odd number of values, the median is the middle value</li>
+<li>if sorted collection has an even number of values, the median is the average of the two middle values.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">valueInTheMiddleWhenNumOfObservationsIsOdd</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>Double<span style="color:#f92672">&gt;</span> dataset <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>12<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span> 18<span style="color:#f92672">.</span><span style="color:#a6e22e">3</span><span style="color:#f92672">,</span> 11<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">,</span> 19<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">,</span> 22<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">,</span> 14<span style="color:#f92672">.</span><span style="color:#a6e22e">3</span><span style="color:#f92672">,</span> 16<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">,</span> 12<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span> 17<span style="color:#f92672">.</span><span style="color:#a6e22e">8</span><span style="color:#f92672">,</span> 16<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span> 12<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Double median <span style="color:#f92672">=</span> Median<span style="color:#f92672">.</span><span style="color:#a6e22e">getMedian</span><span style="color:#f92672">(</span>dataset<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>16<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">,</span> median<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">averageOfMiddleWhenNumOfObservationsIsEven</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>Double<span style="color:#f92672">&gt;</span> dataset <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>12<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span> 18<span style="color:#f92672">.</span><span style="color:#a6e22e">3</span><span style="color:#f92672">,</span> 11<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">,</span> 19<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">,</span> 14<span style="color:#f92672">.</span><span style="color:#a6e22e">3</span><span style="color:#f92672">,</span> 16<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">,</span> 12<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span> 17<span style="color:#f92672">.</span><span style="color:#a6e22e">8</span><span style="color:#f92672">,</span> 16<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span> 12<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Double median <span style="color:#f92672">=</span> Median<span style="color:#f92672">.</span><span style="color:#a6e22e">getMedian</span><span style="color:#f92672">(</span>dataset<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>15<span style="color:#f92672">.</span><span style="color:#a6e22e">25</span><span style="color:#f92672">,</span> median<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>After test cases are defined, writing implementation (can be found on <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/Median.java">GitHub</a>) is pretty easy.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Double <span style="color:#a6e22e">getMedian</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>Double<span style="color:#f92672">&gt;</span> input<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>input<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> input<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>size <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>input<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>size <span style="color:#f92672">/</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> input<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>size <span style="color:#f92672">/</span> 2 <span style="color:#f92672">-</span> 1<span style="color:#f92672">))</span> <span style="color:#f92672">/</span> 2<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> input<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>size <span style="color:#f92672">/</span> 2<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>To solve &ldquo;Finding the median&rdquo; we used <strong>Sorting reduction</strong>. Efficient sorting algorithm is useful for efficiently solving many problems.
+Among them:</p>
+<ul>
+<li>Distinct values - determine the number of distinct values in a set of numbers.</li>
+<li>Scheduling to minimize average completion time - how to schedule set of jobs on a single processor so as to minimize their average 
+completion time?</li>
+</ul>
+<p>A large number of important problems can be solved applying Shortest-paths and Maxflow reductions.
+Let&rsquo;s mention them here.</p>
+<p><strong>Shortest-paths reductions</strong></p>
+<ul>
+<li>Single-source shortest paths in undirected graphs - is there a path from source to a given target vertex?</li>
+<li>Arbitrage - find an arbitrage opportunity in a given table of currency-conversion rates.</li>
+</ul>
+<p><strong>Maxflow reductions</strong></p>
+<ul>
+<li>Job placement. A college’s job-placement office arranges interviews for a set of students with a set of companies.
+What is the maximum number of jobs that can be filled?</li>
+<li>Product distribution. A company that manufactures a single product has factories, where the product is produced; 
+distribution centers, where the product is stored temporarily; and retail outlets, where the product is sold.
+Is it possible to get the product from the warehouses to the retail outlets such that supply meets demand everywhere?</li>
+</ul>
+<p>Reduction plays important role in studying relationships between diverse problems. Many of the problems seem to be unrelated 
+directly, but at the same time can be reduced to sorting, shortest-paths, maxflow, etc.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.amazon.de/Algorithms-Robert-Sedgewick/dp/032157351X/ref=asc_df_032157351X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=310624385211&amp;hvpos=&amp;hvnetw=g&amp;hvrand=4744587760075123991&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-432981821009&amp;psc=1&amp;th=1&amp;psc=1&amp;tag=&amp;ref=&amp;adgrpid=64736366074&amp;hvpone=&amp;hvptwo=&amp;hvadid=310624385211&amp;hvpos=&amp;hvnetw=g&amp;hvrand=4744587760075123991&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-432981821009">Algorithms by Robert Sedgewick</a>.</li>
+<li><a href="https://www.amazon.de/Introduction-Algorithms-fourth-Thomas-Cormen/dp/026204630X/ref=asc_df_026204630X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=526471224369&amp;hvpos=&amp;hvnetw=g&amp;hvrand=13700716644741673088&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-1268844537750&amp;psc=1&amp;th=1&amp;psc=1">Introduction to Algorithms by  Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</a>.</li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/algorithms/">algorithms</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/mistakes/">Null Reference Is Not The Mistake That Needs To Be Fixed</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "algorithms"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2023-08-06</div>
+  <div class="post-title"><a href="/posts/reduction/">Reduction. Algorithm Series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-09-24</div>
+  <div class="post-title"><a href="/posts/topsort/">Topological sort. Algorithms series</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2022-09-10</div>
+  <div class="post-title"><a href="/posts/linledlist/">Linked List. Algorithms series</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href='/tags/algorithms/'>more ...</a>
+          
+      </div>
+        </div>
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>

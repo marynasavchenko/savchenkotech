@@ -6,7 +6,19 @@
     <description>Recent content in Posts on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reduction. Algorithm Series</title>
+      <link>https://savchenko.tech/posts/reduction/</link>
+      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/reduction/</guid>
+      <description>Reduction is a basic technique in algorithm design.
+ A problem A reduces to problem B if we can use an algorithm that solves B to develop an algorithm that solves A.
+ This concept should be pretty familiar in software development. For example, when you use method evaluate() of Apache Commons library to solve a problem, your problem is reduced to the one solved by library method.
+Simple example of reduction would be finding a median in a collection.</description>
+    </item>
+    
     <item>
       <title>Null Reference Is Not The Mistake That Needs To Be Fixed</title>
       <link>https://savchenko.tech/posts/mistakes/</link>
