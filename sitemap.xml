@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://savchenko.tech/tags/blockchain/</loc>
+    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/blockchain/</loc>
+    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/</loc>
+    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/</loc>
+    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/</loc>
+    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://savchenko.tech/tags/algorithms/</loc>
     <lastmod>2023-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/posts/</loc>
-    <lastmod>2023-08-06T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://savchenko.tech/posts/reduction/</loc>
-    <lastmod>2023-08-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/</loc>
-    <lastmod>2023-08-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/tags/</loc>
     <lastmod>2023-08-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/posts/mistakes/</loc>

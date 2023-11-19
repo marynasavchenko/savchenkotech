@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blockchain on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/blockchain/</link>
+    <description>Recent content in blockchain on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blockchain Intro: Use Cases And Consensus</title>
+      <link>https://savchenko.tech/posts/blockchain/</link>
+      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/blockchain/</guid>
+      <description>Why do we need blockchain?
+In the world where we desperately need to cooperate Blockchain answers the question of how to establish trust between unknown people who want to carry out value exchange.
+It satisfies the need for a common system that keeps track of transactions, establishes public trust and maintain it forever.
+Let&amp;rsquo;s take a look at examples of blockchain in different sectors first to understand use cases.
+ Financial sector - Lendoit - provides Peer-to-Peer Lending.</description>
+    </item>
+    
+  </channel>
+</rss>
