@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Development on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/software-development/</link>
+    <description>Recent content in Software Development on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/software-development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Is Software Development Art?</title>
+      <link>https://savchenko.tech/posts/art/</link>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/art/</guid>
+      <description>Sander Mak&amp;rsquo;s talk &amp;ldquo;The Art of Software development&amp;rdquo; at JFall conference and discussions with my colleagues left me puzzled somehow. Is software development more art than engineering? What is it that I am doing anyway?
+Around that time I read an article about Jens Haaning, a Danish conceptual artist who was commissioned by museum to recreate two earlier works that used scores of banknotes to represent average incomes. When museum stuff received the work they discovered two empty frames with the title “Take the Money and Run”.</description>
+    </item>
+    
+  </channel>
+</rss>
