@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Blockchains Comparison - savchenko.tech</title>
+<meta name="description" content="Blockchain">
+
+<meta name="author" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
+<link rel="alternate" href="/index.xml?c=65f715235e02c5dda7b683fee46a731322acbee4" type="application/rss+xml" title="RSS" />
+<meta property="og:title" content="Blockchains Comparison - savchenko.tech">
+</meta>
+<meta property="og:url" content="https://savchenko.tech/posts/blockchaincomparison/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="savchenko.tech">
+<meta property="og:description" content="Blockchain">
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+<meta name="twitter:card" content="summary_large_image" /></meta>
+<meta name="twitter:site" content="@"></meta>
+<meta name="twitter:creator" content="@"></meta>
+<meta name="twitter:title" content="Blockchains Comparison - savchenko.tech"></meta>
+<meta name="twitter:url" content="https://savchenko.tech/posts/blockchaincomparison/"></meta>
+<meta name="twitter:description" content="Blockchain"></meta>
+
+<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
+
+
+<link rel="stylesheet" href="/css/main.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
+<link rel="stylesheet" href="/css/color.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Raleway|Cousine&amp;amp;subset=english" rel="stylesheet"&gt;>
+
+<style>
+p{
+font-family: '', Raleway;
+font-size: 115%
+}
+body {
+font-family: '', Raleway;
+font-size: 115%
+}
+code {
+font-family: '', Cousine;
+font-size: 100%
+}
+</style></head>
+
+<body class="theme-default">
+
+
+<div id="content-header" class="title">
+  
+  <a class="site-title" href="/">savchenko.tech</a>
+  
+  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
+
+  
+  <div id="header-image-area">
+    <img class="header-image" src="/images/header-image.jpg?c=65f715235e02c5dda7b683fee46a731322acbee4">
+  </div>
+  
+
+  <div id="main-menu-nav">
+    <div id="main-menu-nav-items">
+      
+        <div class="nav-item"><a href="/about/">About Maryna</a></div>
+      
+        <div class="nav-item"><a href="/posts/">Posts</a></div>
+      
+        <div class="nav-item"><a href="/tags/">Tags</a></div>
+      
+        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
+      
+    </div>
+  </div>
+</div>
+<div id="content" class="main">
+
+
+
+
+<h2>Blockchains Comparison</h2>
+
+<span class="sub">2023-12-21</span>
+
+
+
+
+
+
+
+
+<p>In the <a href="https://savchenko.tech/posts/blockchain/">previous article</a> we took a look at some basic blockchain concepts and use cases.</p>
+<p>Now let&rsquo;s explore the differences between several prominent public blockchains (<a href="https://bitcoin.org/en/">Bitcoin</a>, <a href="https://ethereum.org/en/">Ethereum</a> and <a href="https://kadena.io/">Kadena</a>) 
+through the lens of challenges they are facing and understand how those challenges are addressed.</p>
+<p>So, what are main problems of blockchain?</p>
+<h4 id="1-privacy">1. Privacy</h4>
+<p>Privacy is not the strongest suite of public blockchains because it is not fully matured area.
+What does this mean?
+Often public blockchains expose transaction details to all participants, which may not be suitable for all use cases. 
+For example, all Bitcoin transactions are public and traceable.</p>
+<p>One way to anonymize transactions is to use zero-knowledge proof.</p>
+<blockquote>
+<p>A <strong>zero-knowledge</strong> proof is a cryptographic method or protocol where party A (the prover) proves to party B (the verifier)
+that a statement is true without revealing any information other than that the statement is true.</p>
+</blockquote>
+<p>Ethereum is using it in Tornado Cash, a decentralized, non-custodial service that allows users to conduct private transactions. 
+Kadena is working on bringing zero-knowledge infrastructure to blockchain as well.</p>
+<h4 id="2-smart-contract-security">2. Smart contract security</h4>
+<blockquote>
+<p><strong>A smart contract</strong> is a self-executing contract with the terms of the agreement directly written into code.</p>
+</blockquote>
+<p>The programming language used to write smart contracts plays a significant role in influencing their security. 
+To ensure higher level of security within the blockchains some languages deliberately made Turing-incomplete.</p>
+<blockquote>
+<p><strong>Turing completeness</strong> is a property of a programming language or system that indicates it can perform any computation 
+that a Turing machine can, given enough time and memory.</p>
+</blockquote>
+<p>Bitcoin is using Bitcoin Script language, which is Turing-incomplete and more resistant to potential vulnerabilities. 
+At the same time it restricts the types of complex smart contracts that can be implemented on the Bitcoin blockchain.</p>
+<p>Ethereum prioritised flexibility in Solidity language. It is Turing-complete and enables more complex code. 
+It has rich ecosystem and large developer community. On the flip side Turing-completeness of Solidity enabled 
+some of the <a href="https://github.com/sigp/solidity-security-blog">security attacks</a> on Ethereum.</p>
+<p>Kadena uses Pact language which is, same as Bitcoin Script, Turing-incomplete, so it does not allow recursion or 
+infinite loops. This reduces potential attack vectors that may occur in smart contracts.</p>
+<h4 id="3-scalability">3. Scalability</h4>
+<p>Many blockchain networks face scalability challenges, struggling to handle a large number of transactions quickly.
+With the ever-increasing volume of transactions, the blockchain becomes heavy which means delays.</p>
+<p>One of the reason for such heaviness is PoW (Proof-Of-Work) consensus mechanism that is used in Bitcoin.</p>
+<p>Ethereum addressed this issue by moving from PoW to PoS (Proof-Of-Stake) that is considered to have shorter block times, 
+leading to faster transaction confirmations and higher transaction throughput.</p>
+<p>Another way to enhance scalability used by blockchains is adding layer 2 (term to describe scaling solutions build on top of layer 1).
+For example for Bitcoin it is Lightning Network - a payment protocol that enables faster and cheaper transactions 
+by creating off-chain payment channels.</p>
+<p>Kadena&rsquo;s Chainweb (scalable PoW consensus algorithm) architecture is designed to address scalability issues in layer 1.
+By connecting multiple chains, Kadena seeks to achieve higher transaction throughput without sacrificing security.</p>
+<h4 id="4-energy-consumption">4. Energy Consumption</h4>
+<p>While being proved secure consensus method PoW has another downside - it is very energy-intensive. 
+In PoW, miners hash the block header nonstop to reach the target value. As an effect, the electricity requirement reach maximum on scale.</p>
+<p>So because of PoW Bitcoin consumes a lot of energy. According to the <a href="https://ccaf.io/cbnsi/cbeci">Cambridge Center for Alternative Finance (CCAF)</a>, 
+Bitcoin consumes around 156.33 Terawatt Hours per year which is energy consumption level of a small country.</p>
+<p>Before moving to PoS Ethereum consumed 21.41 Terawatt Hours per year, after the move it is 6.93 Gigawatt Hours per year.
+So PoS seems to be an energy-saving alternative to PoW. Miners in PoS have to prove the ownership of the currency. 
+It is assumed that people with more currencies are less likely to attack the network. Can single richest person take over the network then?</p>
+<p>The design of Kadena’s Chainweb scalable PoW consensus algorithm claims to be more efficient and secure compared to 
+traditional PoW-only systems, making it a “greener” alternative for crypto mining.</p>
+<p>Clearly blockchains have some challenges to overcome in areas of privacy, security, scalability and energy consumption. 
+In my opinion it is important before production usage to understand technology limitation, trade-offs and do your own research.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.amazon.de/-/en/Joseph-Holbrook/dp/1119557690">Architecting Enterprise Blockchain Solutions by Joseph Holbrook</a>.</li>
+<li><a href="https://www.amazon.de/-/en/Rishabh-Garg/dp/1119903734">Blockchain for Real World Applications by Rishabh Garg</a>.</li>
+</ol>
+
+
+
+
+
+
+<hr class="block-separater">
+
+
+
+
+<div class="content-footer-item">
+	Tags for this post:
+	
+	<a class="post-tag" href="/tags/blockchain/">blockchain</a>
+	
+</div>
+
+
+
+
+
+
+
+<div class="content-footer-item neighbor">
+	
+	<div class="prev-post">Prev: <a href="/posts/art/">Is Software Development Art?</a></div>
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <div class="related-tag-category-list">
+        <h4>Other posts tagged by "blockchain"</h3>
+        <ul class="post-list">
+          
+          <li class="post-item">
+  <div class="post-date sub">2023-12-21</div>
+  <div class="post-title"><a href="/posts/blockchaincomparison/">Blockchains Comparison</a></div>
+  
+</li>
+          
+          <li class="post-item">
+  <div class="post-date sub">2023-11-11</div>
+  <div class="post-title"><a href="/posts/blockchain/">Blockchain Intro: Use Cases And Consensus</a></div>
+  
+</li>
+          
+        </ul>
+        <div class="more-area">
+          
+          <a class="more" href="/tags/">other tags</a>
+          
+      </div>
+        </div>
+    
+
+
+
+
+<script src="/js/single.js"></script>
+
+
+	</div><div id="content-footer" class="sub">
+  
+  <div class="credit">
+    Power by <a href="https://gohugo.io">Hugo</a> /
+    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
+  </div>
+</div></body>
+
+</html>

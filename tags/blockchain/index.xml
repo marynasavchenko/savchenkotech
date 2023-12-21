@@ -6,7 +6,19 @@
     <description>Recent content in blockchain on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blockchains Comparison</title>
+      <link>https://savchenko.tech/posts/blockchaincomparison/</link>
+      <pubDate>Thu, 21 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://savchenko.tech/posts/blockchaincomparison/</guid>
+      <description>In the previous article we took a look at some basic blockchain concepts and use cases.
+Now let&amp;rsquo;s explore the differences between several prominent public blockchains (Bitcoin, Ethereum and Kadena) through the lens of challenges they are facing and understand how those challenges are addressed.
+So, what are main problems of blockchain?
+1. Privacy Privacy is not the strongest suite of public blockchains because it is not fully matured area. What does this mean?</description>
+    </item>
+    
     <item>
       <title>Blockchain Intro: Use Cases And Consensus</title>
       <link>https://savchenko.tech/posts/blockchain/</link>
