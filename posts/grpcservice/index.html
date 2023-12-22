@@ -1,112 +1,229 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Maryna Savchenko">
+<meta name="description" content="This article is describing how to create gRPC service implementation using Spring Boot.
+You can find more details about gRPC in &amp;ldquo;Is gRPC a better choice over REST?&amp;rdquo;.
+To create gRPC service you need to complete 3 tasks:
+Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC. 1. Generation of Proto model and service definition It will be Maven project." />
+<meta name="keywords" content=", grpc" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/grpcservice/" />
+
+
+    <title>
+        
+            gRPC Server Side Implementation Using Spring :: savchenko.tech 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="gRPC Server Side Implementation Using Spring">
+<meta itemprop="description" content="This article is describing how to create gRPC service implementation using Spring Boot.
+You can find more details about gRPC in &ldquo;Is gRPC a better choice over REST?&rdquo;.
+To create gRPC service you need to complete 3 tasks:
+Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC. 1. Generation of Proto model and service definition It will be Maven project."><meta itemprop="datePublished" content="2022-02-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="435"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="grpc," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="gRPC Server Side Implementation Using Spring"/>
+<meta name="twitter:description" content="This article is describing how to create gRPC service implementation using Spring Boot.
+You can find more details about gRPC in &ldquo;Is gRPC a better choice over REST?&rdquo;.
+To create gRPC service you need to complete 3 tasks:
+Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC. 1. Generation of Proto model and service definition It will be Maven project."/>
+
+
+
+    <meta property="og:title" content="gRPC Server Side Implementation Using Spring" />
+<meta property="og:description" content="This article is describing how to create gRPC service implementation using Spring Boot.
+You can find more details about gRPC in &ldquo;Is gRPC a better choice over REST?&rdquo;.
+To create gRPC service you need to complete 3 tasks:
+Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC. 1. Generation of Proto model and service definition It will be Maven project." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/grpcservice/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-18T00:00:00+00:00" />
 
 
 
 
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>gRPC server side implementation using Spring - savchenko.tech</title>
-<meta name="description" content="gRPC">
-
-<meta name="author" content="">
-
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="alternate" href="/index.xml?c=65f715235e02c5dda7b683fee46a731322acbee4" type="application/rss+xml" title="RSS" />
-<meta property="og:title" content="gRPC server side implementation using Spring - savchenko.tech">
-</meta>
-<meta property="og:url" content="https://savchenko.tech/posts/grpcservice/">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="savchenko.tech">
-<meta property="og:description" content="gRPC">
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
-
-<meta name="twitter:card" content="summary_large_image" /></meta>
-<meta name="twitter:site" content="@"></meta>
-<meta name="twitter:creator" content="@"></meta>
-<meta name="twitter:title" content="gRPC server side implementation using Spring - savchenko.tech"></meta>
-<meta name="twitter:url" content="https://savchenko.tech/posts/grpcservice/"></meta>
-<meta name="twitter:description" content="gRPC"></meta>
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="stylesheet" href="/css/color.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
+    <meta property="article:published_time" content="2022-02-18 00:00:00 &#43;0000 UTC" />
 
 
 
 
 
-<link href="https://fonts.googleapis.com/css?family=Raleway|Cousine&amp;amp;subset=english" rel="stylesheet"&gt;>
-
-<style>
-p{
-font-family: '', Raleway;
-font-size: 115%
-}
-body {
-font-family: '', Raleway;
-font-size: 115%
-}
-code {
-font-family: '', Cousine;
-font-size: 100%
-}
-</style></head>
-
-<body class="theme-default">
 
 
-<div id="content-header" class="title">
-  
-  <a class="site-title" href="/">savchenko.tech</a>
-  
-  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
 
-  
-  <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=65f715235e02c5dda7b683fee46a731322acbee4">
-  </div>
-  
 
-  <div id="main-menu-nav">
-    <div id="main-menu-nav-items">
-      
-        <div class="nav-item"><a href="/about/">About Maryna</a></div>
-      
-        <div class="nav-item"><a href="/posts/">Posts</a></div>
-      
-        <div class="nav-item"><a href="/tags/">Tags</a></div>
-      
-        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
-      
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
     </div>
-  </div>
-</div>
-<div id="content" class="main">
+</a>
 
 
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
 
 
-<h2>gRPC server side implementation using Spring</h2>
+            <div class="content">
+                
+  <main class="post">
 
-<span class="sub">2022-02-18</span>
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        3 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        435 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2022-02-18
+        
 
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
+        <span class="tag"><a href="https://savchenko.tech/tags/grpc/">grpc</a></span>
+        
+    </p>
 
+      
+      </p>
+    </div>
 
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/grpcservice/">gRPC Server Side Implementation Using Spring</a>
+      </h1>
 
+      
 
+      
 
+      
 
-<p>This article is describing how to create gRPC service implementation using Spring Boot.</p>
+      <div class="post-content">
+        <p>This article is describing how to create gRPC service implementation using Spring Boot.</p>
 <p>You can find more details about gRPC in <a href="https://savchenko.tech/posts/grpcvsrest/">&ldquo;Is gRPC a better choice over REST?&rdquo;</a>.</p>
 <p>To create gRPC service you need to complete 3 tasks:</p>
 <ol>
@@ -222,7 +339,7 @@ will be used.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>}<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><a href="https://github.com/marinasavchenko/contact-proto">Git repo of service definition</a></p>
 <h3 id="2server-side">2.Server side</h3>
-<p>pom.xml of server side implementation should contain dependency to the service definition module and other necessary Spring Boot 
+<p>pom.xml of server side implementation should contain dependency to the service definition module and other necessary Spring Boot
 dependencies.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
@@ -282,121 +399,99 @@ dependencies.</p>
 </span></span></code></pre></div><p>To start up an application you need to add only 2 classes.
 Simple Spring Boot application class for lunching an app.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootApplication</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Application</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Application</span> {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>Application<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        SpringApplication.<span style="color:#a6e22e">run</span>(Application.<span style="color:#a6e22e">class</span>, args);
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>And Service class with @GrpcService annotation that extends your generated ServiceImplBase.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GrpcService</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ContactValidationService</span> <span style="color:#66d9ef">extends</span> ContactValidationServiceGrpc<span style="color:#f92672">.</span><span style="color:#a6e22e">ContactValidationServiceImplBase</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ContactValidationService</span> <span style="color:#66d9ef">extends</span> ContactValidationServiceGrpc.<span style="color:#a6e22e">ContactValidationServiceImplBase</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Autowired</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> ContactService contactService<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> ContactService contactService;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validateContact</span><span style="color:#f92672">(</span>ContactValidationRequest request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>ContactValidationResponse<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        String state <span style="color:#f92672">=</span> contactService<span style="color:#f92672">.</span><span style="color:#a6e22e">validateContact</span><span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validateContact</span>(ContactValidationRequest request, StreamObserver<span style="color:#f92672">&lt;</span>ContactValidationResponse<span style="color:#f92672">&gt;</span> responseObserver) {
+</span></span><span style="display:flex;"><span>        String state <span style="color:#f92672">=</span> contactService.<span style="color:#a6e22e">validateContact</span>(request);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        ContactValidationResponse response <span style="color:#f92672">=</span> ContactValidationResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setContactState</span><span style="color:#f92672">(</span>state<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        ContactValidationResponse response <span style="color:#f92672">=</span> ContactValidationResponse.<span style="color:#a6e22e">newBuilder</span>().<span style="color:#a6e22e">setContactState</span>(state).<span style="color:#a6e22e">build</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>response<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        responseObserver.<span style="color:#a6e22e">onNext</span>(response);
+</span></span><span style="display:flex;"><span>        responseObserver.<span style="color:#a6e22e">onCompleted</span>();
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><a href="https://github.com/marinasavchenko/contact-validation-api">Git repo of server side gRPC implementation</a></p>
 <h3 id="3testing">3.Testing</h3>
-<p>You can test gRPC service with BloomRPC. Latest release can be 
+<p>You can test gRPC service with BloomRPC. Latest release can be
 downloaded from <a href="https://github.com/bloomrpc/bloomrpc/releases">here</a>.
 Simply add your .proto file to BloomRPC and you are ready to test.</p>
 <p><img src="../../images/BloomPPCValid.jpg" alt="BloomPPCValid.jpg"></p>
 <p><img src="../../images/BloomPPCInvalid.jpg" alt="BloomPPCInvalid.jpg"></p>
 
-
-
-
-
-
-<hr class="block-separater">
-
-
-
-
-<div class="content-footer-item">
-	Tags for this post:
-	
-	<a class="post-tag" href="/tags/grpc/">gRPC</a>
-	
-</div>
-
-
-
-
-
-
-
-<div class="content-footer-item neighbor">
-	
-	<div class="prev-post">Prev: <a href="/posts/effectivecommunication/">Tips for more effective public speaking</a></div>
-	
-	
-	<div class="next-post">Next: <a href="/posts/solid/">SOLID principles</a></div>
-	
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    <div class="related-tag-category-list">
-        <h4>Other posts tagged by "gRPC"</h3>
-        <ul class="post-list">
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-02-18</div>
-  <div class="post-title"><a href="/posts/grpcservice/">gRPC server side implementation using Spring</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-02-04</div>
-  <div class="post-title"><a href="/posts/grpcvsrest/">Is gRPC a better choice over REST?</a></div>
-  
-</li>
-          
-        </ul>
-        <div class="more-area">
-          
-          <a class="more" href="/tags/">other tags</a>
-          
       </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://savchenko.tech/posts/solid/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">SOLID Principles</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/effectivecommunication/">
+                    <span class="button__text">Tips for More Effective Public Speaking</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
         </div>
+    </div>
+
+    </div>
+
+
     
 
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+    
+        <div class="footer__inner">
+          
+        </div>
+</footer>
+
+            
+        </div>
+
+        
 
 
 
-<script src="/js/single.js"></script>
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
 
 
-	</div><div id="content-footer" class="sub">
-  
-  <div class="credit">
-    Power by <a href="https://gohugo.io">Hugo</a> /
-    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
-  </div>
-</div></body>
 
+    </body>
 </html>

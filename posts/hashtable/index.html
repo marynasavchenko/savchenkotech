@@ -1,113 +1,227 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Maryna Savchenko">
+<meta name="description" content="Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications. One very effective data structures for implementing dictionaries is hash table. The average time to search for an element in hash table is O(1).
+Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &amp;lsquo;i&amp;rsquo; is stored in array entry &amp;lsquo;i&amp;rsquo;.
+Two main parts in hash algorithm are hash function and collision resolution method." />
+<meta name="keywords" content=", algorithms, hash table" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/hashtable/" />
+
+
+    <title>
+        
+            Hash Table. Algorithms Series :: savchenko.tech 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hash Table. Algorithms Series">
+<meta itemprop="description" content="Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications. One very effective data structures for implementing dictionaries is hash table. The average time to search for an element in hash table is O(1).
+Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &lsquo;i&rsquo; is stored in array entry &lsquo;i&rsquo;.
+Two main parts in hash algorithm are hash function and collision resolution method."><meta itemprop="datePublished" content="2022-08-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-08-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="406"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="algorithms,hash table," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="Hash Table. Algorithms Series"/>
+<meta name="twitter:description" content="Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications. One very effective data structures for implementing dictionaries is hash table. The average time to search for an element in hash table is O(1).
+Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &lsquo;i&rsquo; is stored in array entry &lsquo;i&rsquo;.
+Two main parts in hash algorithm are hash function and collision resolution method."/>
+
+
+
+    <meta property="og:title" content="Hash Table. Algorithms Series" />
+<meta property="og:description" content="Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications. One very effective data structures for implementing dictionaries is hash table. The average time to search for an element in hash table is O(1).
+Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &lsquo;i&rsquo; is stored in array entry &lsquo;i&rsquo;.
+Two main parts in hash algorithm are hash function and collision resolution method." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/hashtable/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-01T00:00:00+00:00" />
 
 
 
 
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Hash table. Algorithms series - savchenko.tech</title>
-<meta name="description" content="Hash table">
-
-<meta name="author" content="">
-
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="alternate" href="/index.xml?c=65f715235e02c5dda7b683fee46a731322acbee4" type="application/rss+xml" title="RSS" />
-<meta property="og:title" content="Hash table. Algorithms series - savchenko.tech">
-</meta>
-<meta property="og:url" content="https://savchenko.tech/posts/hashtable/">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="savchenko.tech">
-<meta property="og:description" content="Hash table">
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
-
-<meta name="twitter:card" content="summary_large_image" /></meta>
-<meta name="twitter:site" content="@"></meta>
-<meta name="twitter:creator" content="@"></meta>
-<meta name="twitter:title" content="Hash table. Algorithms series - savchenko.tech"></meta>
-<meta name="twitter:url" content="https://savchenko.tech/posts/hashtable/"></meta>
-<meta name="twitter:description" content="Hash table"></meta>
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="stylesheet" href="/css/color.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
+    <meta property="article:published_time" content="2022-08-01 00:00:00 &#43;0000 UTC" />
 
 
 
 
 
-<link href="https://fonts.googleapis.com/css?family=Raleway|Cousine&amp;amp;subset=english" rel="stylesheet"&gt;>
-
-<style>
-p{
-font-family: '', Raleway;
-font-size: 115%
-}
-body {
-font-family: '', Raleway;
-font-size: 115%
-}
-code {
-font-family: '', Cousine;
-font-size: 100%
-}
-</style></head>
-
-<body class="theme-default">
 
 
-<div id="content-header" class="title">
-  
-  <a class="site-title" href="/">savchenko.tech</a>
-  
-  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
 
-  
-  <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=65f715235e02c5dda7b683fee46a731322acbee4">
-  </div>
-  
 
-  <div id="main-menu-nav">
-    <div id="main-menu-nav-items">
-      
-        <div class="nav-item"><a href="/about/">About Maryna</a></div>
-      
-        <div class="nav-item"><a href="/posts/">Posts</a></div>
-      
-        <div class="nav-item"><a href="/tags/">Tags</a></div>
-      
-        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
-      
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
     </div>
-  </div>
-</div>
-<div id="content" class="main">
+</a>
 
 
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
 
 
-<h2>Hash table. Algorithms series</h2>
+            <div class="content">
+                
+  <main class="post">
 
-<span class="sub">2022-08-01</span>
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        2 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        406 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2022-08-01
+        
 
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
+        <span class="tag"><a href="https://savchenko.tech/tags/algorithms/">algorithms</a></span>
+        <span class="tag"><a href="https://savchenko.tech/tags/hash-table/">hash table</a></span>
+        
+    </p>
 
+      
+      </p>
+    </div>
 
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/hashtable/">Hash Table. Algorithms Series</a>
+      </h1>
 
+      
 
+      
 
+      
 
-<p>Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications.
-One very effective data structures for implementing dictionaries is hash table. The average time to search for an element 
+      <div class="post-content">
+        <p>Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications.
+One very effective data structures for implementing dictionaries is hash table. The average time to search for an element
 in hash table is O(1).</p>
 <p>Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &lsquo;i&rsquo; is stored
 in array entry &lsquo;i&rsquo;.</p>
@@ -122,79 +236,79 @@ in array entry &lsquo;i&rsquo;.</p>
 </ul>
 <p>We can check consistency and distribution with a simple test:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldHashKey</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        HashTable<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> hashTable <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashTable<span style="color:#f92672">&lt;&gt;(</span>7<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> christianCode <span style="color:#f92672">=</span> hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">hash</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Christian&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> christianCode<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldHashKey</span>() {
+</span></span><span style="display:flex;"><span>        HashTable<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> hashTable <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashTable<span style="color:#f92672">&lt;&gt;</span>(7);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> christianCode <span style="color:#f92672">=</span> hashTable.<span style="color:#a6e22e">hash</span>(<span style="color:#e6db74">&#34;Christian&#34;</span>);
+</span></span><span style="display:flex;"><span>        assertEquals(0, christianCode);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> davidCode <span style="color:#f92672">=</span> hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">hash</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;David&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> davidCode<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> davidCode <span style="color:#f92672">=</span> hashTable.<span style="color:#a6e22e">hash</span>(<span style="color:#e6db74">&#34;David&#34;</span>);
+</span></span><span style="display:flex;"><span>        assertEquals(2, davidCode);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> aliceCode <span style="color:#f92672">=</span> hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">hash</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Alice&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> aliceCode<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> aliceCode <span style="color:#f92672">=</span> hashTable.<span style="color:#a6e22e">hash</span>(<span style="color:#e6db74">&#34;Alice&#34;</span>);
+</span></span><span style="display:flex;"><span>        assertEquals(4, aliceCode);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> tomCode <span style="color:#f92672">=</span> hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">hash</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Tom&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>6<span style="color:#f92672">,</span> tomCode<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> tomCode <span style="color:#f92672">=</span> hashTable.<span style="color:#a6e22e">hash</span>(<span style="color:#e6db74">&#34;Tom&#34;</span>);
+</span></span><span style="display:flex;"><span>        assertEquals(6, tomCode);
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hash</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> h <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">hashCode</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>        h <span style="color:#f92672">^=</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">&gt;&gt;&gt;</span> 20<span style="color:#f92672">)</span> <span style="color:#f92672">^</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">&gt;&gt;&gt;</span> 12<span style="color:#f92672">)</span> <span style="color:#f92672">^</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">&gt;&gt;&gt;</span> 7<span style="color:#f92672">)</span> <span style="color:#f92672">^</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">&gt;&gt;&gt;</span> 4<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> h <span style="color:#f92672">&amp;</span> <span style="color:#f92672">(</span>tableSize <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hash</span>(Key key) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> h <span style="color:#f92672">=</span> key.<span style="color:#a6e22e">hashCode</span>();
+</span></span><span style="display:flex;"><span>        h <span style="color:#f92672">^=</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 20) <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 12) <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 7) <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 4);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> h <span style="color:#f92672">&amp;</span> (tableSize <span style="color:#f92672">-</span> 1);
+</span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><h3 id="collision-resolution">COLLISION RESOLUTION</h3>
 <p>Collision resolution handles the case when two or more keys to be inserted hash to the same index.
 Straightforward strategy for collision resolution is <strong>separate chaining</strong>.
-For each index in array there is a data structure like Linked List or a Tree Map and keys from this data structure are 
+For each index in array there is a data structure like Linked List or a Tree Map and keys from this data structure are
 hashed to this index.</p>
 <p><img src="../../images/hashtable_sep_chain.png" alt="hashtable_sep_chain.png"></p>
-<p>Implementation of this kind of hash table is not too complicated. 
+<p>Implementation of this kind of hash table is not too complicated.
 So in test cases we need to check that:</p>
 <ul>
 <li>inserted value is present</li>
 <li>deleted value is absent</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insertedValueShouldBePresent</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        HashTable<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> hashTable <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashTable<span style="color:#f92672">&lt;&gt;(</span>5<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Alice&#34;</span><span style="color:#f92672">,</span> 123654<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insertedValueShouldBePresent</span>() {
+</span></span><span style="display:flex;"><span>        HashTable<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> hashTable <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashTable<span style="color:#f92672">&lt;&gt;</span>(5);
+</span></span><span style="display:flex;"><span>        hashTable.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Alice&#34;</span>, 123654);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>123654<span style="color:#f92672">,</span> hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Alice&#34;</span><span style="color:#f92672">));</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        assertEquals(123654, hashTable.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;Alice&#34;</span>));
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">removedValueShouldBeAbsent</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        HashTable<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> hashTable <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashTable<span style="color:#f92672">&lt;&gt;(</span>5<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Alice&#34;</span><span style="color:#f92672">,</span> 123654<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;David&#34;</span><span style="color:#f92672">,</span> 456123<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">removedValueShouldBeAbsent</span>() {
+</span></span><span style="display:flex;"><span>        HashTable<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> hashTable <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashTable<span style="color:#f92672">&lt;&gt;</span>(5);
+</span></span><span style="display:flex;"><span>        hashTable.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Alice&#34;</span>, 123654);
+</span></span><span style="display:flex;"><span>        hashTable.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;David&#34;</span>, 456123);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Alice&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        assertNull<span style="color:#f92672">(</span>hashTable<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Alice&#34;</span><span style="color:#f92672">));</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">,</span> Value value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>value <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            delete<span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>keyValuePairsNumber <span style="color:#f92672">&gt;=</span> 10 <span style="color:#f92672">*</span> tableSize<span style="color:#f92672">)</span> resize<span style="color:#f92672">(</span>2 <span style="color:#f92672">*</span> tableSize<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        hashTable.<span style="color:#a6e22e">delete</span>(<span style="color:#e6db74">&#34;Alice&#34;</span>);
+</span></span><span style="display:flex;"><span>        assertNull(hashTable.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;Alice&#34;</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">put</span>(Key key, Value value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (value <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            delete(key);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (keyValuePairsNumber <span style="color:#f92672">&gt;=</span> 10 <span style="color:#f92672">*</span> tableSize) resize(2 <span style="color:#f92672">*</span> tableSize);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> hash<span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>chains<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">containsKey</span><span style="color:#f92672">(</span>key<span style="color:#f92672">))</span> keyValuePairsNumber<span style="color:#f92672">++;</span>
-</span></span><span style="display:flex;"><span>        chains<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> value<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> hash(key);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>chains<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>.<span style="color:#a6e22e">containsKey</span>(key)) keyValuePairsNumber<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        chains<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>.<span style="color:#a6e22e">put</span>(key, value);
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Value <span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> hash<span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> chains<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Value <span style="color:#a6e22e">get</span>(Key key) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> hash(key);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> chains<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>.<span style="color:#a6e22e">get</span>(key);
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> hash<span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>chains<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">containsKey</span><span style="color:#f92672">(</span>key<span style="color:#f92672">))</span> keyValuePairsNumber<span style="color:#f92672">--;</span>
-</span></span><span style="display:flex;"><span>        chains<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete</span>(Key key) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> hash(key);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (chains<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>.<span style="color:#a6e22e">containsKey</span>(key)) keyValuePairsNumber<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>        chains<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>.<span style="color:#a6e22e">remove</span>(key);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>keyValuePairsNumber <span style="color:#f92672">&lt;=</span> 2 <span style="color:#f92672">*</span> tableSize<span style="color:#f92672">)</span> resize<span style="color:#f92672">(</span>tableSize <span style="color:#f92672">/</span> 2<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (keyValuePairsNumber <span style="color:#f92672">&lt;=</span> 2 <span style="color:#f92672">*</span> tableSize) resize(tableSize <span style="color:#f92672">/</span> 2);
+</span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>Complete <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/searching/HashTable.java">implementation</a>
 with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/java/searching/HashTableTest.java">test cases</a> can be found on my GitHub.</p>
 <p>Sources:</p>
@@ -203,100 +317,66 @@ with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/jav
 <li><a href="https://www.amazon.de/Introduction-Algorithms-fourth-Thomas-Cormen/dp/026204630X/ref=asc_df_026204630X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=526471224369&amp;hvpos=&amp;hvnetw=g&amp;hvrand=13700716644741673088&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-1268844537750&amp;psc=1&amp;th=1&amp;psc=1">Introduction to Algorithms by  Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</a>.</li>
 </ol>
 
-
-
-
-
-
-<hr class="block-separater">
-
-
-
-
-<div class="content-footer-item">
-	Tags for this post:
-	
-	<a class="post-tag" href="/tags/algorithms/">algorithms</a>
-	
-	<a class="post-tag" href="/tags/hash-table/">hash table</a>
-	
-</div>
-
-
-
-
-
-
-
-<div class="content-footer-item neighbor">
-	
-	<div class="prev-post">Prev: <a href="/posts/rbbst2/">Red Black Binary Search Tree: Part 2 delete. Algorithms series</a></div>
-	
-	
-	<div class="next-post">Next: <a href="/posts/dfs/">Depth First Search. Algorithms series</a></div>
-	
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    <div class="related-tag-category-list">
-        <h4>Other posts tagged by "algorithms"</h3>
-        <ul class="post-list">
-          
-          <li class="post-item">
-  <div class="post-date sub">2023-08-06</div>
-  <div class="post-title"><a href="/posts/reduction/">Reduction. Algorithm Series</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-09-24</div>
-  <div class="post-title"><a href="/posts/topsort/">Topological sort. Algorithms series</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-09-10</div>
-  <div class="post-title"><a href="/posts/linledlist/">Linked List. Algorithms series</a></div>
-  
-</li>
-          
-        </ul>
-        <div class="more-area">
-          
-          <a class="more" href='/tags/algorithms/'>more ...</a>
-          
       </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://savchenko.tech/posts/dfs/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Depth First Search. Algorithms Series</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/rbbst2/">
+                    <span class="button__text">Red Black Binary Search Tree: Part 2 delete. Algorithms Series</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
         </div>
+    </div>
+
+    </div>
+
+
     
 
     
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
     
     
+    
+        <div class="footer__inner">
+          
+        </div>
+</footer>
+
+            
+        </div>
+
+        
 
 
 
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
 
-<script src="/js/single.js"></script>
 
 
-	</div><div id="content-footer" class="sub">
-  
-  <div class="credit">
-    Power by <a href="https://gohugo.io">Hugo</a> /
-    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
-  </div>
-</div></body>
-
+    </body>
 </html>

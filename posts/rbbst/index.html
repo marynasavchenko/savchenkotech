@@ -1,112 +1,226 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Maryna Savchenko">
+<meta name="description" content="Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &amp;ldquo;balanced&amp;rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).
+Red-black tree has next properties:
+Every node is RED or BLACK The root id always BlACK Every null leaf is black If a node is RED, then both children are BLACK For each node, all simple paths from the node to descendant leaves contain the same number of BLACK nodes." />
+<meta name="keywords" content=", algorithms, bst" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/rbbst/" />
+
+
+    <title>
+        
+            Red Black Binary Search Tree: Part 1 put. Algorithms Series :: savchenko.tech 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Red Black Binary Search Tree: Part 1 put. Algorithms Series">
+<meta itemprop="description" content="Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &ldquo;balanced&rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).
+Red-black tree has next properties:
+Every node is RED or BLACK The root id always BlACK Every null leaf is black If a node is RED, then both children are BLACK For each node, all simple paths from the node to descendant leaves contain the same number of BLACK nodes."><meta itemprop="datePublished" content="2022-07-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="600"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="algorithms,bst," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="Red Black Binary Search Tree: Part 1 put. Algorithms Series"/>
+<meta name="twitter:description" content="Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &ldquo;balanced&rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).
+Red-black tree has next properties:
+Every node is RED or BLACK The root id always BlACK Every null leaf is black If a node is RED, then both children are BLACK For each node, all simple paths from the node to descendant leaves contain the same number of BLACK nodes."/>
+
+
+
+    <meta property="og:title" content="Red Black Binary Search Tree: Part 1 put. Algorithms Series" />
+<meta property="og:description" content="Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &ldquo;balanced&rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).
+Red-black tree has next properties:
+Every node is RED or BLACK The root id always BlACK Every null leaf is black If a node is RED, then both children are BLACK For each node, all simple paths from the node to descendant leaves contain the same number of BLACK nodes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/rbbst/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-22T00:00:00+00:00" />
 
 
 
 
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Red Black Binary Search Tree: Part 1 put. Algorithms series - savchenko.tech</title>
-<meta name="description" content="Red black bst">
-
-<meta name="author" content="">
-
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="alternate" href="/index.xml?c=65f715235e02c5dda7b683fee46a731322acbee4" type="application/rss+xml" title="RSS" />
-<meta property="og:title" content="Red Black Binary Search Tree: Part 1 put. Algorithms series - savchenko.tech">
-</meta>
-<meta property="og:url" content="https://savchenko.tech/posts/rbbst/">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="savchenko.tech">
-<meta property="og:description" content="Red black bst">
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
-
-<meta name="twitter:card" content="summary_large_image" /></meta>
-<meta name="twitter:site" content="@"></meta>
-<meta name="twitter:creator" content="@"></meta>
-<meta name="twitter:title" content="Red Black Binary Search Tree: Part 1 put. Algorithms series - savchenko.tech"></meta>
-<meta name="twitter:url" content="https://savchenko.tech/posts/rbbst/"></meta>
-<meta name="twitter:description" content="Red black bst"></meta>
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="stylesheet" href="/css/color.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
+    <meta property="article:published_time" content="2022-07-22 00:00:00 &#43;0000 UTC" />
 
 
 
 
 
-<link href="https://fonts.googleapis.com/css?family=Raleway|Cousine&amp;amp;subset=english" rel="stylesheet"&gt;>
-
-<style>
-p{
-font-family: '', Raleway;
-font-size: 115%
-}
-body {
-font-family: '', Raleway;
-font-size: 115%
-}
-code {
-font-family: '', Cousine;
-font-size: 100%
-}
-</style></head>
-
-<body class="theme-default">
 
 
-<div id="content-header" class="title">
-  
-  <a class="site-title" href="/">savchenko.tech</a>
-  
-  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
 
-  
-  <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=65f715235e02c5dda7b683fee46a731322acbee4">
-  </div>
-  
 
-  <div id="main-menu-nav">
-    <div id="main-menu-nav-items">
-      
-        <div class="nav-item"><a href="/about/">About Maryna</a></div>
-      
-        <div class="nav-item"><a href="/posts/">Posts</a></div>
-      
-        <div class="nav-item"><a href="/tags/">Tags</a></div>
-      
-        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
-      
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
     </div>
-  </div>
-</div>
-<div id="content" class="main">
+</a>
 
 
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
 
 
-<h2>Red Black Binary Search Tree: Part 1 put. Algorithms series</h2>
+            <div class="content">
+                
+  <main class="post">
 
-<span class="sub">2022-07-22</span>
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        3 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        600 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2022-07-22
+        
 
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
+        <span class="tag"><a href="https://savchenko.tech/tags/algorithms/">algorithms</a></span>
+        <span class="tag"><a href="https://savchenko.tech/tags/bst/">bst</a></span>
+        
+    </p>
 
+      
+      </p>
+    </div>
 
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/rbbst/">Red Black Binary Search Tree: Part 1 put. Algorithms Series</a>
+      </h1>
 
+      
 
+      
 
+      
 
-<p>Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK.
+      <div class="post-content">
+        <p>Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK.
 We need it to keep BST &ldquo;balanced&rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).</p>
 <p>Red-black tree has next properties:</p>
 <ol>
@@ -117,37 +231,37 @@ We need it to keep BST &ldquo;balanced&rdquo;, that means basic dynamic set oper
 <li>For each node, all simple  paths from the node to descendant leaves contain the same number of BLACK nodes.</li>
 </ol>
 <p>To get started with test cases we need a skeleton first.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RedBlackBinarySearchTree</span><span style="color:#f92672">&lt;</span>Key <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;</span>Key<span style="color:#f92672">&gt;,</span> Value<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> RED <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> BLACK <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RedBlackBinarySearchTree</span><span style="color:#f92672">&lt;</span>Key <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;</span>Key<span style="color:#f92672">&gt;</span>, Value<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> RED <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> BLACK <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node root<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node root;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Node</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> Key key<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> Value value<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> Node right<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> Node left<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> nodeNumber<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">boolean</span> color<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Node</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> Key key;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> Value value;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> Node right;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> Node left;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> nodeNumber;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">boolean</span> color;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">Node</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">,</span> Value value<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> nodeNumber<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> color<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> key<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> nodeNumber<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> color<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">Node</span>(Key key, Value value, <span style="color:#66d9ef">int</span> nodeNumber, <span style="color:#66d9ef">boolean</span> color) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> key;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> value;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> nodeNumber;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> color;
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isRed</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">==</span> RED<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isRed</span>(Node node) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node.<span style="color:#a6e22e">color</span> <span style="color:#f92672">==</span> RED;
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Methods get() and size() are the same as in Binary search tree.</p>
 <h3 id="put">PUT</h3>
 <p>Test cases for put should check that:</p>
@@ -158,108 +272,108 @@ We need it to keep BST &ldquo;balanced&rdquo;, that means basic dynamic set oper
 <li>root should be always BLACK</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>   <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">valueShouldBePresentWhenPut</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RedBlackBinarySearchTree<span style="color:#f92672">&lt;&gt;();</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>15<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;AnyValue&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">valueShouldBePresentWhenPut</span>() {
+</span></span><span style="display:flex;"><span>            RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer, String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RedBlackBinarySearchTree<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(15, <span style="color:#e6db74">&#34;AnyValue&#34;</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;AnyValue&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>15<span style="color:#f92672">));</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rootShouldBeBlack</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST<span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;28&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        assertFalse<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Root should be black&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        assertEquals(<span style="color:#e6db74">&#34;AnyValue&#34;</span>, brBinarySearchTree.<span style="color:#a6e22e">get</span>(15));
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">leftLinkShouldBeRed</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rootShouldBeBlack</span>() {
+</span></span><span style="display:flex;"><span>            RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer, String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;14&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        assertTrue<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should be red&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        assertEquals(<span style="color:#e6db74">&#34;28&#34;</span>, brBinarySearchTree.<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>        assertFalse(brBinarySearchTree.<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">color</span>, <span style="color:#e6db74">&#34;Root should be black&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldBeNoMoreThanOneLeftRedLinkInARow</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">leftLinkShouldBeRed</span>() {
+</span></span><span style="display:flex;"><span>            RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer, String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;11&#34;</span><span style="color:#f92672">,</span> brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        assertFalse<span style="color:#f92672">(</span>brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">root</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Should not be 2 red left in a row&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        assertEquals(<span style="color:#e6db74">&#34;14&#34;</span>, brBinarySearchTree.<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>        assertTrue(brBinarySearchTree.<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">color</span>, <span style="color:#e6db74">&#34;Should be red&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">createRedBlackBST</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RedBlackBinarySearchTree<span style="color:#f92672">&lt;&gt;();</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>8<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;8&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>11<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;11&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>14<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;14&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>13<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;13&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>16<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;16&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>23<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;23&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>25<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;25&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>28<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;28&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>32<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;32&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>33<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;33&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        brBinarySearchTree<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>36<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;36&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> brBinarySearchTree<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldBeNoMoreThanOneLeftRedLinkInARow</span>() {
+</span></span><span style="display:flex;"><span>            RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer, String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> createRedBlackBST();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assertEquals(<span style="color:#e6db74">&#34;11&#34;</span>, brBinarySearchTree.<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>        assertFalse(brBinarySearchTree.<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">color</span>, <span style="color:#e6db74">&#34;Should not be 2 red left in a row&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer, String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">createRedBlackBST</span>() {
+</span></span><span style="display:flex;"><span>        RedBlackBinarySearchTree<span style="color:#f92672">&lt;</span>Integer, String<span style="color:#f92672">&gt;</span> brBinarySearchTree <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RedBlackBinarySearchTree<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(8, <span style="color:#e6db74">&#34;8&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(11, <span style="color:#e6db74">&#34;11&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(14, <span style="color:#e6db74">&#34;14&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(13, <span style="color:#e6db74">&#34;13&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(16, <span style="color:#e6db74">&#34;16&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(23, <span style="color:#e6db74">&#34;23&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(25, <span style="color:#e6db74">&#34;25&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(28, <span style="color:#e6db74">&#34;28&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(32, <span style="color:#e6db74">&#34;32&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(33, <span style="color:#e6db74">&#34;33&#34;</span>);
+</span></span><span style="display:flex;"><span>        brBinarySearchTree.<span style="color:#a6e22e">put</span>(36, <span style="color:#e6db74">&#34;36&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> brBinarySearchTree;
+</span></span><span style="display:flex;"><span>        }
 </span></span></code></pre></div><p><img src="../../images/rb_bst.png" alt="rb_bst.png"></p>
 <p>Code for the implementation of put() method is very similar to BST implementation except conditions that balance tree.
 To achieve balance we need to implement rotateLeft(), rotateRight() and flipColors() methods first.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">rotateLeft</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        Node nodeToRotate <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> nodeToRotate<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        nodeToRotate<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        nodeToRotate<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> RED<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        nodeToRotate<span style="color:#f92672">.</span><span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">nodeNumber</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> 1 <span style="color:#f92672">+</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nodeToRotate<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">rotateLeft</span>(Node node) {
+</span></span><span style="display:flex;"><span>        Node nodeToRotate <span style="color:#f92672">=</span> node.<span style="color:#a6e22e">right</span>;
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> nodeToRotate.<span style="color:#a6e22e">left</span>;
+</span></span><span style="display:flex;"><span>        nodeToRotate.<span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        nodeToRotate.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> node.<span style="color:#a6e22e">color</span>;
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> RED;
+</span></span><span style="display:flex;"><span>        nodeToRotate.<span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> node.<span style="color:#a6e22e">nodeNumber</span>;
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> 1 <span style="color:#f92672">+</span> size(node.<span style="color:#a6e22e">left</span>) <span style="color:#f92672">+</span> size(node.<span style="color:#a6e22e">right</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nodeToRotate;
+</span></span><span style="display:flex;"><span>        }
 </span></span></code></pre></div><p><img src="../../images/leftRotation.png" alt="leftRotation.png"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span> <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">rotateRight</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        Node nodeToRotate <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> nodeToRotate<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        nodeToRotate<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        nodeToRotate<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> RED<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        nodeToRotate<span style="color:#f92672">.</span><span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">nodeNumber</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> 1 <span style="color:#f92672">+</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nodeToRotate<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span> <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">rotateRight</span>(Node node) {
+</span></span><span style="display:flex;"><span>        Node nodeToRotate <span style="color:#f92672">=</span> node.<span style="color:#a6e22e">left</span>;
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> nodeToRotate.<span style="color:#a6e22e">right</span>;
+</span></span><span style="display:flex;"><span>        nodeToRotate.<span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        nodeToRotate.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> node.<span style="color:#a6e22e">color</span>;
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> RED;
+</span></span><span style="display:flex;"><span>        nodeToRotate.<span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> node.<span style="color:#a6e22e">nodeNumber</span>;
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> 1 <span style="color:#f92672">+</span> size(node.<span style="color:#a6e22e">left</span>) <span style="color:#f92672">+</span> size(node.<span style="color:#a6e22e">right</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nodeToRotate;
+</span></span><span style="display:flex;"><span>        }
 </span></span></code></pre></div><p><img src="../../images/rightRotation.png" alt="rightRotation.png"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">flipColors</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> RED<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> BLACK<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> BLACK<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">flipColors</span>(Node node) {
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> RED;
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">right</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> BLACK;
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> BLACK;
+</span></span><span style="display:flex;"><span>        }
 </span></span></code></pre></div><p><img src="../../images/flipColors.png" alt="flipColors.png"></p>
 <p>After those methods in place, we can complete the implementation.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>Key key<span style="color:#f92672">,</span> Value value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        root <span style="color:#f92672">=</span> put<span style="color:#f92672">(</span>root<span style="color:#f92672">,</span> key<span style="color:#f92672">,</span> value<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        root<span style="color:#f92672">.</span><span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> BLACK<span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">put</span>(Key key, Value value) {
+</span></span><span style="display:flex;"><span>        root <span style="color:#f92672">=</span> put(root, key, value);
+</span></span><span style="display:flex;"><span>        root.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> BLACK;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">,</span> Key key<span style="color:#f92672">,</span> Value value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Node<span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> value<span style="color:#f92672">,</span> 1<span style="color:#f92672">,</span> RED<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> compare <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>compare <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> put<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">,</span> key<span style="color:#f92672">,</span> value<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>compare <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> put<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">,</span> key<span style="color:#f92672">,</span> value<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">))</span> node <span style="color:#f92672">=</span> rotateLeft<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">))</span> node <span style="color:#f92672">=</span> rotateRight<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> isRed<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">))</span> flipColors<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">.</span><span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> size<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">put</span>(Node node, Key key, Value value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Node(key, value, 1, RED);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> compare <span style="color:#f92672">=</span> key.<span style="color:#a6e22e">compareTo</span>(node.<span style="color:#a6e22e">key</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (compare <span style="color:#f92672">&lt;</span> 0) {
+</span></span><span style="display:flex;"><span>            node.<span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> put(node.<span style="color:#a6e22e">left</span>, key, value);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (compare <span style="color:#f92672">&gt;</span> 0) {
+</span></span><span style="display:flex;"><span>            node.<span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> put(node.<span style="color:#a6e22e">right</span>, key, value);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            node.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> value;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isRed(node.<span style="color:#a6e22e">right</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isRed(node.<span style="color:#a6e22e">left</span>)) node <span style="color:#f92672">=</span> rotateLeft(node);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isRed(node.<span style="color:#a6e22e">left</span>) <span style="color:#f92672">&amp;&amp;</span> isRed(node.<span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">left</span>)) node <span style="color:#f92672">=</span> rotateRight(node);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isRed(node.<span style="color:#a6e22e">left</span>) <span style="color:#f92672">&amp;&amp;</span> isRed(node.<span style="color:#a6e22e">right</span>)) flipColors(node);
+</span></span><span style="display:flex;"><span>        node.<span style="color:#a6e22e">nodeNumber</span> <span style="color:#f92672">=</span> size(node.<span style="color:#a6e22e">left</span>) <span style="color:#f92672">+</span> size(node.<span style="color:#a6e22e">right</span>) <span style="color:#f92672">+</span> 1;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> node;
+</span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>Complete <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/searching/RedBlackBinarySearchTree.java">implementation</a>
 with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/java/searching/RedBlackBinarySearchTreeTest.java">test cases</a> can be found on GitHub.</p>
 <p>Sources:</p>
@@ -268,130 +382,66 @@ with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/jav
 <li><a href="https://www.amazon.de/Introduction-Algorithms-fourth-Thomas-Cormen/dp/026204630X/ref=asc_df_026204630X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=526471224369&amp;hvpos=&amp;hvnetw=g&amp;hvrand=13700716644741673088&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-1268844537750&amp;psc=1&amp;th=1&amp;psc=1">Introduction to Algorithms by  Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</a>.</li>
 </ol>
 
-
-
-
-
-
-<hr class="block-separater">
-
-
-
-
-<div class="content-footer-item">
-	Tags for this post:
-	
-	<a class="post-tag" href="/tags/algorithms/">algorithms</a>
-	
-	<a class="post-tag" href="/tags/bst/">bst</a>
-	
-</div>
-
-
-
-
-
-
-
-<div class="content-footer-item neighbor">
-	
-	<div class="prev-post">Prev: <a href="/posts/bst2/">Binary Search Tree: Part 2 min, floor, delete. Algorithms series</a></div>
-	
-	
-	<div class="next-post">Next: <a href="/posts/rbbst2/">Red Black Binary Search Tree: Part 2 delete. Algorithms series</a></div>
-	
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    <div class="related-tag-category-list">
-        <h4>Other posts tagged by "algorithms"</h3>
-        <ul class="post-list">
-          
-          <li class="post-item">
-  <div class="post-date sub">2023-08-06</div>
-  <div class="post-title"><a href="/posts/reduction/">Reduction. Algorithm Series</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-09-24</div>
-  <div class="post-title"><a href="/posts/topsort/">Topological sort. Algorithms series</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-09-10</div>
-  <div class="post-title"><a href="/posts/linledlist/">Linked List. Algorithms series</a></div>
-  
-</li>
-          
-        </ul>
-        <div class="more-area">
-          
-          <a class="more" href='/tags/algorithms/'>more ...</a>
-          
       </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://savchenko.tech/posts/rbbst2/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Red Black Binary Search Tree: Part 2 delete. Algorithms Series</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/bst2/">
+                    <span class="button__text">Binary Search Tree: Part 2 min, floor, delete. Algorithms Series</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
         </div>
+    </div>
+
+    </div>
+
+
     
 
     
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
     
     
-    <div class="related-tag-category-list">
-        <h4>Other posts tagged by "bst"</h3>
-        <ul class="post-list">
+    
+        <div class="footer__inner">
           
-          <li class="post-item">
-  <div class="post-date sub">2022-07-28</div>
-  <div class="post-title"><a href="/posts/rbbst2/">Red Black Binary Search Tree: Part 2 delete. Algorithms series</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-07-22</div>
-  <div class="post-title"><a href="/posts/rbbst/">Red Black Binary Search Tree: Part 1 put. Algorithms series</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-07-14</div>
-  <div class="post-title"><a href="/posts/bst2/">Binary Search Tree: Part 2 min, floor, delete. Algorithms series</a></div>
-  
-</li>
-          
-        </ul>
-        <div class="more-area">
-          
-          <a class="more" href='/tags/bst/'>more ...</a>
-          
-      </div>
         </div>
-    
+</footer>
+
+            
+        </div>
+
+        
 
 
 
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
 
-<script src="/js/single.js"></script>
 
 
-	</div><div id="content-footer" class="sub">
-  
-  <div class="credit">
-    Power by <a href="https://gohugo.io">Hugo</a> /
-    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
-  </div>
-</div></body>
-
+    </body>
 </html>

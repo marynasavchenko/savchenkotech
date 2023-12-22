@@ -1,114 +1,231 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Maryna Savchenko">
+<meta name="description" content="Why do we need blockchain?
+In the world where we desperately need to cooperate Blockchain answers the question of how to establish trust between unknown people who want to carry out value exchange.
+It satisfies the need for a common system that keeps track of transactions, establishes public trust and maintain it forever.
+Let&amp;rsquo;s take a look at examples of blockchain in different sectors first to understand use cases." />
+<meta name="keywords" content=", blockchain" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/blockchain/" />
+
+
+    <title>
+        
+            Blockchain Intro: Use Cases and Consensus :: savchenko.tech 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Blockchain Intro: Use Cases and Consensus">
+<meta itemprop="description" content="Why do we need blockchain?
+In the world where we desperately need to cooperate Blockchain answers the question of how to establish trust between unknown people who want to carry out value exchange.
+It satisfies the need for a common system that keeps track of transactions, establishes public trust and maintain it forever.
+Let&rsquo;s take a look at examples of blockchain in different sectors first to understand use cases."><meta itemprop="datePublished" content="2023-11-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-11-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="509"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="blockchain," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="Blockchain Intro: Use Cases and Consensus"/>
+<meta name="twitter:description" content="Why do we need blockchain?
+In the world where we desperately need to cooperate Blockchain answers the question of how to establish trust between unknown people who want to carry out value exchange.
+It satisfies the need for a common system that keeps track of transactions, establishes public trust and maintain it forever.
+Let&rsquo;s take a look at examples of blockchain in different sectors first to understand use cases."/>
+
+
+
+    <meta property="og:title" content="Blockchain Intro: Use Cases and Consensus" />
+<meta property="og:description" content="Why do we need blockchain?
+In the world where we desperately need to cooperate Blockchain answers the question of how to establish trust between unknown people who want to carry out value exchange.
+It satisfies the need for a common system that keeps track of transactions, establishes public trust and maintain it forever.
+Let&rsquo;s take a look at examples of blockchain in different sectors first to understand use cases." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/blockchain/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-11T00:00:00+00:00" />
 
 
 
 
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Blockchain Intro: Use Cases And Consensus - savchenko.tech</title>
-<meta name="description" content="Blockchain">
-
-<meta name="author" content="">
-
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="alternate" href="/index.xml?c=65f715235e02c5dda7b683fee46a731322acbee4" type="application/rss+xml" title="RSS" />
-<meta property="og:title" content="Blockchain Intro: Use Cases And Consensus - savchenko.tech">
-</meta>
-<meta property="og:url" content="https://savchenko.tech/posts/blockchain/">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="savchenko.tech">
-<meta property="og:description" content="Blockchain">
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
-
-<meta name="twitter:card" content="summary_large_image" /></meta>
-<meta name="twitter:site" content="@"></meta>
-<meta name="twitter:creator" content="@"></meta>
-<meta name="twitter:title" content="Blockchain Intro: Use Cases And Consensus - savchenko.tech"></meta>
-<meta name="twitter:url" content="https://savchenko.tech/posts/blockchain/"></meta>
-<meta name="twitter:description" content="Blockchain"></meta>
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="stylesheet" href="/css/color.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
+    <meta property="article:published_time" content="2023-11-11 00:00:00 &#43;0000 UTC" />
 
 
 
 
 
-<link href="https://fonts.googleapis.com/css?family=Raleway|Cousine&amp;amp;subset=english" rel="stylesheet"&gt;>
-
-<style>
-p{
-font-family: '', Raleway;
-font-size: 115%
-}
-body {
-font-family: '', Raleway;
-font-size: 115%
-}
-code {
-font-family: '', Cousine;
-font-size: 100%
-}
-</style></head>
-
-<body class="theme-default">
 
 
-<div id="content-header" class="title">
-  
-  <a class="site-title" href="/">savchenko.tech</a>
-  
-  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
 
-  
-  <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=65f715235e02c5dda7b683fee46a731322acbee4">
-  </div>
-  
 
-  <div id="main-menu-nav">
-    <div id="main-menu-nav-items">
-      
-        <div class="nav-item"><a href="/about/">About Maryna</a></div>
-      
-        <div class="nav-item"><a href="/posts/">Posts</a></div>
-      
-        <div class="nav-item"><a href="/tags/">Tags</a></div>
-      
-        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
-      
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
     </div>
-  </div>
-</div>
-<div id="content" class="main">
+</a>
 
 
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
 
 
-<h2>Blockchain Intro: Use Cases And Consensus</h2>
+            <div class="content">
+                
+  <main class="post">
 
-<span class="sub">2023-11-11</span>
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        3 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        509 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2023-11-11
+        
 
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
+        <span class="tag"><a href="https://savchenko.tech/tags/blockchain/">blockchain</a></span>
+        
+    </p>
 
+      
+      </p>
+    </div>
 
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/blockchain/">Blockchain Intro: Use Cases and Consensus</a>
+      </h1>
 
+      
 
+      
 
+      
 
-<p><img src="../../images/blockchain_trust.png" alt="blockchain_trust.png"></p>
+      <div class="post-content">
+        <p><img src="../../images/blockchain_trust.png" alt="blockchain_trust.png"></p>
 <p><strong>Why do we need blockchain?</strong></p>
-<p>In the world where we desperately need to cooperate Blockchain 
+<p>In the world where we desperately need to cooperate Blockchain
 answers the question of how to establish trust between unknown people who want to carry out value exchange.</p>
 <p>It satisfies the need for a common system that keeps track of transactions, establishes public trust and maintain it forever.</p>
 <p>Let&rsquo;s take a look at examples of blockchain in different sectors first to understand <strong>use cases</strong>.</p>
@@ -119,7 +236,7 @@ answers the question of how to establish trust between unknown people who want t
 <li>Increased efficiency in loan approvals, providing a faster time to market</li>
 <li>Elimination of third parties in the lending process, resulting in both cost efficiency and a reduction in manual errors.</li>
 </ul>
-<ol start="3">
+<ol start="2">
 <li><strong>Healthcare</strong> - <a href="https://medicalchain.com/en/">Medicalchain</a> - uses blockchain technology to securely store patient health records.
 Medicalchain maintains a single version of what is considered the medical truth, which is the original medical data.</li>
 <li><strong>Logistics</strong> - <a href="https://trustchain.ngi.eu/">TrustChain</a> - enables customers to track their jewelry from source to dealer.
@@ -131,23 +248,23 @@ The main benefit realized from TrustChain is transparency across the entire diam
 </blockquote>
 <p>In a blockchain, transactions are combined into blocks, which then are validated and linked into a chain.
 <img src="../../images/blockchain1.png" alt="blockchain1.png"></p>
-<p>The blockchain ecosystem includes blocks – the data structure used to keep records of transactions, 
+<p>The blockchain ecosystem includes blocks – the data structure used to keep records of transactions,
 which are distributed among all nodes in the network, and nodes – a user or computer that holds a complete copy of the record or ledger.</p>
 <p><strong>Consensus</strong></p>
 <p>Consensus means the method used to come to an agreement.
 So, consensus in a blockchain is how the blockchain nodes “come to agreement” over the blockchain transactions that will be written to the blockchain ledger.</p>
-<p><strong>Proof of work</strong> is the most widely used consensus method. 
+<p><strong>Proof of work</strong> is the most widely used consensus method.
 It was the original protocol and has proven its resilience against internal and external attacks.
 <img src="../../images/blockchain2.png" alt="blockchain2.png"></p>
 <p>A high-level overview of the PoW consensus in Blockchain is that a block including relevant parts of the transaction
-is hashed, and a random nonce is added to it so that the resulting hash is equals or below a certain value, 
+is hashed, and a random nonce is added to it so that the resulting hash is equals or below a certain value,
 which is called the difficulty level.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;20 October 1 12:30 John refunded Alice </span>$100<span style="color:#e6db74">&#34;</span> -&gt; bc07effbdbd4a902062cdd76e0e5450a4f681796fd4f9f2e4295d90e6008236f
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;20 October 1 12:30 John refunded Alice </span>$100<span style="color:#e6db74">???&#34;</span> -&gt; 0000……
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;20 October 1 12:30 John refunded Alice </span>$10021609<span style="color:#e6db74">&#34;</span>  -&gt; 00009aaee3d8187b5f551d1f04ae32c5c7f81742e88df81adbae4e3d5cdfcba6
 </span></span></code></pre></div><p>This is an example of Proof of work algorithm finding a value that needs to be added to receive a hash that starts with &ldquo;0000&rdquo;.</p>
 <p><strong>Why mining is required?</strong></p>
-<p>Because of the usage proof-of-work algorithm. The “work” is “proven” by running computations to solve a puzzle — 
+<p>Because of the usage proof-of-work algorithm. The “work” is “proven” by running computations to solve a puzzle —
 generating a hash that matches a specific pattern.  In example above this pattern would be starting with &ldquo;0000&rdquo;.
 Not all Blockchains use proof-of-work consensus and because of this do not require miners.</p>
 <p>In this article we took a look at some Blockchain use cases, its definition and its backbone - consensus.</p>
@@ -157,88 +274,66 @@ Not all Blockchains use proof-of-work consensus and because of this do not requi
 <li><a href="https://www.amazon.de/-/en/Rishabh-Garg/dp/1119903734">Blockchain for Real World Applications by Rishabh Garg</a>.</li>
 </ol>
 
-
-
-
-
-
-<hr class="block-separater">
-
-
-
-
-<div class="content-footer-item">
-	Tags for this post:
-	
-	<a class="post-tag" href="/tags/blockchain/">blockchain</a>
-	
-</div>
-
-
-
-
-
-
-
-<div class="content-footer-item neighbor">
-	
-	<div class="prev-post">Prev: <a href="/posts/reduction/">Reduction. Algorithm Series</a></div>
-	
-	
-	<div class="next-post">Next: <a href="/posts/art/">Is Software Development Art?</a></div>
-	
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    <div class="related-tag-category-list">
-        <h4>Other posts tagged by "blockchain"</h3>
-        <ul class="post-list">
-          
-          <li class="post-item">
-  <div class="post-date sub">2023-12-21</div>
-  <div class="post-title"><a href="/posts/blockchaincomparison/">Blockchains Comparison</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2023-11-11</div>
-  <div class="post-title"><a href="/posts/blockchain/">Blockchain Intro: Use Cases And Consensus</a></div>
-  
-</li>
-          
-        </ul>
-        <div class="more-area">
-          
-          <a class="more" href="/tags/">other tags</a>
-          
       </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://savchenko.tech/posts/art/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Is Software Development Art?</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/reduction/">
+                    <span class="button__text">Reduction. Algorithm Series</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
         </div>
+    </div>
+
+    </div>
+
+
     
 
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+    
+        <div class="footer__inner">
+          
+        </div>
+</footer>
+
+            
+        </div>
+
+        
 
 
 
-<script src="/js/single.js"></script>
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
 
 
-	</div><div id="content-footer" class="sub">
-  
-  <div class="credit">
-    Power by <a href="https://gohugo.io">Hugo</a> /
-    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
-  </div>
-</div></body>
 
+    </body>
 </html>

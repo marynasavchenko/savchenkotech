@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>REST on savchenko.tech</title>
+    <title>rest on savchenko.tech</title>
     <link>https://savchenko.tech/tags/rest/</link>
-    <description>Recent content in REST on savchenko.tech</description>
+    <description>Recent content in rest on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/rest/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Is gRPC a better choice over REST?</title>
+      <title>Is gRPC a Better Choice over REST?</title>
       <link>https://savchenko.tech/posts/grpcvsrest/</link>
       <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/grpcvsrest/</guid>
-      <description>Communication protocols play essential role in every modern software system. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.
-The most common way to build request-response style communication is RESTful services. However, REST can be inefficient and error-prone to use in microservices. We would need something more scalable, loosely coupled and efficient. That is where gRPC will shine.
- gRPC (the “g” stands for something different in every gRPC release) is an inter-process communication technology that allows you to connect, invoke, operate, and debug distributed heterogeneous applications as easily as making a local function call.</description>
+      <description>Communication protocols play essential role in every modern software system. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.&#xA;The most common way to build request-response style communication is RESTful services. However, REST can be inefficient and error-prone to use in microservices. We would need something more scalable, loosely coupled and efficient. That is where gRPC will shine.&#xA;gRPC (the “g” stands for something different in every gRPC release) is an inter-process communication technology that allows you to connect, invoke, operate, and debug distributed heterogeneous applications as easily as making a local function call.</description>
     </item>
-    
   </channel>
 </rss>

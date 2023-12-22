@@ -6,258 +6,203 @@
     <description>Recent content in Tags on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>blockchain</title>
       <link>https://savchenko.tech/tags/blockchain/</link>
       <pubDate>Thu, 21 Dec 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/blockchain/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Software Development</title>
+      <title>software development</title>
       <link>https://savchenko.tech/tags/software-development/</link>
       <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/software-development/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>algorithms</title>
       <link>https://savchenko.tech/tags/algorithms/</link>
       <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/algorithms/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>team work</title>
       <link>https://savchenko.tech/tags/team-work/</link>
       <pubDate>Sun, 05 Mar 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/team-work/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>solid</title>
       <link>https://savchenko.tech/tags/solid/</link>
       <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/solid/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>clean code</title>
       <link>https://savchenko.tech/tags/clean-code/</link>
       <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/clean-code/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>aws</title>
       <link>https://savchenko.tech/tags/aws/</link>
       <pubDate>Sat, 12 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/aws/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>cloud computing</title>
       <link>https://savchenko.tech/tags/cloud-computing/</link>
       <pubDate>Sat, 12 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/cloud-computing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>java</title>
       <link>https://savchenko.tech/tags/java/</link>
       <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/java/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>kotlin</title>
       <link>https://savchenko.tech/tags/kotlin/</link>
       <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/kotlin/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>TopologicalSort</title>
-      <link>https://savchenko.tech/tags/topologicalsort/</link>
+      <title>topological sort</title>
+      <link>https://savchenko.tech/tags/topological-sort/</link>
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://savchenko.tech/tags/topologicalsort/</guid>
+      <guid>https://savchenko.tech/tags/topological-sort/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Linked List</title>
+      <title>linked list</title>
       <link>https://savchenko.tech/tags/linked-list/</link>
       <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/linked-list/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Prisma&#39;s</title>
+      <title>prisma&#39;s</title>
       <link>https://savchenko.tech/tags/prismas/</link>
       <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/prismas/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>bfs</title>
       <link>https://savchenko.tech/tags/bfs/</link>
       <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/bfs/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>dfs</title>
       <link>https://savchenko.tech/tags/dfs/</link>
       <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/dfs/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>hash table</title>
       <link>https://savchenko.tech/tags/hash-table/</link>
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/hash-table/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>bst</title>
       <link>https://savchenko.tech/tags/bst/</link>
       <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/bst/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>rust</title>
       <link>https://savchenko.tech/tags/rust/</link>
       <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/rust/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>system programming</title>
       <link>https://savchenko.tech/tags/system-programming/</link>
       <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/system-programming/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>loom</title>
       <link>https://savchenko.tech/tags/loom/</link>
       <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/loom/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>pattern matching</title>
       <link>https://savchenko.tech/tags/pattern-matching/</link>
       <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/pattern-matching/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Programming paradigms</title>
+      <title>programming paradigms</title>
       <link>https://savchenko.tech/tags/programming-paradigms/</link>
       <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/programming-paradigms/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gRPC</title>
+      <title>grpc</title>
       <link>https://savchenko.tech/tags/grpc/</link>
       <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/grpc/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>communication</title>
       <link>https://savchenko.tech/tags/communication/</link>
       <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/communication/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>REST</title>
+      <title>rest</title>
       <link>https://savchenko.tech/tags/rest/</link>
       <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/rest/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>extreme programming</title>
       <link>https://savchenko.tech/tags/extreme-programming/</link>
       <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/extreme-programming/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>testing</title>
       <link>https://savchenko.tech/tags/testing/</link>
       <pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/testing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>learning</title>
       <link>https://savchenko.tech/tags/learning/</link>
       <pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/tags/learning/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

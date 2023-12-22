@@ -6,367 +6,231 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blockchains Comparison</title>
       <link>https://savchenko.tech/posts/blockchaincomparison/</link>
       <pubDate>Thu, 21 Dec 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/blockchaincomparison/</guid>
-      <description>In the previous article we took a look at some basic blockchain concepts and use cases.
-Now let&amp;rsquo;s explore the differences between several prominent public blockchains (Bitcoin, Ethereum and Kadena) through the lens of challenges they are facing and understand how those challenges are addressed.
-So, what are main problems of blockchain?
-1. Privacy Privacy is not the strongest suite of public blockchains because it is not fully matured area. What does this mean?</description>
+      <description>In the previous article we took a look at some basic blockchain concepts and use cases.&#xA;Now let&amp;rsquo;s explore the differences between several prominent public blockchains (Bitcoin, Ethereum and Kadena) through the lens of challenges they are facing and understand how those challenges are addressed.&#xA;So, what are main problems of blockchain?&#xA;1. Privacy Privacy is not the strongest suite of public blockchains because it is not fully matured area. What does this mean?</description>
     </item>
-    
     <item>
       <title>Is Software Development Art?</title>
       <link>https://savchenko.tech/posts/art/</link>
       <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/art/</guid>
-      <description>Sander Mak&amp;rsquo;s talk &amp;ldquo;The Art of Software development&amp;rdquo; at JFall conference and discussions with my colleagues left me puzzled somehow. Is software development more art than engineering? What is it that I am doing anyway?
-Around that time I read an article about Jens Haaning, a Danish conceptual artist who was commissioned by museum to recreate two earlier works that used scores of banknotes to represent average incomes. When museum stuff received the work they discovered two empty frames with the title “Take the Money and Run”.</description>
+      <description>Sander Mak&amp;rsquo;s talk &amp;ldquo;The Art of Software development&amp;rdquo; at JFall conference and discussions with my colleagues left me puzzled somehow. Is software development more art than engineering? What is it that I am doing anyway?&#xA;Around that time I read an article about Jens Haaning, a Danish conceptual artist who was commissioned by museum to recreate two earlier works that used scores of banknotes to represent average incomes. When museum stuff received the work they discovered two empty frames with the title “Take the Money and Run”.</description>
     </item>
-    
     <item>
-      <title>Blockchain Intro: Use Cases And Consensus</title>
+      <title>Blockchain Intro: Use Cases and Consensus</title>
       <link>https://savchenko.tech/posts/blockchain/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/blockchain/</guid>
-      <description>Why do we need blockchain?
-In the world where we desperately need to cooperate Blockchain answers the question of how to establish trust between unknown people who want to carry out value exchange.
-It satisfies the need for a common system that keeps track of transactions, establishes public trust and maintain it forever.
-Let&amp;rsquo;s take a look at examples of blockchain in different sectors first to understand use cases.
- Financial sector - Lendoit - provides Peer-to-Peer Lending.</description>
+      <description>Why do we need blockchain?&#xA;In the world where we desperately need to cooperate Blockchain answers the question of how to establish trust between unknown people who want to carry out value exchange.&#xA;It satisfies the need for a common system that keeps track of transactions, establishes public trust and maintain it forever.&#xA;Let&amp;rsquo;s take a look at examples of blockchain in different sectors first to understand use cases.</description>
     </item>
-    
     <item>
       <title>Reduction. Algorithm Series</title>
       <link>https://savchenko.tech/posts/reduction/</link>
       <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/reduction/</guid>
-      <description>Reduction is a basic technique in algorithm design.
- A problem A reduces to problem B if we can use an algorithm that solves B to develop an algorithm that solves A.
- This concept should be pretty familiar in software development. For example, when you use method evaluate() of Apache Commons library to solve a problem, your problem is reduced to the one solved by library method.
-Simple example of reduction would be finding a median in a collection.</description>
+      <description>Reduction is a basic technique in algorithm design.&#xA;A problem A reduces to problem B if we can use an algorithm that solves B to develop an algorithm that solves A.&#xA;This concept should be pretty familiar in software development. For example, when you use method evaluate() of Apache Commons library to solve a problem, your problem is reduced to the one solved by library method.&#xA;Simple example of reduction would be finding a median in a collection.</description>
     </item>
-    
     <item>
-      <title>Null Reference Is Not The Mistake That Needs To Be Fixed</title>
+      <title>Null Reference Is Not the Mistake that Needs To Be Fixed</title>
       <link>https://savchenko.tech/posts/mistakes/</link>
       <pubDate>Sun, 05 Mar 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/mistakes/</guid>
-      <description>Looking through Kotlin documentation made me think about mistakes.
-To be more precise, mentioning development of Null reference by Tony Hoare and how that was a mistake. Later I found the same reference in an article about error handling. When I googled it, there were many more places that talked about so-called &amp;ldquo;billion-dollar mistake&amp;rdquo;: articles, pictures of the mountains with a quote (as if it is supposed to be an inspiration), even a conference talk.</description>
+      <description>Looking through Kotlin documentation made me think about mistakes.&#xA;To be more precise, mentioning development of Null reference by Tony Hoare and how that was a mistake. Later I found the same reference in an article about error handling. When I googled it, there were many more places that talked about so-called &amp;ldquo;billion-dollar mistake&amp;rdquo;: articles, pictures of the mountains with a quote (as if it is supposed to be an inspiration), even a conference talk.</description>
     </item>
-    
     <item>
-      <title>Why A Square Is Not A Rectangle: Liskov Substitution Principle</title>
+      <title>Why a Square Is Not a Rectangle: Liskov Substitution Principle</title>
       <link>https://savchenko.tech/posts/liskov/</link>
       <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/liskov/</guid>
-      <description>Liskov substitution principle (LSP) is one of the five SOLID principles. It is based on the concept of &amp;ldquo;substitutability&amp;rdquo;. Principle allows using code to be written in terms of the supertype specification, yet work correctly when using objects of the subtype.
- &amp;ldquo;What is wanted here is something like the following substitution property: If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.</description>
+      <description>Liskov substitution principle (LSP) is one of the five SOLID principles. It is based on the concept of &amp;ldquo;substitutability&amp;rdquo;. Principle allows using code to be written in terms of the supertype specification, yet work correctly when using objects of the subtype.&#xA;&amp;ldquo;What is wanted here is something like the following substitution property: If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.</description>
     </item>
-    
     <item>
-      <title>Clean code notes</title>
+      <title>Clean Code Notes</title>
       <link>https://savchenko.tech/posts/cleancode/</link>
       <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/cleancode/</guid>
-      <description>It is hard to find software engineer these days that has never heard of Clean code. At the same time in many organizations code that runs on production brings bugs and pain every day.
-So, what is Clean code and why it is important?
-Clean code is set of principles for writing clear, understandable, and maintainable code. It is not strict rules and applying each principle needs to make sense in concrete situation.</description>
+      <description>It is hard to find software engineer these days that has never heard of Clean code. At the same time in many organizations code that runs on production brings bugs and pain every day.&#xA;So, what is Clean code and why it is important?&#xA;Clean code is set of principles for writing clear, understandable, and maintainable code. It is not strict rules and applying each principle needs to make sense in concrete situation.</description>
     </item>
-    
     <item>
-      <title>AWS Cloud. Definition and characteristics</title>
+      <title>AWS Cloud. Definition and Characteristics</title>
       <link>https://savchenko.tech/posts/aws/</link>
       <pubDate>Sat, 12 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/aws/</guid>
-      <description>The need to accelerate building and deploying software and high cost of local data centers are two main reasons for Cloud popularity.
-What is Cloud?
-Simplified, Cloud can be defined as data center that is not yours.
-The National Institute of Standards and Technology (NIST) provides more descriptive definition:
- Cloud computing is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (networks, virtual machines, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.</description>
+      <description>The need to accelerate building and deploying software and high cost of local data centers are two main reasons for Cloud popularity.&#xA;What is Cloud?&#xA;Simplified, Cloud can be defined as data center that is not yours.&#xA;The National Institute of Standards and Technology (NIST) provides more descriptive definition:&#xA;Cloud computing is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (networks, virtual machines, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.</description>
     </item>
-    
     <item>
-      <title>Kotlin. Elegance that we missed in Java</title>
+      <title>Kotlin. Elegance that We Missed in Java</title>
       <link>https://savchenko.tech/posts/springandkotlin/</link>
       <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/springandkotlin/</guid>
-      <description>For me, as a software engineer with experience in Java, Kotlin was definitely the language of interest. It is also JVM language, but promised to be improved, concise, readable and beautiful.
-So, what are the advantages of Kotlin?
-  Null safety - null references are detected at compile time.
-  Fluency - fluent code is readable and easier (and cheaper) to maintain.
-  Coroutines - a great way to implement non-blocking calls and gracefully handle exceptions.</description>
+      <description>For me, as a software engineer with experience in Java, Kotlin was definitely the language of interest. It is also JVM language, but promised to be improved, concise, readable and beautiful.&#xA;So, what are the advantages of Kotlin?&#xA;Null safety - null references are detected at compile time.&#xA;Fluency - fluent code is readable and easier (and cheaper) to maintain.&#xA;Coroutines - a great way to implement non-blocking calls and gracefully handle exceptions.</description>
     </item>
-    
     <item>
-      <title>Topological sort. Algorithms series</title>
+      <title>Topological Sort. Algorithms Series</title>
       <link>https://savchenko.tech/posts/topsort/</link>
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/topsort/</guid>
-      <description>Topological sort can be applied in scheduling problems.
-Those types of problems can be solved when:
- tasks and precedence constraints are defined; cycles are detected and removed.  Implementation of cycle detection can be found here.
-Test should check that reverse post order is correct.
- @Test  void shouldReturnPostOrder() {  DirectedGraph directedGraph = new DirectedGraph(4);  directedGraph.addEdge(1, 0);  directedGraph.addEdge(0, 3);  directedGraph.addEdge(1, 2);   TopologicalSort topologicalSort = new TopologicalSort(directedGraph);  LinkedList&amp;lt;Integer&amp;gt; expected = new LinkedList&amp;lt;&amp;gt;(Arrays.</description>
+      <description>Topological sort can be applied in scheduling problems.&#xA;Those types of problems can be solved when:&#xA;tasks and precedence constraints are defined; cycles are detected and removed. Implementation of cycle detection can be found here.&#xA;Test should check that reverse post order is correct.&#xA;@Test void shouldReturnPostOrder() { DirectedGraph directedGraph = new DirectedGraph(4); directedGraph.addEdge(1, 0); directedGraph.addEdge(0, 3); directedGraph.addEdge(1, 2); TopologicalSort topologicalSort = new TopologicalSort(directedGraph); LinkedList&amp;lt;Integer&amp;gt; expected = new LinkedList&amp;lt;&amp;gt;(Arrays.asList(3, 0, 2, 1)); assertEquals(expected, topologicalSort.</description>
     </item>
-    
     <item>
-      <title>Linked List. Algorithms series</title>
+      <title>Linked List. Algorithms Series</title>
       <link>https://savchenko.tech/posts/linledlist/</link>
       <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/linledlist/</guid>
-      <description>A Linked List is fundamental and incredibly useful. It enables implementation of bags, queues and stacks.
-It is a recursive data structure. In the core of Linked List is Node that contains of generic item and reference to the next node.
-Node abstraction would be a nested class in Linked List and would look like this:
-private static class Node&amp;lt;E&amp;gt; {  E value;  Node&amp;lt;E&amp;gt; next;   public Node(E value) {  this.</description>
+      <description>A Linked List is fundamental and incredibly useful. It enables implementation of bags, queues and stacks.&#xA;It is a recursive data structure. In the core of Linked List is Node that contains of generic item and reference to the next node.&#xA;Node abstraction would be a nested class in Linked List and would look like this:&#xA;private static class Node&amp;lt;E&amp;gt; { E value; Node&amp;lt;E&amp;gt; next; public Node(E value) { this.value = value; } } Insertion an element to the beginning of the Linked List.</description>
     </item>
-    
     <item>
-      <title>Prim&#39;s algorithm. Greedy. Algorithms series</title>
+      <title>Prim&#39;s Algorithm. Greedy. Algorithms Series</title>
       <link>https://savchenko.tech/posts/greedy/</link>
       <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/greedy/</guid>
-      <description>Prim&amp;rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).
-Greedy algorithms is a technique used in designing and analyzing efficient algorithms. They typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice in hope that this choice leads to globally optimal solution.</description>
+      <description>Prim&amp;rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).&#xA;Greedy algorithms is a technique used in designing and analyzing efficient algorithms. They typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice in hope that this choice leads to globally optimal solution.</description>
     </item>
-    
     <item>
-      <title>Breadth First Search. Algorithms series</title>
+      <title>Breadth First Search. Algorithms Series</title>
       <link>https://savchenko.tech/posts/bfs/</link>
       <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/bfs/</guid>
-      <description>In this article we will be looking at Single-source shortest path problem. The classical method for solving it is Breadth First Search (BFS). In BFS we want to explore the vertices in order of their distance from the source. It could be achieved with queue and filling in last edge on the shortest path for every vertex.
-Unit test should check if the shortest path is returned, when there is longer path in the graph.</description>
+      <description>In this article we will be looking at Single-source shortest path problem. The classical method for solving it is Breadth First Search (BFS). In BFS we want to explore the vertices in order of their distance from the source. It could be achieved with queue and filling in last edge on the shortest path for every vertex.&#xA;Unit test should check if the shortest path is returned, when there is longer path in the graph.</description>
     </item>
-    
     <item>
-      <title>Depth First Search. Algorithms series</title>
+      <title>Depth First Search. Algorithms Series</title>
       <link>https://savchenko.tech/posts/dfs/</link>
       <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/dfs/</guid>
-      <description>Graph algorithms solve many problems in computer science and are fundamental to the field. Depth First Search (DFS) is one of them.
-Representation of a graph Before we dive into DFS we need to understand Graph structure and terminology.
-Graph is a set of vertices and a collection of edges that each connect a pair of vertices.
-Examples of a Graph would be:
- in finance : Currency is a vertex, transaction is an edge in transportation : Street intersection is a vertex, route is an edge  Vertex 1 is connected to Vertex 2 when there is an edge between them.</description>
+      <description>Graph algorithms solve many problems in computer science and are fundamental to the field. Depth First Search (DFS) is one of them.&#xA;Representation of a graph Before we dive into DFS we need to understand Graph structure and terminology.&#xA;Graph is a set of vertices and a collection of edges that each connect a pair of vertices.&#xA;Examples of a Graph would be:&#xA;in finance : Currency is a vertex, transaction is an edge in transportation : Street intersection is a vertex, route is an edge Vertex 1 is connected to Vertex 2 when there is an edge between them.</description>
     </item>
-    
     <item>
-      <title>Hash table. Algorithms series</title>
+      <title>Hash Table. Algorithms Series</title>
       <link>https://savchenko.tech/posts/hashtable/</link>
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/hashtable/</guid>
-      <description>Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications. One very effective data structures for implementing dictionaries is hash table. The average time to search for an element in hash table is O(1).
-Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &amp;lsquo;i&amp;rsquo; is stored in array entry &amp;lsquo;i&amp;rsquo;.
-Two main parts in hash algorithm are hash function and collision resolution method.</description>
+      <description>Dictionary operations (INSERT, SEARCH and DELETE) are required by many applications. One very effective data structures for implementing dictionaries is hash table. The average time to search for an element in hash table is O(1).&#xA;Hash table ia unordered symbol table where key is interpreted as an array index and value associated with key &amp;lsquo;i&amp;rsquo; is stored in array entry &amp;lsquo;i&amp;rsquo;.&#xA;Two main parts in hash algorithm are hash function and collision resolution method.</description>
     </item>
-    
     <item>
-      <title>Red Black Binary Search Tree: Part 2 delete. Algorithms series</title>
+      <title>Red Black Binary Search Tree: Part 2 delete. Algorithms Series</title>
       <link>https://savchenko.tech/posts/rbbst2/</link>
       <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/rbbst2/</guid>
-      <description>To implement delete() method we need to take care about helper methods first. First we will take a look at deleteMin().
-DELETE MIN Test cases for deleteMin() should check that:
- minimal element is not present tree is balanced, which means:  there is no more than 1 left RED links in the row there is no right RED link root should be always BLACK     @Test  void shouldDeleteMinElement() {  RedBlackBinarySearchTree&amp;lt;Integer, String&amp;gt; brBinarySearchTree = createRedBlackBST();   brBinarySearchTree.</description>
+      <description>To implement delete() method we need to take care about helper methods first. First we will take a look at deleteMin().&#xA;DELETE MIN Test cases for deleteMin() should check that:&#xA;minimal element is not present tree is balanced, which means: there is no more than 1 left RED links in the row there is no right RED link root should be always BLACK @Test void shouldDeleteMinElement() { RedBlackBinarySearchTree&amp;lt;Integer, String&amp;gt; brBinarySearchTree = createRedBlackBST(); brBinarySearchTree.</description>
     </item>
-    
     <item>
-      <title>Red Black Binary Search Tree: Part 1 put. Algorithms series</title>
+      <title>Red Black Binary Search Tree: Part 1 put. Algorithms Series</title>
       <link>https://savchenko.tech/posts/rbbst/</link>
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/rbbst/</guid>
-      <description>Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &amp;ldquo;balanced&amp;rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).
-Red-black tree has next properties:
- Every node is RED or BLACK The root id always BlACK Every null leaf is black If a node is RED, then both children are BLACK For each node, all simple paths from the node to descendant leaves contain the same number of BLACK nodes.</description>
+      <description>Red-Black Tree is a Binary Search Tree with one extra bit of storage per node - color, which can be either RED or BLACK. We need it to keep BST &amp;ldquo;balanced&amp;rdquo;, that means basic dynamic set operations will be fast (guaranteed time O(lg n) ).&#xA;Red-black tree has next properties:&#xA;Every node is RED or BLACK The root id always BlACK Every null leaf is black If a node is RED, then both children are BLACK For each node, all simple paths from the node to descendant leaves contain the same number of BLACK nodes.</description>
     </item>
-    
     <item>
-      <title>Binary Search Tree: Part 2 min, floor, delete. Algorithms series</title>
+      <title>Binary Search Tree: Part 2 min, floor, delete. Algorithms Series</title>
       <link>https://savchenko.tech/posts/bst2/</link>
       <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/bst2/</guid>
-      <description>An important feature of Binary Search Tree (BST) is that it allows keeping keys in order. So we are able to apply wide range of operations that involves relative key order.
-In this article we will take a look at some of them.
-As in the previous part we will use TDD to ensure algorithm correctness.
-MIN min() method should return the smallest key.
- @Test  void shouldReturnMinKeyInBST() {  BinarySearchTree&amp;lt;Integer, String&amp;gt; bst = new BinarySearchTree&amp;lt;&amp;gt;();  bst.</description>
+      <description>An important feature of Binary Search Tree (BST) is that it allows keeping keys in order. So we are able to apply wide range of operations that involves relative key order.&#xA;In this article we will take a look at some of them.&#xA;As in the previous part we will use TDD to ensure algorithm correctness.&#xA;MIN min() method should return the smallest key.&#xA;@Test void shouldReturnMinKeyInBST() { BinarySearchTree&amp;lt;Integer, String&amp;gt; bst = new BinarySearchTree&amp;lt;&amp;gt;(); bst.</description>
     </item>
-    
     <item>
-      <title>Rust. The promise of fearless concurrency</title>
+      <title>Rust. The Promise of Fearless Concurrency</title>
       <link>https://savchenko.tech/posts/rust/</link>
       <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/rust/</guid>
-      <description>Rust has been getting 1st place in Stack Overflow’s annual developer survey “most loved programming language” since 2016. Google develops parts of Android with Rust. Amazon Web Services (AWS) has used Rust since 2017 for its serverless computing offerings, AWS Lambda and AWS Fargate. Microsoft writes components of its Azure platform including a security daemon for its Internet of Things (IoT) service.
-Big addition to this popularity wave was Linus Torvald&amp;rsquo;s announcement on Open Source Summit that Rust can be added to the Linux kernel in the next major release.</description>
+      <description>Rust has been getting 1st place in Stack Overflow’s annual developer survey “most loved programming language” since 2016. Google develops parts of Android with Rust. Amazon Web Services (AWS) has used Rust since 2017 for its serverless computing offerings, AWS Lambda and AWS Fargate. Microsoft writes components of its Azure platform including a security daemon for its Internet of Things (IoT) service.&#xA;Big addition to this popularity wave was Linus Torvald&amp;rsquo;s announcement on Open Source Summit that Rust can be added to the Linux kernel in the next major release.</description>
     </item>
-    
     <item>
-      <title>Binary Search Tree: Part 1 put, get, size. Algorithms series</title>
+      <title>Binary Search Tree: Part 1 put, get, size. Algorithms Series</title>
       <link>https://savchenko.tech/posts/bst/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/bst/</guid>
-      <description>Development of computational infrastructure would not become available without effective searching algorithms. One type of such algorithms is symbol tables. Term symbol table is used to describe a mechanism where we can save information (value) and later retrieve it by specified key. Symbol tables sometimes also referred as dictionaries.
-There are three main classic data structures that can support efficient symbol-table implementations: binary search trees, red -black trees and hash tables.</description>
+      <description>Development of computational infrastructure would not become available without effective searching algorithms. One type of such algorithms is symbol tables. Term symbol table is used to describe a mechanism where we can save information (value) and later retrieve it by specified key. Symbol tables sometimes also referred as dictionaries.&#xA;There are three main classic data structures that can support efficient symbol-table implementations: binary search trees, red -black trees and hash tables.</description>
     </item>
-    
     <item>
-      <title>Waiting for Loom&#39;s virtual threads...</title>
+      <title>Waiting for Loom&#39;s Virtual Threads...</title>
       <link>https://savchenko.tech/posts/loom/</link>
       <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/loom/</guid>
-      <description>Since Alan Turing time we came from running one program at a time on bare metal to running millions of java virtual threads. Which is absolutely impressive.
-Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance in a few ways:
- reducing latency (process one task faster) hiding latency (process another task while waiting) increasing throughput (process more tasks).  Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
+      <description>Since Alan Turing time we came from running one program at a time on bare metal to running millions of java virtual threads. Which is absolutely impressive.&#xA;Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance in a few ways:&#xA;reducing latency (process one task faster) hiding latency (process another task while waiting) increasing throughput (process more tasks). Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
     </item>
-    
     <item>
-      <title>Pattern matching in Java</title>
+      <title>Pattern Matching in Java</title>
       <link>https://savchenko.tech/posts/patternmatching/</link>
       <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/patternmatching/</guid>
-      <description>To reduce duplication (boilerplate) in code pattern matching with if statements and the instanceof operator was introduced with Java version 16.
- Pattern matching is a technique of controlling program flow that only executes a section of code that meets certain criteria.
- Pattern matching with if and instanceOf In code example without pattern matching cast is needed.
- public Integer objectToString(Object object) {  if (object instanceof String) {  String string = (String) object;  return Integer.</description>
+      <description>To reduce duplication (boilerplate) in code pattern matching with if statements and the instanceof operator was introduced with Java version 16.&#xA;Pattern matching is a technique of controlling program flow that only executes a section of code that meets certain criteria.&#xA;Pattern matching with if and instanceOf In code example without pattern matching cast is needed.&#xA;public Integer objectToString(Object object) { if (object instanceof String) { String string = (String) object; return Integer.</description>
     </item>
-    
     <item>
-      <title>Common programming paradigms overview</title>
+      <title>Common Programming Paradigms Overview</title>
       <link>https://savchenko.tech/posts/paradigms/</link>
       <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/paradigms/</guid>
-      <description>Why do we care about programming paradigms?
-The answer is they help us to align with architectural concerns like boundaries, location and accessing data and algorithm foundation in the modules.
-Programming paradigms are ways of programming that are reflected in language features. They tell us which structures to use and when to use them.
-There are 3 such main paradigms:
-  structured programming
-  object-orient programming
-  functional programming.</description>
+      <description>Why do we care about programming paradigms?&#xA;The answer is they help us to align with architectural concerns like boundaries, location and accessing data and algorithm foundation in the modules.&#xA;Programming paradigms are ways of programming that are reflected in language features. They tell us which structures to use and when to use them.&#xA;There are 3 such main paradigms:&#xA;structured programming&#xA;object-orient programming&#xA;functional programming.&#xA;Most languages are multi-paradigm but levels of restrictions/enforcing can be different.</description>
     </item>
-    
     <item>
-      <title>SOLID principles</title>
+      <title>SOLID Principles</title>
       <link>https://savchenko.tech/posts/solid/</link>
       <pubDate>Fri, 25 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/solid/</guid>
-      <description>When building software systems we need to avoid a mess at any cost. The more messy software is, the more expensive is to change and maintain it.
-Main design smells that lead to costs increase are:
- rigidity - when tight coupling leads to major rebuild and makes it harder to make changes fragility - when inappropriate and insufficient isolation of software parts leads to one change cause other unrelated modules crash or misbehave immobility - when software structures can not be reused  To avoid these design smells and make our software easy to change, understand and reuse we need a guide how to combine functions, data structures and classes - design principles.</description>
+      <description>When building software systems we need to avoid a mess at any cost. The more messy software is, the more expensive is to change and maintain it.&#xA;Main design smells that lead to costs increase are:&#xA;rigidity - when tight coupling leads to major rebuild and makes it harder to make changes fragility - when inappropriate and insufficient isolation of software parts leads to one change cause other unrelated modules crash or misbehave immobility - when software structures can not be reused To avoid these design smells and make our software easy to change, understand and reuse we need a guide how to combine functions, data structures and classes - design principles.</description>
     </item>
-    
     <item>
-      <title>gRPC server side implementation using Spring</title>
+      <title>gRPC Server Side Implementation Using Spring</title>
       <link>https://savchenko.tech/posts/grpcservice/</link>
       <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/grpcservice/</guid>
-      <description>This article is describing how to create gRPC service implementation using Spring Boot.
-You can find more details about gRPC in &amp;ldquo;Is gRPC a better choice over REST?&amp;rdquo;.
-To create gRPC service you need to complete 3 tasks:
- Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC.  1. Generation of Proto model and service definition It will be Maven project.</description>
+      <description>This article is describing how to create gRPC service implementation using Spring Boot.&#xA;You can find more details about gRPC in &amp;ldquo;Is gRPC a better choice over REST?&amp;rdquo;.&#xA;To create gRPC service you need to complete 3 tasks:&#xA;Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC. 1. Generation of Proto model and service definition It will be Maven project.</description>
     </item>
-    
     <item>
-      <title>Tips for more effective public speaking</title>
+      <title>Tips for More Effective Public Speaking</title>
       <link>https://savchenko.tech/posts/effectivecommunication/</link>
       <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/effectivecommunication/</guid>
-      <description>Effective public speaking is a crucial to your personal, professional and social success. At the same time many developers luck the confidence to communicate clearly, which leads to missing out on career opportunities.
-The biggest threat to our confidence is anxiety, in other words - being nervous. Anxiety - is a signal that we are doing something important. So you can not get rid of it completely. But we do not want anxiety to prevent us from being ourselves and let our skills shine.</description>
+      <description>Effective public speaking is a crucial to your personal, professional and social success. At the same time many developers luck the confidence to communicate clearly, which leads to missing out on career opportunities.&#xA;The biggest threat to our confidence is anxiety, in other words - being nervous. Anxiety - is a signal that we are doing something important. So you can not get rid of it completely. But we do not want anxiety to prevent us from being ourselves and let our skills shine.</description>
     </item>
-    
     <item>
-      <title>Is gRPC a better choice over REST?</title>
+      <title>Is gRPC a Better Choice over REST?</title>
       <link>https://savchenko.tech/posts/grpcvsrest/</link>
       <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/grpcvsrest/</guid>
-      <description>Communication protocols play essential role in every modern software system. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.
-The most common way to build request-response style communication is RESTful services. However, REST can be inefficient and error-prone to use in microservices. We would need something more scalable, loosely coupled and efficient. That is where gRPC will shine.
- gRPC (the “g” stands for something different in every gRPC release) is an inter-process communication technology that allows you to connect, invoke, operate, and debug distributed heterogeneous applications as easily as making a local function call.</description>
+      <description>Communication protocols play essential role in every modern software system. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.&#xA;The most common way to build request-response style communication is RESTful services. However, REST can be inefficient and error-prone to use in microservices. We would need something more scalable, loosely coupled and efficient. That is where gRPC will shine.&#xA;gRPC (the “g” stands for something different in every gRPC release) is an inter-process communication technology that allows you to connect, invoke, operate, and debug distributed heterogeneous applications as easily as making a local function call.</description>
     </item>
-    
     <item>
-      <title>Team framework</title>
+      <title>Team Framework</title>
       <link>https://savchenko.tech/posts/teamwork/</link>
       <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/teamwork/</guid>
-      <description>If I have seen further than others, it is by standing upon the shoulders of giants.
-Isaac Newton
- Programming is not about coding it is about working with people. Sounds easy, isn&amp;rsquo;t it? You put people in one room, and somehow it all should magically work out.
-The problem is that most people do not even come across as they intend to. I am not even talking about solving complex issues.</description>
+      <description>If I have seen further than others, it is by standing upon the shoulders of giants.&#xA;Isaac Newton&#xA;Programming is not about coding it is about working with people. Sounds easy, isn&amp;rsquo;t it? You put people in one room, and somehow it all should magically work out.&#xA;The problem is that most people do not even come across as they intend to. I am not even talking about solving complex issues.</description>
     </item>
-    
     <item>
-      <title>Once again about the testing</title>
+      <title>Once Again About the Testing</title>
       <link>https://savchenko.tech/posts/testing/</link>
       <pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/testing/</guid>
-      <description>Effective software testing should minimize the amount of defects and maximize stability of the product. Achieving it in practice can be quite effortful. What to test? How many test cases? Who should test?
-Questions what to test and on which level can be answered by testing pyramid. 1. Unit testing Unit testing is a type of testing where system under test is an individual unit and is done during the coding phase.</description>
+      <description>Effective software testing should minimize the amount of defects and maximize stability of the product. Achieving it in practice can be quite effortful. What to test? How many test cases? Who should test?&#xA;Questions what to test and on which level can be answered by testing pyramid. 1. Unit testing Unit testing is a type of testing where system under test is an individual unit and is done during the coding phase.</description>
     </item>
-    
     <item>
-      <title>Continuous learning</title>
+      <title>Continuous Learning</title>
       <link>https://savchenko.tech/posts/learningframework/</link>
       <pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/learningframework/</guid>
-      <description>Learning is the crucial tool on the road to mastery and true driver of the software craftsman career. There is no way one can become successful at software development without becoming an expert in learning.
-I believe that effective learning contains of components so called learning framework. This framework can be applied to any kind of learning. It does not meter if it is learning the language or preparing for the OCP (Oracle Certified Professional) exam.</description>
+      <description>Learning is the crucial tool on the road to mastery and true driver of the software craftsman career. There is no way one can become successful at software development without becoming an expert in learning.&#xA;I believe that effective learning contains of components so called learning framework. This framework can be applied to any kind of learning. It does not meter if it is learning the language or preparing for the OCP (Oracle Certified Professional) exam.</description>
     </item>
-    
     <item>
       <title>About Maryna</title>
       <link>https://savchenko.tech/about/</link>
       <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/about/</guid>
-      <description>I am Maryna Savchenko: software engineer, true believer in Software craftsmanship, Clean code and TDD. Enjoy learning and working with new programming languages, listening to IT podcasts, working on exciting and ambitious projects.
-I started this blog to share my experience and thoughts about software engineering practices, technologies and skill set improvement.</description>
+      <description>I am Maryna Savchenko: software engineer, true believer in Software craftsmanship, Clean code and TDD. Enjoy learning and working with new programming languages, listening to IT podcasts, working on exciting and ambitious projects.&#xA;I started this blog to share my experience and thoughts about software engineering practices, technologies and skill set improvement.</description>
     </item>
-    
     <item>
       <title>Contact information</title>
       <link>https://savchenko.tech/contactinformation/</link>
       <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/contactinformation/</guid>
-      <description>  Email address maryna@savchenko.tech LinkedIn https://www.linkedin.com/in/maryna-savchenko-7061a8223/ Github https://github.com/marynasavchenko Twitter @SavchenkoTech  </description>
+      <description> Email address maryna@savchenko.tech LinkedIn https://www.linkedin.com/in/maryna-savchenko-7061a8223/ Github https://github.com/marynasavchenko Twitter @SavchenkoTech </description>
     </item>
-    
   </channel>
 </rss>

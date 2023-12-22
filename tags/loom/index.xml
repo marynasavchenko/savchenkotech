@@ -6,17 +6,14 @@
     <description>Recent content in loom on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/loom/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/loom/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Waiting for Loom&#39;s virtual threads...</title>
+      <title>Waiting for Loom&#39;s Virtual Threads...</title>
       <link>https://savchenko.tech/posts/loom/</link>
       <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/loom/</guid>
-      <description>Since Alan Turing time we came from running one program at a time on bare metal to running millions of java virtual threads. Which is absolutely impressive.
-Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance in a few ways:
- reducing latency (process one task faster) hiding latency (process another task while waiting) increasing throughput (process more tasks).  Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
+      <description>Since Alan Turing time we came from running one program at a time on bare metal to running millions of java virtual threads. Which is absolutely impressive.&#xA;Why? Why should we care about threads at all? The answer is - performance. Applying concurrency can improve performance in a few ways:&#xA;reducing latency (process one task faster) hiding latency (process another task while waiting) increasing throughput (process more tasks). Current java concurrency implementation is based on the rule that one Java thread equals exactly one OS thread (one-to-one mapping).</description>
     </item>
-    
   </channel>
 </rss>

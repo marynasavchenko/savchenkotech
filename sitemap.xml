@@ -68,10 +68,10 @@
     <loc>https://savchenko.tech/posts/springandkotlin/</loc>
     <lastmod>2022-10-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/posts/topsort/</loc>
+    <loc>https://savchenko.tech/tags/topological-sort/</loc>
     <lastmod>2022-09-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://savchenko.tech/tags/topologicalsort/</loc>
+    <loc>https://savchenko.tech/posts/topsort/</loc>
     <lastmod>2022-09-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/linked-list/</loc>
@@ -192,5 +192,7 @@
     <lastmod>2022-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/categories/</loc>
+  </url><url>
+    <loc>https://savchenko.tech/series/</loc>
   </url>
 </urlset>

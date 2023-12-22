@@ -6,27 +6,21 @@
     <description>Recent content in solid on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/solid/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/solid/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Why A Square Is Not A Rectangle: Liskov Substitution Principle</title>
+      <title>Why a Square Is Not a Rectangle: Liskov Substitution Principle</title>
       <link>https://savchenko.tech/posts/liskov/</link>
       <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/liskov/</guid>
-      <description>Liskov substitution principle (LSP) is one of the five SOLID principles. It is based on the concept of &amp;ldquo;substitutability&amp;rdquo;. Principle allows using code to be written in terms of the supertype specification, yet work correctly when using objects of the subtype.
- &amp;ldquo;What is wanted here is something like the following substitution property: If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.</description>
+      <description>Liskov substitution principle (LSP) is one of the five SOLID principles. It is based on the concept of &amp;ldquo;substitutability&amp;rdquo;. Principle allows using code to be written in terms of the supertype specification, yet work correctly when using objects of the subtype.&#xA;&amp;ldquo;What is wanted here is something like the following substitution property: If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.</description>
     </item>
-    
     <item>
-      <title>SOLID principles</title>
+      <title>SOLID Principles</title>
       <link>https://savchenko.tech/posts/solid/</link>
       <pubDate>Fri, 25 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/solid/</guid>
-      <description>When building software systems we need to avoid a mess at any cost. The more messy software is, the more expensive is to change and maintain it.
-Main design smells that lead to costs increase are:
- rigidity - when tight coupling leads to major rebuild and makes it harder to make changes fragility - when inappropriate and insufficient isolation of software parts leads to one change cause other unrelated modules crash or misbehave immobility - when software structures can not be reused  To avoid these design smells and make our software easy to change, understand and reuse we need a guide how to combine functions, data structures and classes - design principles.</description>
+      <description>When building software systems we need to avoid a mess at any cost. The more messy software is, the more expensive is to change and maintain it.&#xA;Main design smells that lead to costs increase are:&#xA;rigidity - when tight coupling leads to major rebuild and makes it harder to make changes fragility - when inappropriate and insufficient isolation of software parts leads to one change cause other unrelated modules crash or misbehave immobility - when software structures can not be reused To avoid these design smells and make our software easy to change, understand and reuse we need a guide how to combine functions, data structures and classes - design principles.</description>
     </item>
-    
   </channel>
 </rss>

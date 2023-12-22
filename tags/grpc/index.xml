@@ -1,34 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gRPC on savchenko.tech</title>
+    <title>grpc on savchenko.tech</title>
     <link>https://savchenko.tech/tags/grpc/</link>
-    <description>Recent content in gRPC on savchenko.tech</description>
+    <description>Recent content in grpc on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/grpc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/grpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>gRPC server side implementation using Spring</title>
+      <title>gRPC Server Side Implementation Using Spring</title>
       <link>https://savchenko.tech/posts/grpcservice/</link>
       <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/grpcservice/</guid>
-      <description>This article is describing how to create gRPC service implementation using Spring Boot.
-You can find more details about gRPC in &amp;ldquo;Is gRPC a better choice over REST?&amp;rdquo;.
-To create gRPC service you need to complete 3 tasks:
- Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC.  1. Generation of Proto model and service definition It will be Maven project.</description>
+      <description>This article is describing how to create gRPC service implementation using Spring Boot.&#xA;You can find more details about gRPC in &amp;ldquo;Is gRPC a better choice over REST?&amp;rdquo;.&#xA;To create gRPC service you need to complete 3 tasks:&#xA;Create module for proto model and service definitions. Create module with server side implementation of gRPC. Test service with BloomRPC. 1. Generation of Proto model and service definition It will be Maven project.</description>
     </item>
-    
     <item>
-      <title>Is gRPC a better choice over REST?</title>
+      <title>Is gRPC a Better Choice over REST?</title>
       <link>https://savchenko.tech/posts/grpcvsrest/</link>
       <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/grpcvsrest/</guid>
-      <description>Communication protocols play essential role in every modern software system. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.
-The most common way to build request-response style communication is RESTful services. However, REST can be inefficient and error-prone to use in microservices. We would need something more scalable, loosely coupled and efficient. That is where gRPC will shine.
- gRPC (the “g” stands for something different in every gRPC release) is an inter-process communication technology that allows you to connect, invoke, operate, and debug distributed heterogeneous applications as easily as making a local function call.</description>
+      <description>Communication protocols play essential role in every modern software system. With increasing popularity of Microservice architecture inter-process communication techniques become even more important.&#xA;The most common way to build request-response style communication is RESTful services. However, REST can be inefficient and error-prone to use in microservices. We would need something more scalable, loosely coupled and efficient. That is where gRPC will shine.&#xA;gRPC (the “g” stands for something different in every gRPC release) is an inter-process communication technology that allows you to connect, invoke, operate, and debug distributed heterogeneous applications as easily as making a local function call.</description>
     </item>
-    
   </channel>
 </rss>

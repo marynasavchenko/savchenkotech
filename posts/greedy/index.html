@@ -1,115 +1,225 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Maryna Savchenko">
+<meta name="description" content="Prim&amp;rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).
+Greedy algorithms is a technique used in designing and analyzing efficient algorithms. They typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice in hope that this choice leads to globally optimal solution." />
+<meta name="keywords" content=", algorithms, prisma&#39;s" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/greedy/" />
+
+
+    <title>
+        
+            Prim&#39;s Algorithm. Greedy. Algorithms Series :: savchenko.tech 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Prim&#39;s Algorithm. Greedy. Algorithms Series">
+<meta itemprop="description" content="Prim&rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).
+Greedy algorithms is a technique used in designing and analyzing efficient algorithms. They typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice in hope that this choice leads to globally optimal solution."><meta itemprop="datePublished" content="2022-08-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-08-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="426"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="algorithms,prisma&#39;s," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="Prim&#39;s Algorithm. Greedy. Algorithms Series"/>
+<meta name="twitter:description" content="Prim&rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).
+Greedy algorithms is a technique used in designing and analyzing efficient algorithms. They typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice in hope that this choice leads to globally optimal solution."/>
+
+
+
+    <meta property="og:title" content="Prim&#39;s Algorithm. Greedy. Algorithms Series" />
+<meta property="og:description" content="Prim&rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).
+Greedy algorithms is a technique used in designing and analyzing efficient algorithms. They typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice in hope that this choice leads to globally optimal solution." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/greedy/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-18T00:00:00+00:00" />
 
 
 
 
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Prim&#39;s algorithm. Greedy. Algorithms series - savchenko.tech</title>
-<meta name="description" content="Prisma&#39;s">
-
-<meta name="author" content="">
-
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="alternate" href="/index.xml?c=65f715235e02c5dda7b683fee46a731322acbee4" type="application/rss+xml" title="RSS" />
-<meta property="og:title" content="Prim&#39;s algorithm. Greedy. Algorithms series - savchenko.tech">
-</meta>
-<meta property="og:url" content="https://savchenko.tech/posts/greedy/">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="savchenko.tech">
-<meta property="og:description" content="Prisma&#39;s">
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
-
-<meta name="twitter:card" content="summary_large_image" /></meta>
-<meta name="twitter:site" content="@"></meta>
-<meta name="twitter:creator" content="@"></meta>
-<meta name="twitter:title" content="Prim&#39;s algorithm. Greedy. Algorithms series - savchenko.tech"></meta>
-<meta name="twitter:url" content="https://savchenko.tech/posts/greedy/"></meta>
-<meta name="twitter:description" content="Prisma&#39;s"></meta>
-
-<meta property="og:image" content="https://savchenko.tech//images/featured_image.jpg">
 
 
-<link rel="stylesheet" href="/css/main.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
-<link rel="stylesheet" href="/css/color.css?c=65f715235e02c5dda7b683fee46a731322acbee4">
+    <meta property="article:published_time" content="2022-08-18 00:00:00 &#43;0000 UTC" />
 
 
 
 
 
-<link href="https://fonts.googleapis.com/css?family=Raleway|Cousine&amp;amp;subset=english" rel="stylesheet"&gt;>
-
-<style>
-p{
-font-family: '', Raleway;
-font-size: 115%
-}
-body {
-font-family: '', Raleway;
-font-size: 115%
-}
-code {
-font-family: '', Cousine;
-font-size: 100%
-}
-</style></head>
-
-<body class="theme-default">
 
 
-<div id="content-header" class="title">
-  
-  <a class="site-title" href="/">savchenko.tech</a>
-  
-  <span class="site-sub-title"> / software engineering blog by Maryna Savchenko</span>
 
-  
-  <div id="header-image-area">
-    <img class="header-image" src="/images/header-image.jpg?c=65f715235e02c5dda7b683fee46a731322acbee4">
-  </div>
-  
 
-  <div id="main-menu-nav">
-    <div id="main-menu-nav-items">
-      
-        <div class="nav-item"><a href="/about/">About Maryna</a></div>
-      
-        <div class="nav-item"><a href="/posts/">Posts</a></div>
-      
-        <div class="nav-item"><a href="/tags/">Tags</a></div>
-      
-        <div class="nav-item"><a href="/contactinformation/">Contact Information</a></div>
-      
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
     </div>
-  </div>
-</div>
-<div id="content" class="main">
+</a>
 
 
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
 
 
-<h2>Prim&#39;s algorithm. Greedy. Algorithms series</h2>
+            <div class="content">
+                
+  <main class="post">
 
-<span class="sub">2022-08-18</span>
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        2 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        426 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2022-08-18
+        
 
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
+        <span class="tag"><a href="https://savchenko.tech/tags/algorithms/">algorithms</a></span>
+        <span class="tag"><a href="https://savchenko.tech/tags/prismas/">prisma&#39;s</a></span>
+        
+    </p>
 
+      
+      </p>
+    </div>
 
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/greedy/">Prim&rsquo;s Algorithm. Greedy. Algorithms Series</a>
+      </h1>
 
+      
 
+      
 
+      
 
-<p>Prim&rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).</p>
+      <div class="post-content">
+        <p>Prim&rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).</p>
 <p><strong>Greedy algorithms</strong> is a technique used in designing and analyzing efficient algorithms.
-They typically apply to optimization problems  in which you make a set of choices in order to arrive at an optimal 
-solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice 
+They typically apply to optimization problems  in which you make a set of choices in order to arrive at an optimal
+solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice
 in hope that this choice leads to globally optimal solution.</p>
 <p><strong>Minimum spanning tree</strong> (MST) of an edge-weighted graph is spanning tree whose weight (the sum of the weights of its edges)
 is no larger than the weight of any other spanning tree.</p>
@@ -117,25 +227,25 @@ is no larger than the weight of any other spanning tree.</p>
 <p><img src="../../images/mst.png" alt="mst.png"></p>
 <p>Unit test should check that there are right amount of edges in MST and the weight of MST is correct.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>   <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnMSTEdges</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            WeightedGraph weightedGraph <span style="color:#f92672">=</span> createWeightedGraph<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnMSTEdges</span>() {
+</span></span><span style="display:flex;"><span>            WeightedGraph weightedGraph <span style="color:#f92672">=</span> createWeightedGraph();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            MinimumSpanningTreePrims mst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MinimumSpanningTreePrims<span style="color:#f92672">(</span>weightedGraph<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>            Queue<span style="color:#f92672">&lt;</span>Edge<span style="color:#f92672">&gt;</span> mstEdges <span style="color:#f92672">=</span> mst<span style="color:#f92672">.</span><span style="color:#a6e22e">getMstEdges</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            MinimumSpanningTreePrims mst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MinimumSpanningTreePrims(weightedGraph);
+</span></span><span style="display:flex;"><span>            Queue<span style="color:#f92672">&lt;</span>Edge<span style="color:#f92672">&gt;</span> mstEdges <span style="color:#f92672">=</span> mst.<span style="color:#a6e22e">getMstEdges</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        assertEquals<span style="color:#f92672">(</span>7<span style="color:#f92672">,</span> mstEdges<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        assertEquals(7, mstEdges.<span style="color:#a6e22e">size</span>());
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnRightMSTWeight</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            WeightedGraph weightedGraph <span style="color:#f92672">=</span> createWeightedGraph<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnRightMSTWeight</span>() {
+</span></span><span style="display:flex;"><span>            WeightedGraph weightedGraph <span style="color:#f92672">=</span> createWeightedGraph();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            MinimumSpanningTreePrims mst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MinimumSpanningTreePrims<span style="color:#f92672">(</span>weightedGraph<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> epsilon <span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">000001d</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            MinimumSpanningTreePrims mst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MinimumSpanningTreePrims(weightedGraph);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> epsilon <span style="color:#f92672">=</span> 0.<span style="color:#a6e22e">000001d</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            assertEquals<span style="color:#f92672">(</span>1<span style="color:#f92672">.</span><span style="color:#a6e22e">80</span><span style="color:#f92672">,</span> mst<span style="color:#f92672">.</span><span style="color:#a6e22e">getWeight</span><span style="color:#f92672">(),</span> epsilon<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>Implementation of the Prim&rsquo;s algorithm needs WeightedGraph and Edge classes. 
+</span></span><span style="display:flex;"><span>            assertEquals(1.<span style="color:#a6e22e">80</span>, mst.<span style="color:#a6e22e">getWeight</span>(), epsilon);
+</span></span><span style="display:flex;"><span>            }
+</span></span></code></pre></div><p>Implementation of the Prim&rsquo;s algorithm needs WeightedGraph and Edge classes.
 It can be found <a href="https://github.com/marynasavchenko/algokata/tree/main/src/main/java/graph">here</a>.</p>
 <p>The main idea of Prim&rsquo;s algorithm is to add a new edge to a single growing tree at each step.</p>
 <ul>
@@ -145,56 +255,56 @@ It can be found <a href="https://github.com/marynasavchenko/algokata/tree/main/s
 <li>add edge to priority queue (by weight) if it has not visited vertices</li>
 <li>get (remove) lowest-weight edge from priority queue</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MinimumSpanningTreePrims</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[]</span> visitedVertices<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Queue<span style="color:#f92672">&lt;</span>Edge<span style="color:#f92672">&gt;</span> mstEdges<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PriorityQueue<span style="color:#f92672">&lt;</span>Edge<span style="color:#f92672">&gt;</span> crossingEdges<span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MinimumSpanningTreePrims</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[]</span> visitedVertices;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Queue<span style="color:#f92672">&lt;</span>Edge<span style="color:#f92672">&gt;</span> mstEdges;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PriorityQueue<span style="color:#f92672">&lt;</span>Edge<span style="color:#f92672">&gt;</span> crossingEdges;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MinimumSpanningTreePrims</span><span style="color:#f92672">(</span>WeightedGraph graph<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        crossingEdges <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PriorityQueue<span style="color:#f92672">&lt;&gt;();</span>
-</span></span><span style="display:flex;"><span>        visitedVertices <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[</span>graph<span style="color:#f92672">.</span><span style="color:#a6e22e">getNumberOfVertices</span><span style="color:#f92672">()];</span>
-</span></span><span style="display:flex;"><span>        mstEdges <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedBlockingQueue<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MinimumSpanningTreePrims</span>(WeightedGraph graph) {
+</span></span><span style="display:flex;"><span>        crossingEdges <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PriorityQueue<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>        visitedVertices <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[</span>graph.<span style="color:#a6e22e">getNumberOfVertices</span>()<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        mstEdges <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedBlockingQueue<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        visit<span style="color:#f92672">(</span>graph<span style="color:#f92672">,</span> 0<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>crossingEdges<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            Edge edge <span style="color:#f92672">=</span> crossingEdges<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> oneVertex <span style="color:#f92672">=</span> edge<span style="color:#f92672">.</span><span style="color:#a6e22e">getOneVertex</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> otherVertex <span style="color:#f92672">=</span> edge<span style="color:#f92672">.</span><span style="color:#a6e22e">getOtherVertex</span><span style="color:#f92672">(</span>oneVertex<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>visitedVertices<span style="color:#f92672">[</span>oneVertex<span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> visitedVertices<span style="color:#f92672">[</span>otherVertex<span style="color:#f92672">])</span> <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>            mstEdges<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>edge<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>visitedVertices<span style="color:#f92672">[</span>oneVertex<span style="color:#f92672">])</span> visit<span style="color:#f92672">(</span>graph<span style="color:#f92672">,</span> oneVertex<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>visitedVertices<span style="color:#f92672">[</span>otherVertex<span style="color:#f92672">])</span> visit<span style="color:#f92672">(</span>graph<span style="color:#f92672">,</span> otherVertex<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        visit(graph, 0);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>crossingEdges.<span style="color:#a6e22e">isEmpty</span>()) {
+</span></span><span style="display:flex;"><span>            Edge edge <span style="color:#f92672">=</span> crossingEdges.<span style="color:#a6e22e">remove</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> oneVertex <span style="color:#f92672">=</span> edge.<span style="color:#a6e22e">getOneVertex</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> otherVertex <span style="color:#f92672">=</span> edge.<span style="color:#a6e22e">getOtherVertex</span>(oneVertex);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (visitedVertices<span style="color:#f92672">[</span>oneVertex<span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> visitedVertices<span style="color:#f92672">[</span>otherVertex<span style="color:#f92672">]</span>) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>            mstEdges.<span style="color:#a6e22e">add</span>(edge);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>visitedVertices<span style="color:#f92672">[</span>oneVertex<span style="color:#f92672">]</span>) visit(graph, oneVertex);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>visitedVertices<span style="color:#f92672">[</span>otherVertex<span style="color:#f92672">]</span>) visit(graph, otherVertex);
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Queue<span style="color:#f92672">&lt;</span>Edge<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getMstEdges</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mstEdges<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Queue<span style="color:#f92672">&lt;</span>Edge<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getMstEdges</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mstEdges;
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getWeight</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> weight <span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Edge edge <span style="color:#f92672">:</span> getMstEdges<span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            weight <span style="color:#f92672">+=</span> edge<span style="color:#f92672">.</span><span style="color:#a6e22e">getWeight</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> weight<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getWeight</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> weight <span style="color:#f92672">=</span> 0.<span style="color:#a6e22e">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Edge edge : getMstEdges()) {
+</span></span><span style="display:flex;"><span>            weight <span style="color:#f92672">+=</span> edge.<span style="color:#a6e22e">getWeight</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> weight;
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">visit</span><span style="color:#f92672">(</span>WeightedGraph graph<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> vertex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        visitedVertices<span style="color:#f92672">[</span>vertex<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Edge edge <span style="color:#f92672">:</span> graph<span style="color:#f92672">.</span><span style="color:#a6e22e">getEdgesFor</span><span style="color:#f92672">(</span>vertex<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>isOtherVertexVisited<span style="color:#f92672">(</span>edge<span style="color:#f92672">,</span> vertex<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>                crossingEdges<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>edge<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">visit</span>(WeightedGraph graph, <span style="color:#66d9ef">int</span> vertex) {
+</span></span><span style="display:flex;"><span>        visitedVertices<span style="color:#f92672">[</span>vertex<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Edge edge : graph.<span style="color:#a6e22e">getEdgesFor</span>(vertex)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>isOtherVertexVisited(edge, vertex)) {
+</span></span><span style="display:flex;"><span>                crossingEdges.<span style="color:#a6e22e">add</span>(edge);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isOtherVertexVisited</span><span style="color:#f92672">(</span>Edge edge<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> vertex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> otherVertex <span style="color:#f92672">=</span> edge<span style="color:#f92672">.</span><span style="color:#a6e22e">getOtherVertex</span><span style="color:#f92672">(</span>vertex<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> visitedVertices<span style="color:#f92672">[</span>otherVertex<span style="color:#f92672">];</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>Complete <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/graph/MinimumSpanningTreePrims.java">implementation</a> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isOtherVertexVisited</span>(Edge edge, <span style="color:#66d9ef">int</span> vertex) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> otherVertex <span style="color:#f92672">=</span> edge.<span style="color:#a6e22e">getOtherVertex</span>(vertex);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> visitedVertices<span style="color:#f92672">[</span>otherVertex<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Complete <a href="https://github.com/marynasavchenko/algokata/blob/main/src/main/java/graph/MinimumSpanningTreePrims.java">implementation</a>
 with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/java/graph/MinimumSpanningTreePrimsTest.java">test cases</a> can be found on GitHub.</p>
 <p>Sources:</p>
 <ol>
@@ -202,100 +312,66 @@ with <a href="https://github.com/marynasavchenko/algokata/blob/main/src/test/jav
 <li><a href="https://www.amazon.de/Introduction-Algorithms-fourth-Thomas-Cormen/dp/026204630X/ref=asc_df_026204630X/?tag=googshopde-21&amp;linkCode=df0&amp;hvadid=526471224369&amp;hvpos=&amp;hvnetw=g&amp;hvrand=13700716644741673088&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9042525&amp;hvtargid=pla-1268844537750&amp;psc=1&amp;th=1&amp;psc=1">Introduction to Algorithms by  Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</a>.</li>
 </ol>
 
-
-
-
-
-
-<hr class="block-separater">
-
-
-
-
-<div class="content-footer-item">
-	Tags for this post:
-	
-	<a class="post-tag" href="/tags/algorithms/">algorithms</a>
-	
-	<a class="post-tag" href="/tags/prismas/">Prisma&#39;s</a>
-	
-</div>
-
-
-
-
-
-
-
-<div class="content-footer-item neighbor">
-	
-	<div class="prev-post">Prev: <a href="/posts/bfs/">Breadth First Search. Algorithms series</a></div>
-	
-	
-	<div class="next-post">Next: <a href="/posts/linledlist/">Linked List. Algorithms series</a></div>
-	
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    <div class="related-tag-category-list">
-        <h4>Other posts tagged by "algorithms"</h3>
-        <ul class="post-list">
-          
-          <li class="post-item">
-  <div class="post-date sub">2023-08-06</div>
-  <div class="post-title"><a href="/posts/reduction/">Reduction. Algorithm Series</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-09-24</div>
-  <div class="post-title"><a href="/posts/topsort/">Topological sort. Algorithms series</a></div>
-  
-</li>
-          
-          <li class="post-item">
-  <div class="post-date sub">2022-09-10</div>
-  <div class="post-title"><a href="/posts/linledlist/">Linked List. Algorithms series</a></div>
-  
-</li>
-          
-        </ul>
-        <div class="more-area">
-          
-          <a class="more" href='/tags/algorithms/'>more ...</a>
-          
       </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://savchenko.tech/posts/linledlist/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Linked List. Algorithms Series</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/bfs/">
+                    <span class="button__text">Breadth First Search. Algorithms Series</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
         </div>
+    </div>
+
+    </div>
+
+
     
 
     
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
     
     
+    
+        <div class="footer__inner">
+          
+        </div>
+</footer>
+
+            
+        </div>
+
+        
 
 
 
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
 
-<script src="/js/single.js"></script>
 
 
-	</div><div id="content-footer" class="sub">
-  
-  <div class="credit">
-    Power by <a href="https://gohugo.io">Hugo</a> /
-    Theme <a href="https://github.com/michimani/simplog/">simplog</a> by <a href="https://github.com/michimani/">michimani</a>
-  </div>
-</div></body>
-
+    </body>
 </html>

@@ -6,17 +6,14 @@
     <description>Recent content in clean code on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/clean-code/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/clean-code/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Clean code notes</title>
+      <title>Clean Code Notes</title>
       <link>https://savchenko.tech/posts/cleancode/</link>
       <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/cleancode/</guid>
-      <description>It is hard to find software engineer these days that has never heard of Clean code. At the same time in many organizations code that runs on production brings bugs and pain every day.
-So, what is Clean code and why it is important?
-Clean code is set of principles for writing clear, understandable, and maintainable code. It is not strict rules and applying each principle needs to make sense in concrete situation.</description>
+      <description>It is hard to find software engineer these days that has never heard of Clean code. At the same time in many organizations code that runs on production brings bugs and pain every day.&#xA;So, what is Clean code and why it is important?&#xA;Clean code is set of principles for writing clear, understandable, and maintainable code. It is not strict rules and applying each principle needs to make sense in concrete situation.</description>
     </item>
-    
   </channel>
 </rss>

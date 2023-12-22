@@ -6,16 +6,14 @@
     <description>Recent content in bfs on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/bfs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Aug 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/bfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Breadth First Search. Algorithms series</title>
+      <title>Breadth First Search. Algorithms Series</title>
       <link>https://savchenko.tech/posts/bfs/</link>
       <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/bfs/</guid>
-      <description>In this article we will be looking at Single-source shortest path problem. The classical method for solving it is Breadth First Search (BFS). In BFS we want to explore the vertices in order of their distance from the source. It could be achieved with queue and filling in last edge on the shortest path for every vertex.
-Unit test should check if the shortest path is returned, when there is longer path in the graph.</description>
+      <description>In this article we will be looking at Single-source shortest path problem. The classical method for solving it is Breadth First Search (BFS). In BFS we want to explore the vertices in order of their distance from the source. It could be achieved with queue and filling in last edge on the shortest path for every vertex.&#xA;Unit test should check if the shortest path is returned, when there is longer path in the graph.</description>
     </item>
-    
   </channel>
 </rss>

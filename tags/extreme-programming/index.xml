@@ -6,18 +6,14 @@
     <description>Recent content in extreme programming on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://savchenko.tech/tags/extreme-programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/extreme-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Team framework</title>
+      <title>Team Framework</title>
       <link>https://savchenko.tech/posts/teamwork/</link>
       <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://savchenko.tech/posts/teamwork/</guid>
-      <description>If I have seen further than others, it is by standing upon the shoulders of giants.
-Isaac Newton
- Programming is not about coding it is about working with people. Sounds easy, isn&amp;rsquo;t it? You put people in one room, and somehow it all should magically work out.
-The problem is that most people do not even come across as they intend to. I am not even talking about solving complex issues.</description>
+      <description>If I have seen further than others, it is by standing upon the shoulders of giants.&#xA;Isaac Newton&#xA;Programming is not about coding it is about working with people. Sounds easy, isn&amp;rsquo;t it? You put people in one room, and somehow it all should magically work out.&#xA;The problem is that most people do not even come across as they intend to. I am not even talking about solving complex issues.</description>
     </item>
-    
   </channel>
 </rss>
