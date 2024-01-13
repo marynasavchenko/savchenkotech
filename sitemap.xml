@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://savchenko.tech/tags/acid/</loc>
-    <lastmod>2024-01-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/tags/cap/</loc>
-    <lastmod>2024-01-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/posts/consistency/</loc>
-    <lastmod>2024-01-13T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://savchenko.tech/posts/</loc>
     <lastmod>2024-01-13T00:00:00+00:00</lastmod>
   </url><url>
@@ -18,6 +9,12 @@
     <lastmod>2024-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/</loc>
+    <lastmod>2024-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/test/</loc>
+    <lastmod>2024-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/test/</loc>
     <lastmod>2024-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/blockchain/</loc>
