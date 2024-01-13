@@ -6,88 +6,8 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sat, 13 Jan 2024 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
-        
-        <item>
-            <title>Confusing Consistency: CAP vs ACID</title>
-            <link>https://savchenko.tech/posts/consistency/</link>
-            <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
-            
-            <guid>https://savchenko.tech/posts/consistency/</guid>
-            <description>Effective communication requires getting definitions right. Very often the same word can have different meanings and lead to confusion. Good example of that would be term Consistency. In this article we will take a look at consistency in CAP and ACID and differences between them.
-Let&amp;rsquo;s start with defining CAP and ACID.
-CAP theorem is formulated by computer scientist Eric Brewer in 2000, and states that a distributed data store cannot simultaneously provide more than two out of the following three guarantees:</description>
-            <content type="html"><![CDATA[<p><img src="../../images/consistency3.png" alt="consistency3.png"></p>
-<p>Effective communication requires getting definitions right.
-Very often the same word can have different meanings and lead to confusion. Good example of that would be term Consistency.
-In this article we will take a look at consistency in CAP and ACID and differences between them.</p>
-<p>Let&rsquo;s start with defining CAP and ACID.</p>
-<blockquote>
-<p><strong>CAP theorem</strong> is formulated by computer scientist Eric Brewer in 2000, and states that a distributed
-data store cannot simultaneously provide more than two out of the following three guarantees:</p>
-<p>Consistency (C):
-Every read receives the most recent write or an error. In a consistent system, all nodes in the system have the same data
-view at any given point in time.</p>
-<p>Availability (A):
-Every request is guaranteed to receive a response, without the guarantee that it contains the most recent version
-of the information.</p>
-<p>Partition Tolerance (P):
-The system continues to operate despite network partitions that may cause communication failures between nodes.</p>
-</blockquote>
-<blockquote>
-<p><strong>ACID</strong> represents a set of properties that guarantee the reliability and correctness of transactions in database systems.</p>
-<p>Atomicity (A):
-Ensures that a transaction is treated as a single, indivisible unit of work.</p>
-<p>Consistency (C):
-Ensures that a transaction brings the database from one valid state to another.</p>
-<p>Isolation (I):
-Ensures that multiple transactions can execute concurrently without interfering with each other.</p>
-<p>Durability (D):
-Guarantees that once a transaction is committed, its changes are permanent and will survive subsequent failures,
-such as system crashes or power outages.</p>
-</blockquote>
-<p>So, in the CAP theorem, the word consistency is used in the meaning of linearizability.
-And in the context of ACID, consistency refers to an application-specific notion of the database being in a “good state.”
-Let&rsquo;s dive deeper in each oh them.</p>
-<p>What is linearizability?</p>
-<p><strong>Linearizability</strong> (also known as atomic consistency, strong consistency, immediate consistency, or external consistency)
-is a recency guarantee on reads and writes of an individual object. It is a strong consistency model.
-So if you ask different replicas the same question, you will receive the same answer.</p>
-<p>Let&rsquo;s take a look at nonlinearizable system example:</p>
-<p><img src="../../images/consistency4.png" alt="consistency4.png"></p>
-<ol>
-<li>Friends Bob and Alice discuss going on vacation and book accommodation.</li>
-<li>During their discussion John books the accommodation that Bob and Alice were looking at.</li>
-<li>When Bob refreshes the page, he sees that it is still available because he reads from the other replica
-that has not been updated yet.</li>
-<li>Alice after the refresh sees that accommodation is not available because she reads from the first replica that has the most recent update.</li>
-</ol>
-<p>The fact that Bob&rsquo;s query returned a stale state is an example of linearizability violation.</p>
-<p>Next image will show the same scenario on linearizable system:</p>
-<p><img src="../../images/consistency5.png" alt="consistency5.png"></p>
-<p>In linearizable system once a new value has been written, all subsequent reads see the value that was written,
-until it is overwritten again. This means that the system acts as if there is only one replica.</p>
-<p><strong>ACID Consistency</strong> is nothing that database can fully guarantee (except some uniqueness constraints, etc.).
-It’s the application’s responsibility to define its transactions correctly so that they preserve consistency.
-In most cases if you write bad data, the database can not stop you.</p>
-<p>Let&rsquo;s take a look at ACID consistency compliance example:</p>
-<p><img src="../../images/consistency6.png" alt="consistency6.png"></p>
-<p>Each step is successfully completed before moving to the next, ensuring database consistency throughout the transaction.
-If any step fails, the transaction is rolled back, maintaining the consistency of the database.</p>
-<p>If the payment processing will fail and the system doesn&rsquo;t roll back the initial reservation it will lead to inconsistency
-in the database.</p>
-<p>So, CAP Consistency means linearizability and ACID Consistency is application’s responsibility and nothing that database
-can guarantee. It’s unfortunate that the same word is used with many meanings. We took a look at only 2 examples and there are
-also eventual consistency and consistent hashing.
-This is why having precise and clear definitions is crucial especially when the term is overloaded.
-<a href="https://martin.kleppmann.com/">Martin Kleppman</a> did amazing job in untangling many os these terms.</p>
-<p>Sources:</p>
-<ol>
-<li><a href="https://www.amazon.de/-/en/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321">Designing Data-Intensive Applications by Martin Kleppmann</a>.</li>
-</ol>
-]]></content>
-        </item>
         
         <item>
             <title>Blockchains Comparison</title>
