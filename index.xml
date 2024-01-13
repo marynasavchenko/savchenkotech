@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Confusing Consistency: CAP vs ACID</title>
+      <link>https://savchenko.tech/posts/consistency/</link>
+      <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://savchenko.tech/posts/consistency/</guid>
+      <description>Effective communication requires getting definitions right. Very often the same word can have different meanings and lead to confusion. Good example of that would be term Consistency. In this article we will take a look at consistency in CAP and ACID and differences between them.&#xA;Let&amp;rsquo;s start with defining CAP and ACID.&#xA;CAP theorem is formulated by computer scientist Eric Brewer in 2000, and states that a distributed data store cannot simultaneously provide more than two out of the following three guarantees:</description>
+    </item>
     <item>
       <title>Blockchains Comparison</title>
       <link>https://savchenko.tech/posts/blockchaincomparison/</link>
