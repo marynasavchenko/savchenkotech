@@ -5,8 +5,100 @@
         <description>Recent content in Posts on savchenko.tech</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sat, 13 Jan 2024 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 17 Feb 2024 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>The Power of Data Oriented Programming in Java</title>
+            <link>https://savchenko.tech/posts/dataoriented/</link>
+            <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+            
+            <guid>https://savchenko.tech/posts/dataoriented/</guid>
+            <description>Most of the applications we developers are working on are have to do with data. We are getting data from &amp;ldquo;outside world&amp;rdquo;, save it and pass further. And it does not matter how complex the domain is we always ask the next questions:
+How do I know for sure that my data is valid? How do I avoid errors in my system and do not inject it into other system? The answer is - better data modeling.</description>
+            <content type="html"><![CDATA[<p>Most of the applications we developers are working on are have to do with data.
+We are getting data from &ldquo;outside world&rdquo;, save it and pass further.
+And it does not matter how complex the domain is we always ask the next questions:</p>
+<ul>
+<li>How do I know for sure that my data is valid?</li>
+<li>How do I avoid errors in my system and do not inject it into other system?</li>
+</ul>
+<p>The answer is - better data modeling. Clear, cohesive domain model that make it very hard to input erroneous states.</p>
+<p>One of the methods to achieve that is data oriented programming.</p>
+<p>The main characteristics of Data Oriented Programming are:</p>
+<ol>
+<li>Modeling clear and cohesive data structures</li>
+<li>Using immutable data</li>
+<li>Making illegal state impossible to enter the system</li>
+<li>Validation at the boundary</li>
+</ol>
+<p>Let&rsquo;s take a look at each of these characteristics on relatively easy Java example.</p>
+<p>We will build simple REST application that process orders.</p>
+<h4 id="modeling-data-with-sealed-interfaces-and-records">Modeling data with sealed interfaces and records</h4>
+<p>To get cohesive data model we will use sealed interface for Order and records for alternatives of the Order.
+The benefit of this approach is better safety and maintainability by making illegal states unrepresentable.</p>
+<p>Annotations above sealed class are necessarily to link interface and matching concrete implementation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@JsonIgnoreProperties</span>(ignoreUnknown <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@JsonTypeInfo</span>(use <span style="color:#f92672">=</span> JsonTypeInfo.<span style="color:#a6e22e">Id</span>.<span style="color:#a6e22e">NAME</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@JsonSubTypes</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@JsonSubTypes.Type</span>(value <span style="color:#f92672">=</span> ClientOrder.<span style="color:#a6e22e">class</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ClientOrder&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@JsonSubTypes.Type</span>(value <span style="color:#f92672">=</span> GuestOrder.<span style="color:#a6e22e">class</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GuestOrder&#34;</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Order</span> permits ClientOrder, GuestOrder {
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">GuestOrder</span>(String orderDetails, String deliveryDetails) <span style="color:#66d9ef">implements</span> Order {
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">ClientOrder</span>(String orderDetails, String deliveryDetails, Long clientId) <span style="color:#66d9ef">implements</span> Order {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ClientOrder {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> clientIdStr <span style="color:#f92672">=</span> String.<span style="color:#a6e22e">valueOf</span>(clientId);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (clientIdStr.<span style="color:#a6e22e">length</span>() <span style="color:#f92672">&gt;</span> 10 <span style="color:#f92672">||</span> clientIdStr.<span style="color:#a6e22e">length</span>() <span style="color:#f92672">&lt;</span> 3) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(<span style="color:#e6db74">&#34;clientId must be no more than 10 and no less than 3 digits long&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Using records also brings immutability benefits. Fields of a record  do not have setter methods and are implicitly final.
+As shown in ClientOrder, record constructor can be a good place for validation data before injecting it into a system.</p>
+<h4 id="processing-the-options-with-a-pattern-matching-switch">Processing the options with a pattern matching switch</h4>
+<p>To process and map Order options we use pattern matching switch. Because Order interface is sealed, compiler will check
+if all the options are covered.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> OrderEntity <span style="color:#a6e22e">mapToEntity</span>(Order order) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">switch</span> (order) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> ClientOrder clientOrder <span style="color:#f92672">-&gt;</span> mapToEntity(clientOrder);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> GuestOrder guestOrder <span style="color:#f92672">-&gt;</span> mapToEntity(guestOrder);
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Order <span style="color:#a6e22e">mapToDto</span>(OrderEntity entity) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">switch</span> (entity) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> ClientOrderEntity clientOrderEntity <span style="color:#f92672">-&gt;</span> map(clientOrderEntity);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> GuestOrderEntity guestOrderEntity <span style="color:#f92672">-&gt;</span> map(guestOrderEntity);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">default</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> OrderNotFoundException();
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>This implementation is quite elegant in comparison to Visitor pattern for example.</p>
+<p>Controller takes Order sealed type and the system can confidently deal with alternative cases.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span> <span style="color:#a6e22e">@PostMapping</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ResponseEntity<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">processOrder</span>(<span style="color:#a6e22e">@RequestBody</span> Order order) {
+</span></span><span style="display:flex;"><span>        orderProcessor.<span style="color:#a6e22e">processOrder</span>(order);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ResponseEntity.<span style="color:#a6e22e">ok</span>(<span style="color:#e6db74">&#34;Order processed successfully! &#34;</span> <span style="color:#f92672">+</span> order);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ResponseEntity<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">getOrders</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ResponseEntity.<span style="color:#a6e22e">ok</span>(orderProcessor.<span style="color:#a6e22e">getAllOrders</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>So, using data oriented approach can help with creating more cohesive data model, which can increase readability,
+maintainability and testability. In my opinion it can be good fit for both simple domain and more complex one.</p>
+<p>Complete <a href="https://github.com/marynasavchenko/data-oriented/tree/main/orders">implementation</a> can be found on GitHub.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://openjdk.org/projects/amber/">Project Amber</a>.</li>
+</ol>
+]]></content>
+        </item>
         
         <item>
             <title>Confusing Consistency: CAP vs ACID</title>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="data oriented programming">
+<meta name="description" content="Most of the applications we developers are working on are have to do with data. We are getting data from &amp;ldquo;outside world&amp;rdquo;, save it and pass further. And it does not matter how complex the domain is we always ask the next questions:
+How do I know for sure that my data is valid? How do I avoid errors in my system and do not inject it into other system? The answer is - better data modeling." />
+<meta name="keywords" content=", data oriented programming" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/dataoriented/" />
+
+
+    <title>
+        
+            The Power of Data Oriented Programming in Java :: savchenko.tech  — software engineering blog by Maryna Savchenko
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="The Power of Data Oriented Programming in Java">
+<meta itemprop="description" content="Most of the applications we developers are working on are have to do with data. We are getting data from &ldquo;outside world&rdquo;, save it and pass further. And it does not matter how complex the domain is we always ask the next questions:
+How do I know for sure that my data is valid? How do I avoid errors in my system and do not inject it into other system? The answer is - better data modeling."><meta itemprop="datePublished" content="2024-02-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-02-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="509"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="data oriented programming," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="The Power of Data Oriented Programming in Java"/>
+<meta name="twitter:description" content="Most of the applications we developers are working on are have to do with data. We are getting data from &ldquo;outside world&rdquo;, save it and pass further. And it does not matter how complex the domain is we always ask the next questions:
+How do I know for sure that my data is valid? How do I avoid errors in my system and do not inject it into other system? The answer is - better data modeling."/>
+
+
+
+    <meta property="og:title" content="The Power of Data Oriented Programming in Java" />
+<meta property="og:description" content="Most of the applications we developers are working on are have to do with data. We are getting data from &ldquo;outside world&rdquo;, save it and pass further. And it does not matter how complex the domain is we always ask the next questions:
+How do I know for sure that my data is valid? How do I avoid errors in my system and do not inject it into other system? The answer is - better data modeling." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/dataoriented/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-02-17T00:00:00+00:00" /><meta property="og:site_name" content="savchenko.tech" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2024-02-17 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">savchenko.tech</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        3 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        509 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2024-02-17
+        
+
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://savchenko.tech/tags/data-oriented-programming/">data oriented programming</a></span>
+        
+    </p>
+
+      
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/dataoriented/">The Power of Data Oriented Programming in Java</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>Most of the applications we developers are working on are have to do with data.
+We are getting data from &ldquo;outside world&rdquo;, save it and pass further.
+And it does not matter how complex the domain is we always ask the next questions:</p>
+<ul>
+<li>How do I know for sure that my data is valid?</li>
+<li>How do I avoid errors in my system and do not inject it into other system?</li>
+</ul>
+<p>The answer is - better data modeling. Clear, cohesive domain model that make it very hard to input erroneous states.</p>
+<p>One of the methods to achieve that is data oriented programming.</p>
+<p>The main characteristics of Data Oriented Programming are:</p>
+<ol>
+<li>Modeling clear and cohesive data structures</li>
+<li>Using immutable data</li>
+<li>Making illegal state impossible to enter the system</li>
+<li>Validation at the boundary</li>
+</ol>
+<p>Let&rsquo;s take a look at each of these characteristics on relatively easy Java example.</p>
+<p>We will build simple REST application that process orders.</p>
+<h4 id="modeling-data-with-sealed-interfaces-and-records">Modeling data with sealed interfaces and records</h4>
+<p>To get cohesive data model we will use sealed interface for Order and records for alternatives of the Order.
+The benefit of this approach is better safety and maintainability by making illegal states unrepresentable.</p>
+<p>Annotations above sealed class are necessarily to link interface and matching concrete implementation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@JsonIgnoreProperties</span>(ignoreUnknown <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@JsonTypeInfo</span>(use <span style="color:#f92672">=</span> JsonTypeInfo.<span style="color:#a6e22e">Id</span>.<span style="color:#a6e22e">NAME</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@JsonSubTypes</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@JsonSubTypes.Type</span>(value <span style="color:#f92672">=</span> ClientOrder.<span style="color:#a6e22e">class</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ClientOrder&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@JsonSubTypes.Type</span>(value <span style="color:#f92672">=</span> GuestOrder.<span style="color:#a6e22e">class</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GuestOrder&#34;</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Order</span> permits ClientOrder, GuestOrder {
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">GuestOrder</span>(String orderDetails, String deliveryDetails) <span style="color:#66d9ef">implements</span> Order {
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">ClientOrder</span>(String orderDetails, String deliveryDetails, Long clientId) <span style="color:#66d9ef">implements</span> Order {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ClientOrder {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> clientIdStr <span style="color:#f92672">=</span> String.<span style="color:#a6e22e">valueOf</span>(clientId);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (clientIdStr.<span style="color:#a6e22e">length</span>() <span style="color:#f92672">&gt;</span> 10 <span style="color:#f92672">||</span> clientIdStr.<span style="color:#a6e22e">length</span>() <span style="color:#f92672">&lt;</span> 3) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(<span style="color:#e6db74">&#34;clientId must be no more than 10 and no less than 3 digits long&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Using records also brings immutability benefits. Fields of a record  do not have setter methods and are implicitly final.
+As shown in ClientOrder, record constructor can be a good place for validation data before injecting it into a system.</p>
+<h4 id="processing-the-options-with-a-pattern-matching-switch">Processing the options with a pattern matching switch</h4>
+<p>To process and map Order options we use pattern matching switch. Because Order interface is sealed, compiler will check
+if all the options are covered.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> OrderEntity <span style="color:#a6e22e">mapToEntity</span>(Order order) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">switch</span> (order) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> ClientOrder clientOrder <span style="color:#f92672">-&gt;</span> mapToEntity(clientOrder);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> GuestOrder guestOrder <span style="color:#f92672">-&gt;</span> mapToEntity(guestOrder);
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Order <span style="color:#a6e22e">mapToDto</span>(OrderEntity entity) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">switch</span> (entity) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> ClientOrderEntity clientOrderEntity <span style="color:#f92672">-&gt;</span> map(clientOrderEntity);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> GuestOrderEntity guestOrderEntity <span style="color:#f92672">-&gt;</span> map(guestOrderEntity);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">default</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> OrderNotFoundException();
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>This implementation is quite elegant in comparison to Visitor pattern for example.</p>
+<p>Controller takes Order sealed type and the system can confidently deal with alternative cases.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span> <span style="color:#a6e22e">@PostMapping</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ResponseEntity<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">processOrder</span>(<span style="color:#a6e22e">@RequestBody</span> Order order) {
+</span></span><span style="display:flex;"><span>        orderProcessor.<span style="color:#a6e22e">processOrder</span>(order);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ResponseEntity.<span style="color:#a6e22e">ok</span>(<span style="color:#e6db74">&#34;Order processed successfully! &#34;</span> <span style="color:#f92672">+</span> order);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ResponseEntity<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">getOrders</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ResponseEntity.<span style="color:#a6e22e">ok</span>(orderProcessor.<span style="color:#a6e22e">getAllOrders</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>So, using data oriented approach can help with creating more cohesive data model, which can increase readability,
+maintainability and testability. In my opinion it can be good fit for both simple domain and more complex one.</p>
+<p>Complete <a href="https://github.com/marynasavchenko/data-oriented/tree/main/orders">implementation</a> can be found on GitHub.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://openjdk.org/projects/amber/">Project Amber</a>.</li>
+</ol>
+
+      </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/confusingconsistency/">
+                    <span class="button__text">Confusing Consistency: CAP vs ACID</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+    
+        <div class="footer__inner">
+          
+        </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
+
+
+
+    </body>
+</html>
