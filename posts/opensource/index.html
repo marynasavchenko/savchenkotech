@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Maryna Savchenko">
+<meta name="description" content="“Open source” is one of the concepts that is widely used and at the same time is widely misunderstood.
+I think that is misunderstanding, not injustice leads to wave of frustration every time next company make a switch from Open Source Licence to Business Source License. HashiCorp, Confluent, Elastic, Redis and others did prioritize their business with Business Source License move.
+Do they being greedy? No. They just make money, as business suppose to do." />
+<meta name="keywords" content=", open source" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/opensource/" />
+
+
+    <title>
+        
+            Open Source Software: True Love or Business Transaction :: savchenko.tech  — software engineering blog by Maryna Savchenko
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Open Source Software: True Love or Business Transaction">
+<meta itemprop="description" content="“Open source” is one of the concepts that is widely used and at the same time is widely misunderstood.
+I think that is misunderstanding, not injustice leads to wave of frustration every time next company make a switch from Open Source Licence to Business Source License. HashiCorp, Confluent, Elastic, Redis and others did prioritize their business with Business Source License move.
+Do they being greedy? No. They just make money, as business suppose to do."><meta itemprop="datePublished" content="2024-05-31T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-05-31T00:00:00+00:00" />
+<meta itemprop="wordCount" content="701"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="open source," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="Open Source Software: True Love or Business Transaction"/>
+<meta name="twitter:description" content="“Open source” is one of the concepts that is widely used and at the same time is widely misunderstood.
+I think that is misunderstanding, not injustice leads to wave of frustration every time next company make a switch from Open Source Licence to Business Source License. HashiCorp, Confluent, Elastic, Redis and others did prioritize their business with Business Source License move.
+Do they being greedy? No. They just make money, as business suppose to do."/>
+
+
+
+    <meta property="og:title" content="Open Source Software: True Love or Business Transaction" />
+<meta property="og:description" content="“Open source” is one of the concepts that is widely used and at the same time is widely misunderstood.
+I think that is misunderstanding, not injustice leads to wave of frustration every time next company make a switch from Open Source Licence to Business Source License. HashiCorp, Confluent, Elastic, Redis and others did prioritize their business with Business Source License move.
+Do they being greedy? No. They just make money, as business suppose to do." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/opensource/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-31T00:00:00+00:00" /><meta property="og:site_name" content="savchenko.tech" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2024-05-31 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">savchenko.tech</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        4 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        701 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2024-05-31
+        
+
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://savchenko.tech/tags/open-source/">open source</a></span>
+        
+    </p>
+
+      
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/opensource/">Open Source Software: True Love or Business Transaction</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>“Open source” is one of the concepts that is widely used and at the same time is widely misunderstood.</p>
+<p>I think that is misunderstanding, not injustice leads to wave of frustration every time next company make a switch
+from Open Source Licence to Business Source License.
+HashiCorp, Confluent, Elastic, Redis and others did prioritize their business with Business Source License move.</p>
+<p>Do they being greedy? No. They just make money, as business suppose to do.</p>
+<p>So, if we turn focus from the business and ask ourselves, developers:
+&ldquo;Do we have enough knowledge about Intellectual property?&rdquo;
+I would say - &ldquo;No, I definitely not&rdquo;.
+And that is not surprising, because Intellectual property Law is its own enormous thing.</p>
+<p>When reading the GNU Library Public Licence I realized I do not understand half of the text, and needed
+to go over some passages several times.
+When talking to people on meetups or listening to the podcasts I realised that others are confused too.</p>
+<p>Some of the common misconceptions were:</p>
+<ul>
+<li>Open source code does not have a licence</li>
+<li>Source available code can be used the same way as Open source</li>
+<li>Author of the code in Open Source always own it</li>
+</ul>
+<p>Small disclaimer:
+This article is more of an attempt to highlight confusion points, not clarify everything about Open Source Licencing.</p>
+<p>So, what is a licence anyway?</p>
+<p>Simplified, <strong>License</strong> is the legal way a copyright owner grants permission to others to use his/her intellectual property.</p>
+<p><strong>Copyright</strong> protects only the expression of that idea.
+A copyright comes into force when the protected work is created.</p>
+<h4 id="what-is-open-source-license">What is Open Source License?</h4>
+<p>Short definition from Open Source Initiative’s website:</p>
+<blockquote>
+<p><strong>Open source licenses</strong> are licenses that comply with the Open Source Definition – in brief,
+they allow software to be freely used, modified, and shared. To be approved by the Open Source Initiative
+(also known as the OSI) a license must go through the Open Source Initiative’s license review process.</p>
+</blockquote>
+<p>Open source is not really a legal term.
+It is not illegal to name something Open Source even if it is not, but it is illegal to violate the licence.
+So, we should read licenses very carefully.</p>
+<h4 id="source-available-vs-open-source">Source available vs Open source</h4>
+<blockquote>
+<p><strong>Business Source License (BSL)</strong> is an alternative to closed source or open core licensing models.
+Under BSL, the source code is always publicly available. Non-production use of the code is always free,
+and the licensor can also make an Additional Use Grant allowing limited production use.</p>
+</blockquote>
+<p>Thus, basically, BSL can mean anything. From only registration to paying fee per user, processor core, etc.
+The main thing about BSL that it is not an Open source license because it does not meet Open Source Definition.
+And it is not a concrete Licence, it is a template. So reading carefully applies here too.</p>
+<p>When we talk about relicensing, Open source project does need agreements from all the contributors to do so,
+unless Project owns the copyrights in contributions made to them.</p>
+<p>And that has been the Greatest confusion for me - <strong>Contributors licence</strong>.
+In many cases identical licenses are used for contributions and for the project&rsquo;s derivative works.
+I have never seen full clear legal description on Open Source projects web pages.
+It is almost impossible to find out who is copyright holder is or when copyright assignment happening,
+if that is happening.
+But in cases of relicencing it is clear that copyright holder was Foundation or Company behind the Open Source project.
+In my opinion it is very important to understand what you&rsquo;re being asked to give away when contributing to Open Source project.</p>
+<p>I am still confused with the question: Why if Open source so &ldquo;Open&rdquo;, I can not find the copyright holder easily?
+People contribute to Open Source projects whose goals and values they share. And one of those values should be
+transparency.
+My expectations are that Open Source projects are more open. In ideal world&hellip;</p>
+<p>In the real world however developers should invest
+time into understanding Intellectual Property better to protect their work, to respect work of the others and
+not to over-romanticise community-supported software.</p>
+<ol>
+<li><a href="https://opensource.org/osd">The Open Source Definition by Open Source Initiative</a>.</li>
+<li><a href="https://www.amazon.com/Open-Source-Licensing-Software-Intellectual/dp/0131487876">Open Source Licensing: Software Freedom and Intellectual Property Law by Lawrence Rosen</a>.</li>
+</ol>
+
+      </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/dataoriented/">
+                    <span class="button__text">The Power of Data Oriented Programming in Java</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+    
+        <div class="footer__inner">
+          
+        </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
+
+
+
+    </body>
+</html>

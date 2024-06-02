@@ -5,8 +5,83 @@
         <description>Recent content in Posts on savchenko.tech</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sat, 17 Feb 2024 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 31 May 2024 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Open Source Software: True Love or Business Transaction</title>
+            <link>https://savchenko.tech/posts/opensource/</link>
+            <pubDate>Fri, 31 May 2024 00:00:00 +0000</pubDate>
+            
+            <guid>https://savchenko.tech/posts/opensource/</guid>
+            <description>“Open source” is one of the concepts that is widely used and at the same time is widely misunderstood.
+I think that is misunderstanding, not injustice leads to wave of frustration every time next company make a switch from Open Source Licence to Business Source License. HashiCorp, Confluent, Elastic, Redis and others did prioritize their business with Business Source License move.
+Do they being greedy? No. They just make money, as business suppose to do.</description>
+            <content type="html"><![CDATA[<p>“Open source” is one of the concepts that is widely used and at the same time is widely misunderstood.</p>
+<p>I think that is misunderstanding, not injustice leads to wave of frustration every time next company make a switch
+from Open Source Licence to Business Source License.
+HashiCorp, Confluent, Elastic, Redis and others did prioritize their business with Business Source License move.</p>
+<p>Do they being greedy? No. They just make money, as business suppose to do.</p>
+<p>So, if we turn focus from the business and ask ourselves, developers:
+&ldquo;Do we have enough knowledge about Intellectual property?&rdquo;
+I would say - &ldquo;No, I definitely not&rdquo;.
+And that is not surprising, because Intellectual property Law is its own enormous thing.</p>
+<p>When reading the GNU Library Public Licence I realized I do not understand half of the text, and needed
+to go over some passages several times.
+When talking to people on meetups or listening to the podcasts I realised that others are confused too.</p>
+<p>Some of the common misconceptions were:</p>
+<ul>
+<li>Open source code does not have a licence</li>
+<li>Source available code can be used the same way as Open source</li>
+<li>Author of the code in Open Source always own it</li>
+</ul>
+<p>Small disclaimer:
+This article is more of an attempt to highlight confusion points, not clarify everything about Open Source Licencing.</p>
+<p>So, what is a licence anyway?</p>
+<p>Simplified, <strong>License</strong> is the legal way a copyright owner grants permission to others to use his/her intellectual property.</p>
+<p><strong>Copyright</strong> protects only the expression of that idea.
+A copyright comes into force when the protected work is created.</p>
+<h4 id="what-is-open-source-license">What is Open Source License?</h4>
+<p>Short definition from Open Source Initiative’s website:</p>
+<blockquote>
+<p><strong>Open source licenses</strong> are licenses that comply with the Open Source Definition – in brief,
+they allow software to be freely used, modified, and shared. To be approved by the Open Source Initiative
+(also known as the OSI) a license must go through the Open Source Initiative’s license review process.</p>
+</blockquote>
+<p>Open source is not really a legal term.
+It is not illegal to name something Open Source even if it is not, but it is illegal to violate the licence.
+So, we should read licenses very carefully.</p>
+<h4 id="source-available-vs-open-source">Source available vs Open source</h4>
+<blockquote>
+<p><strong>Business Source License (BSL)</strong> is an alternative to closed source or open core licensing models.
+Under BSL, the source code is always publicly available. Non-production use of the code is always free,
+and the licensor can also make an Additional Use Grant allowing limited production use.</p>
+</blockquote>
+<p>Thus, basically, BSL can mean anything. From only registration to paying fee per user, processor core, etc.
+The main thing about BSL that it is not an Open source license because it does not meet Open Source Definition.
+And it is not a concrete Licence, it is a template. So reading carefully applies here too.</p>
+<p>When we talk about relicensing, Open source project does need agreements from all the contributors to do so,
+unless Project owns the copyrights in contributions made to them.</p>
+<p>And that has been the Greatest confusion for me - <strong>Contributors licence</strong>.
+In many cases identical licenses are used for contributions and for the project&rsquo;s derivative works.
+I have never seen full clear legal description on Open Source projects web pages.
+It is almost impossible to find out who is copyright holder is or when copyright assignment happening,
+if that is happening.
+But in cases of relicencing it is clear that copyright holder was Foundation or Company behind the Open Source project.
+In my opinion it is very important to understand what you&rsquo;re being asked to give away when contributing to Open Source project.</p>
+<p>I am still confused with the question: Why if Open source so &ldquo;Open&rdquo;, I can not find the copyright holder easily?
+People contribute to Open Source projects whose goals and values they share. And one of those values should be
+transparency.
+My expectations are that Open Source projects are more open. In ideal world&hellip;</p>
+<p>In the real world however developers should invest
+time into understanding Intellectual Property better to protect their work, to respect work of the others and
+not to over-romanticise community-supported software.</p>
+<ol>
+<li><a href="https://opensource.org/osd">The Open Source Definition by Open Source Initiative</a>.</li>
+<li><a href="https://www.amazon.com/Open-Source-Licensing-Software-Intellectual/dp/0131487876">Open Source Licensing: Software Freedom and Intellectual Property Law by Lawrence Rosen</a>.</li>
+</ol>
+]]></content>
+        </item>
         
         <item>
             <title>The Power of Data Oriented Programming in Java</title>
