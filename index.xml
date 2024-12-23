@@ -6,8 +6,15 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 31 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Certifications. Learning Tool or Misuse of Human Energy?</title>
+      <link>https://savchenko.tech/posts/certifications/</link>
+      <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://savchenko.tech/posts/certifications/</guid>
+      <description>Certifications have always been a controversial topic for me. They’re either dismissed as time-wasters or celebrated as career boosters. When people ask me, &amp;ldquo;Do you recommend certification X? Is it worth pursuing?&amp;rdquo;, I find myself unsure how to respond.&#xA;Having gained experience with a few technical certifications (such as OCP and CKAD) as well as language certifications (like IELTS and TELC German), this article is an attempt to break it down and figure this out.</description>
+    </item>
     <item>
       <title>Open Source Software: True Love or Business Transaction</title>
       <link>https://savchenko.tech/posts/opensource/</link>
@@ -251,7 +258,7 @@
       <link>https://savchenko.tech/contactinformation/</link>
       <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://savchenko.tech/contactinformation/</guid>
-      <description> Email address maryna@savchenko.tech LinkedIn https://www.linkedin.com/in/maryna-savchenko-7061a8223/ Github https://github.com/marynasavchenko Twitter @SavchenkoTech Photo blog photo.savchenko.tech </description>
+      <description> Email address maryna@savchenko.tech LinkedIn https://www.linkedin.com/in/maryna-savchenko-7061a8223/ Github https://github.com/marynasavchenko Photo blog photo.savchenko.tech </description>
     </item>
   </channel>
 </rss>

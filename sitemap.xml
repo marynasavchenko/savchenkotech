@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://savchenko.tech/tags/certification/</loc>
+    <lastmod>2024-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/certifications/</loc>
+    <lastmod>2024-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/posts/</loc>
+    <lastmod>2024-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/</loc>
+    <lastmod>2024-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://savchenko.tech/tags/</loc>
+    <lastmod>2024-12-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://savchenko.tech/tags/open-source/</loc>
     <lastmod>2024-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/posts/opensource/</loc>
-    <lastmod>2024-05-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/posts/</loc>
-    <lastmod>2024-05-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/</loc>
-    <lastmod>2024-05-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://savchenko.tech/tags/</loc>
     <lastmod>2024-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://savchenko.tech/tags/data-oriented-programming/</loc>

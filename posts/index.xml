@@ -5,8 +5,97 @@
         <description>Recent content in Posts on savchenko.tech</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Fri, 31 May 2024 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Certifications. Learning Tool or Misuse of Human Energy?</title>
+            <link>https://savchenko.tech/posts/certifications/</link>
+            <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
+            
+            <guid>https://savchenko.tech/posts/certifications/</guid>
+            <description>Certifications have always been a controversial topic for me. They’re either dismissed as time-wasters or celebrated as career boosters. When people ask me, &amp;ldquo;Do you recommend certification X? Is it worth pursuing?&amp;rdquo;, I find myself unsure how to respond.
+Having gained experience with a few technical certifications (such as OCP and CKAD) as well as language certifications (like IELTS and TELC German), this article is an attempt to break it down and figure this out.</description>
+            <content type="html"><![CDATA[<p>Certifications have always been a controversial topic for me.
+They’re either dismissed as time-wasters or celebrated as career boosters.
+When people ask me, &ldquo;Do you recommend certification X? Is it worth pursuing?&rdquo;, I find myself unsure how to respond.</p>
+<p>Having gained experience with a few technical certifications (such as <a href="https://education.oracle.com/de/produktkatalog-outrackpath-trackp_ocpjse17/trackp_OCPJSE17">OCP</a>
+and <a href="https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/">CKAD</a>)
+as well as
+language certifications (like <a href="https://ielts.org/">IELTS</a>
+and <a href="https://www.telc.net/sprachpruefungen/deutsch/zertifikat-deutsch-telc-deutsch-b1/">TELC German</a>),
+this article is an attempt to break it down and figure this out.</p>
+<p>Let’s explore the disadvantages of certifications first.</p>
+<ol>
+<li>
+<p><strong>Time</strong>.
+Most of the valuable certifications need significant amount of time — time from your weekends, vacations
+and that next season of &lsquo;Fallout.&rsquo;
+Typically, when you start preparing, you need to tackle it in one focused chunk.
+Take too long of a break, and you risk forgetting everything, forcing you to start from scratch all over again.</p>
+</li>
+<li>
+<p><strong>Short life span</strong>.
+Technology changes very fast and certifications can become outdated.<br>
+What’s cutting-edge today can quickly become obsolete tomorrow.
+As a result, all the hours, effort, and resources poured into earning a certification may lose relevance within a year or even sooner.
+What is the newest Java version, by the way?</p>
+</li>
+<li>
+<p><strong>Certification Testing Policies</strong>.
+At first glance, these policies may not seem like a big deal, but they can quickly become quite frustrating.
+They often include rules like prohibiting bathroom breaks during the exam,
+restricting the ability to leave the room, requiring you to show a complete stranger
+every corner of your space — even under your bed.
+And let’s not forget the need to maintain focus for 2–3 hours exclusively on solving tasks with clock ticking,
+an experience that can be both mentally and physically exhausting.</p>
+</li>
+</ol>
+<p>Now let’s take a closer look at the benefits of certifications.</p>
+<ol>
+<li>
+<p><strong>Learning Structure and depth.</strong>
+Learning broad and complex topics, like a programming language, can be a difficult task.
+Certifications provide a structured framework to help you tackle this challenge and give
+you a concrete way to validate your knowledge at the end.
+Most certification guides are designed to dive deep into the
+subject matter, thoroughly covering essential concepts and ensuring you build a strong, comprehensive understanding
+of the topic. A good example would be <a href="https://www.amazon.com/Oracle-Certified-Professional-Developer-Study/dp/1394286619">OCP Oracle Certified Professional Java SE 21 Developer Study Guide</a>.
+This structured approach can help not to lose your way.</p>
+</li>
+<li>
+<p><strong>Active learning.</strong>
+Test-taking is one of the most effective tools for reinforcing what you’ve learned.
+Pursuing a certification actively engages your mind and promotes true learning,
+helping you avoid the &ldquo;illusion of learning&rdquo; — that false sense of mastery that often comes from simply
+watching an online course or passively reading a book. By putting your knowledge to the test,
+certifications push you to truly understand and apply concepts, rather than just consuming information.</p>
+</li>
+<li>
+<p><strong>Career Advancement.</strong>
+The debate over broken hiring processes could go on for days.
+But we can not deny that job market is competitive. In this landscape, certifications can give your profile a significant boost.
+Some employers, particularly those with highly formalized hiring procedures,
+rely on certifications as a standardized benchmark to evaluate candidates.</p>
+</li>
+</ol>
+<p>So, are certifications worth pursuing?
+The problem with this question is that people often seek guarantees. They expect that by earning certification X,
+they will automatically achieve Y (a job, a promotion, etc.).
+But life doesn’t work like a vending machine — where you put in time and effort and are always guaranteed a reward.
+In reality, no guarantees exist for anything in life, though it would be nice if they did.</p>
+<p>If your primary goal is to secure a job or promotion, you might end up disappointed — certifications alone won’t deliver results 100% of the time.
+However, if your aim is to deepen your knowledge, explore a specific field, or experience that &ldquo;Now I truly understand it!&rdquo; moment,
+then pursuing a certification is absolutely worth it.</p>
+<p>Mentioned certifications links:</p>
+<ol>
+<li><a href="https://education.oracle.com/de/produktkatalog-outrackpath-trackp_ocpjse17/trackp_OCPJSE17">Oracle Certified Professional: Java SE 17 Developer (OCP)</a></li>
+<li><a href="https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/">Certified Kubernetes Application Developer (CKAD)</a></li>
+<li><a href="https://ielts.org/">International English Language Testing System (IELTS)</a></li>
+<li><a href="https://www.telc.net/sprachpruefungen/deutsch/zertifikat-deutsch-telc-deutsch-b1/">TELC German test</a></li>
+</ol>
+]]></content>
+        </item>
         
         <item>
             <title>Open Source Software: True Love or Business Transaction</title>
