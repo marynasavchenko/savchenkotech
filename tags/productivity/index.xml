@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>productivity on savchenko.tech</title>
+    <link>https://savchenko.tech/tags/productivity/</link>
+    <description>Recent content in productivity on savchenko.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 03 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://savchenko.tech/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On Productivity</title>
+      <link>https://savchenko.tech/posts/productivity/</link>
+      <pubDate>Fri, 03 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://savchenko.tech/posts/productivity/</guid>
+      <description>After nearly three years of constant bad news stream and realization that the world is not going to become &amp;ldquo;better&amp;rdquo;, made me reflect on my personal productivity. As usual, I started by revisiting the definition of productivity itself. What does it truly mean? That’s where I found myself stuck, right from the start.&#xA;Internet searches offered only vague and abstract explanations: words like quantity, quality, continuous learning, innovation, and responsibility for your work dominated the definitions.</description>
+    </item>
+  </channel>
+</rss>
