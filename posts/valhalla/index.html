@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Maryna Savchenko">
+<meta name="description" content="What is Project Valhalla? When Java applications create many objects, performance suffers significantly. Each object requires memory allocation on the heap, carries overhead from object headers, and forces the garbage collector to work harder. This becomes especially problematic in data-intensive applications where simple data structures like coordinates, colors, or mathematical values are wrapped in heavyweight objects. Project Valhalla is Oracle&amp;rsquo;s ambitious initiative to bring value types to the Java platform. It aims to provide &amp;ldquo;codes like a class, works like an int&amp;rdquo; semantics." />
+<meta name="keywords" content=", java" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/valhalla/" />
+
+
+    <title>
+        
+            Project Valhalla: Codes Like a Class, Works Like an int :: savchenko.tech  — software engineering blog by Maryna Savchenko
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Project Valhalla: Codes Like a Class, Works Like an int">
+<meta itemprop="description" content="What is Project Valhalla? When Java applications create many objects, performance suffers significantly. Each object requires memory allocation on the heap, carries overhead from object headers, and forces the garbage collector to work harder. This becomes especially problematic in data-intensive applications where simple data structures like coordinates, colors, or mathematical values are wrapped in heavyweight objects. Project Valhalla is Oracle&rsquo;s ambitious initiative to bring value types to the Java platform. It aims to provide &ldquo;codes like a class, works like an int&rdquo; semantics."><meta itemprop="datePublished" content="2025-05-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2025-05-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="601"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="java," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="Project Valhalla: Codes Like a Class, Works Like an int"/>
+<meta name="twitter:description" content="What is Project Valhalla? When Java applications create many objects, performance suffers significantly. Each object requires memory allocation on the heap, carries overhead from object headers, and forces the garbage collector to work harder. This becomes especially problematic in data-intensive applications where simple data structures like coordinates, colors, or mathematical values are wrapped in heavyweight objects. Project Valhalla is Oracle&rsquo;s ambitious initiative to bring value types to the Java platform. It aims to provide &ldquo;codes like a class, works like an int&rdquo; semantics."/>
+
+
+
+    <meta property="og:title" content="Project Valhalla: Codes Like a Class, Works Like an int" />
+<meta property="og:description" content="What is Project Valhalla? When Java applications create many objects, performance suffers significantly. Each object requires memory allocation on the heap, carries overhead from object headers, and forces the garbage collector to work harder. This becomes especially problematic in data-intensive applications where simple data structures like coordinates, colors, or mathematical values are wrapped in heavyweight objects. Project Valhalla is Oracle&rsquo;s ambitious initiative to bring value types to the Java platform. It aims to provide &ldquo;codes like a class, works like an int&rdquo; semantics." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/valhalla/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-05-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-05-30T00:00:00+00:00" /><meta property="og:site_name" content="savchenko.tech" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2025-05-30 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/posts/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">savchenko.tech</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        3 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        601 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2025-05-30
+        
+
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://savchenko.tech/tags/java/">java</a></span>
+        
+    </p>
+
+      
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/valhalla/">Project Valhalla: Codes Like a Class, Works Like an int</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <h3 id="what-is-project-valhalla">What is Project Valhalla?</h3>
+<p>When Java applications create many objects, performance suffers significantly. Each object requires memory allocation on the heap, carries overhead from object headers, and forces the garbage collector to work harder.
+This becomes especially problematic in data-intensive applications where simple data structures like coordinates, colors, or mathematical values are wrapped in heavyweight objects.
+Project Valhalla is Oracle&rsquo;s ambitious initiative to bring value types to the Java platform. It aims to provide &ldquo;codes like a class, works like an int&rdquo; semantics.
+Value types allow developers to create custom data types that behave like primitives in terms of memory layout and performance while maintaining the expressiveness of classes.</p>
+<h3 id="the-core-problems-valhalla-solves">The Core Problems Valhalla Solves</h3>
+<p>Traditional Java forces a trade-off between abstraction and performance. You can either use primitives for speed or objects for abstraction, but not both.
+A simple Point class with x and y coordinates requires two object allocations plus overhead, consuming far more memory than necessary.
+Generic collections suffer particularly from this limitation. An ArrayList of Integers must box each primitive int into an Integer object.
+This creates millions of unnecessary objects and pointer indirections that slow down processing.</p>
+<h3 id="value-classes-the-solution">Value Classes: The Solution</h3>
+<p>Value classes look like regular classes but behave fundamentally differently. They have no identity, cannot be null, and are immutable by default.
+The JVM can store them inline without object headers or heap allocation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> value <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> x;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> y;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Point</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> y;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">x</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">y</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> y;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This Point value class consumes only 8 bytes of memory instead of the 24+ bytes required by a traditional object.</p>
+<h3 id="generic-specialization">Generic Specialization</h3>
+<p>Valhalla also introduces generic specialization. Current Java generics use type erasure, forcing all generic types to work with Object references. This prevents efficient storage of primitives in collections.
+Specialized generics allow collections to work directly with value types and primitives. An ArrayList of Points can store the Point data inline without boxing or pointer indirection.</p>
+<h3 id="performance-benefits">Performance Benefits</h3>
+<p>Early benchmarks show dramatic improvements. Arrays of value types can be 2-4x faster to process than arrays of objects. Memory usage drops by 50-75% in many cases.
+Cache performance improves significantly because related data stays together in memory.
+Garbage collection pressure decreases substantially. Fewer objects mean fewer allocations and less work for the garbage collector. Applications spend more time doing useful work instead of managing memory.</p>
+<h3 id="current-status-and-timeline">Current Status and Timeline</h3>
+<p>Project Valhalla remains in active development. Preview builds are available for experimentation, but the feature set continues to evolve.
+The full integration of Valhalla&rsquo;s features, including value classes, is expected to take place over several releases, with the first preview potentially appearing in JDK 23.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Project Valhalla will significantly improve Java performance. Applications will use less memory and run faster. This is excellent news for developers building high-performance systems.
+However, Valhalla makes Java more complex. Java currently has objects and primitives. Valhalla adds three new types: value classes, primitive classes, and (heaven help us) identity classes.
+New developers must now learn five different type categories instead of two.
+This creates challenges for beginners. They need to understand when to use each type and how they behave differently. The simple &ldquo;everything is an object&rdquo; mental model no longer applies.</p>
+<p>Java adds new features to stay competitive, but each addition makes the language harder to learn. This creates a paradox: the very changes meant to keep Java relevant may drive away new developers.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://openjdk.org/projects/valhalla/">Project Valhalla</a></li>
+<li><a href="https://inside.java/2024/12/16/devoxxbelgium-valhalla/">Valhalla - Java&rsquo;s Epic Refactor, Brian Goetz</a></li>
+</ol>
+
+      </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/productivity/">
+                    <span class="button__text">On Productivity</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+    
+        <div class="footer__inner">
+          
+        </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
+
+
+
+    </body>
+</html>

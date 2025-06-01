@@ -6,8 +6,15 @@
     <description>Recent content on savchenko.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://savchenko.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project Valhalla: Codes Like a Class, Works Like an int</title>
+      <link>https://savchenko.tech/posts/valhalla/</link>
+      <pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://savchenko.tech/posts/valhalla/</guid>
+      <description>What is Project Valhalla? When Java applications create many objects, performance suffers significantly. Each object requires memory allocation on the heap, carries overhead from object headers, and forces the garbage collector to work harder. This becomes especially problematic in data-intensive applications where simple data structures like coordinates, colors, or mathematical values are wrapped in heavyweight objects. Project Valhalla is Oracle&amp;rsquo;s ambitious initiative to bring value types to the Java platform. It aims to provide &amp;ldquo;codes like a class, works like an int&amp;rdquo; semantics.</description>
+    </item>
     <item>
       <title>On Productivity</title>
       <link>https://savchenko.tech/posts/productivity/</link>

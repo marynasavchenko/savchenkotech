@@ -5,8 +5,70 @@
         <description>Recent content in Posts on savchenko.tech</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 30 May 2025 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Project Valhalla: Codes Like a Class, Works Like an int</title>
+            <link>https://savchenko.tech/posts/valhalla/</link>
+            <pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate>
+            
+            <guid>https://savchenko.tech/posts/valhalla/</guid>
+            <description>What is Project Valhalla? When Java applications create many objects, performance suffers significantly. Each object requires memory allocation on the heap, carries overhead from object headers, and forces the garbage collector to work harder. This becomes especially problematic in data-intensive applications where simple data structures like coordinates, colors, or mathematical values are wrapped in heavyweight objects. Project Valhalla is Oracle&amp;rsquo;s ambitious initiative to bring value types to the Java platform. It aims to provide &amp;ldquo;codes like a class, works like an int&amp;rdquo; semantics.</description>
+            <content type="html"><![CDATA[<h3 id="what-is-project-valhalla">What is Project Valhalla?</h3>
+<p>When Java applications create many objects, performance suffers significantly. Each object requires memory allocation on the heap, carries overhead from object headers, and forces the garbage collector to work harder.
+This becomes especially problematic in data-intensive applications where simple data structures like coordinates, colors, or mathematical values are wrapped in heavyweight objects.
+Project Valhalla is Oracle&rsquo;s ambitious initiative to bring value types to the Java platform. It aims to provide &ldquo;codes like a class, works like an int&rdquo; semantics.
+Value types allow developers to create custom data types that behave like primitives in terms of memory layout and performance while maintaining the expressiveness of classes.</p>
+<h3 id="the-core-problems-valhalla-solves">The Core Problems Valhalla Solves</h3>
+<p>Traditional Java forces a trade-off between abstraction and performance. You can either use primitives for speed or objects for abstraction, but not both.
+A simple Point class with x and y coordinates requires two object allocations plus overhead, consuming far more memory than necessary.
+Generic collections suffer particularly from this limitation. An ArrayList of Integers must box each primitive int into an Integer object.
+This creates millions of unnecessary objects and pointer indirections that slow down processing.</p>
+<h3 id="value-classes-the-solution">Value Classes: The Solution</h3>
+<p>Value classes look like regular classes but behave fundamentally differently. They have no identity, cannot be null, and are immutable by default.
+The JVM can store them inline without object headers or heap allocation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> value <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> x;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> y;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Point</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> y;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">x</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">y</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> y;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This Point value class consumes only 8 bytes of memory instead of the 24+ bytes required by a traditional object.</p>
+<h3 id="generic-specialization">Generic Specialization</h3>
+<p>Valhalla also introduces generic specialization. Current Java generics use type erasure, forcing all generic types to work with Object references. This prevents efficient storage of primitives in collections.
+Specialized generics allow collections to work directly with value types and primitives. An ArrayList of Points can store the Point data inline without boxing or pointer indirection.</p>
+<h3 id="performance-benefits">Performance Benefits</h3>
+<p>Early benchmarks show dramatic improvements. Arrays of value types can be 2-4x faster to process than arrays of objects. Memory usage drops by 50-75% in many cases.
+Cache performance improves significantly because related data stays together in memory.
+Garbage collection pressure decreases substantially. Fewer objects mean fewer allocations and less work for the garbage collector. Applications spend more time doing useful work instead of managing memory.</p>
+<h3 id="current-status-and-timeline">Current Status and Timeline</h3>
+<p>Project Valhalla remains in active development. Preview builds are available for experimentation, but the feature set continues to evolve.
+The full integration of Valhalla&rsquo;s features, including value classes, is expected to take place over several releases, with the first preview potentially appearing in JDK 23.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Project Valhalla will significantly improve Java performance. Applications will use less memory and run faster. This is excellent news for developers building high-performance systems.
+However, Valhalla makes Java more complex. Java currently has objects and primitives. Valhalla adds three new types: value classes, primitive classes, and (heaven help us) identity classes.
+New developers must now learn five different type categories instead of two.
+This creates challenges for beginners. They need to understand when to use each type and how they behave differently. The simple &ldquo;everything is an object&rdquo; mental model no longer applies.</p>
+<p>Java adds new features to stay competitive, but each addition makes the language harder to learn. This creates a paradox: the very changes meant to keep Java relevant may drive away new developers.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://openjdk.org/projects/valhalla/">Project Valhalla</a></li>
+<li><a href="https://inside.java/2024/12/16/devoxxbelgium-valhalla/">Valhalla - Java&rsquo;s Epic Refactor, Brian Goetz</a></li>
+</ol>
+]]></content>
+        </item>
         
         <item>
             <title>On Productivity</title>
