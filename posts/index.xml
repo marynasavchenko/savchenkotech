@@ -94,10 +94,10 @@ The modules are no longer truly independent; they are tightly coupled through hi
 <p>A module is loosely coupled when it depends only on the narrow public interface of another module - not on its internal structure, implementation details, or internal state.
 A change inside one module should not force changes in others.</p>
 </blockquote>
-<p>The question to ask when designing an interface is: what is the minimum my callers need to know to use me correctly? Everything else should be hidden.</p>
+<p>The question to ask when designing an interface is: what is the minimum interface callers need to know to use interface correctly? Everything else should be hidden.</p>
 <h3 id="comments-as-design-writing-code-for-humans">Comments as Design: Writing Code for Humans</h3>
 <p>Comments are not optional, and they are not just for complex code. They are a first-class part of good design.
-Code tells you what a system does. Well-written comments tell you why.</p>
+Code tells you <strong><em>What</em></strong> a system does. Well-written comments tell you <strong><em>Why</em></strong>.</p>
 <h3 id="principle-of-designing-twice">Principle of designing twice</h3>
 <p>Before committing to an implementation, sketch two or three genuinely different approaches to the problem.
 Not minor variations - different abstractions, different decompositions, different ways of thinking about the problem entirely. Then compare them honestly.
@@ -107,7 +107,7 @@ The first solution that comes to mind is rarely the best one.</p>
 Schedule pressure is real.
 <strong><em>Strategic design is not overriding deadlines</em></strong>. At the same time, teams should be honest about the cost of tactical decisions
 and build in time to address them - not in some hypothetical future sprint, but continuously, as part of normal development.</p>
-<p>Complexity is the root cause of most software failure. Simplicity is a discipline, not a talent. Technical excellence it is not clever architecture.
+<p>Complexity is the root cause of most software failures. Simplicity is a discipline, not a talent. Technical excellence it is not clever architecture.
 It is not elaborate patterns. It is one question, asked at every step: will the next developer find this easier or harder than I did?
 And in the age of AI - that question matters more, not less.
 An AI agent is only as good as the system it writes against. Point it at clean interfaces, hidden information, and meaningful abstractions: it produces good code fast.
