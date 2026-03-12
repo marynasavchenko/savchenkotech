@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Maryna Savchenko">
+<meta name="description" content="AI agents write code fast. Very fast. &amp;ldquo;The fast way&amp;rdquo; has never been more seductive. Get the feature working. Ship it. Move on. Every shortcut feels justified. There&amp;rsquo;s a deadline. The workaround is &amp;ldquo;temporary.&amp;rdquo; So you add a few annotations and look the other way: @SuppressWarnings &amp;ldquo;GodClass&amp;rdquo;, &amp;ldquo;TightCoupling&amp;rdquo;, &amp;ldquo;TooManyParameters&amp;rdquo;. The technical debt will be paid back &amp;ldquo;later&amp;rdquo;. Business loves it. Arguments about code that&amp;rsquo;s &amp;ldquo;harder to change in the future&amp;rdquo; rarely land." />
+<meta name="keywords" content=", java, software design" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://savchenko.tech/posts/strategicdesign/" />
+
+
+    <title>
+        
+            The Fast Way, or The Right Way: Do We Really Neen Strategy? :: savchenko.tech  — software engineering blog by Maryna Savchenko
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.ff8f2a433956f170ddcd89f51cdbe2f59e48e7aedac5eca668389b0b2816b84e.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="The Fast Way, or The Right Way: Do We Really Neen Strategy?">
+<meta itemprop="description" content="AI agents write code fast. Very fast. &ldquo;The fast way&rdquo; has never been more seductive. Get the feature working. Ship it. Move on. Every shortcut feels justified. There&rsquo;s a deadline. The workaround is &ldquo;temporary.&rdquo; So you add a few annotations and look the other way: @SuppressWarnings &ldquo;GodClass&rdquo;, &ldquo;TightCoupling&rdquo;, &ldquo;TooManyParameters&rdquo;. The technical debt will be paid back &ldquo;later&rdquo;. Business loves it. Arguments about code that&rsquo;s &ldquo;harder to change in the future&rdquo; rarely land."><meta itemprop="datePublished" content="2026-02-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2026-02-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1100"><meta itemprop="image" content="https://savchenko.tech/" />
+<meta itemprop="keywords" content="java,software design," />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://savchenko.tech/" /><meta name="twitter:title" content="The Fast Way, or The Right Way: Do We Really Neen Strategy?"/>
+<meta name="twitter:description" content="AI agents write code fast. Very fast. &ldquo;The fast way&rdquo; has never been more seductive. Get the feature working. Ship it. Move on. Every shortcut feels justified. There&rsquo;s a deadline. The workaround is &ldquo;temporary.&rdquo; So you add a few annotations and look the other way: @SuppressWarnings &ldquo;GodClass&rdquo;, &ldquo;TightCoupling&rdquo;, &ldquo;TooManyParameters&rdquo;. The technical debt will be paid back &ldquo;later&rdquo;. Business loves it. Arguments about code that&rsquo;s &ldquo;harder to change in the future&rdquo; rarely land."/>
+
+
+
+    <meta property="og:title" content="The Fast Way, or The Right Way: Do We Really Neen Strategy?" />
+<meta property="og:description" content="AI agents write code fast. Very fast. &ldquo;The fast way&rdquo; has never been more seductive. Get the feature working. Ship it. Move on. Every shortcut feels justified. There&rsquo;s a deadline. The workaround is &ldquo;temporary.&rdquo; So you add a few annotations and look the other way: @SuppressWarnings &ldquo;GodClass&rdquo;, &ldquo;TightCoupling&rdquo;, &ldquo;TooManyParameters&rdquo;. The technical debt will be paid back &ldquo;later&rdquo;. Business loves it. Arguments about code that&rsquo;s &ldquo;harder to change in the future&rdquo; rarely land." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://savchenko.tech/posts/strategicdesign/" /><meta property="og:image" content="https://savchenko.tech/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2026-02-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2026-02-07T00:00:00+00:00" /><meta property="og:site_name" content="savchenko.tech" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2026-02-07 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/posts/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">savchenko.tech</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/about/">
+                        About Maryna
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/contactinformation/">
+                        Contact Information
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/posts/">
+                        Posts
+                    </a>
+                </li>
+            </div>
+            
+        
+            
+            <div class="submenu">
+                <li class="dropdown">
+                    <a href="/tags/">
+                        Tags
+                    </a>
+                </li>
+            </div>
+            
+        
+
+    
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <i class="fa-solid fa-clock"></i>
+        6 minutes
+        <i class="fa-solid fa-clipboard"></i>
+        1100 Words
+        
+      </p>
+      <p>
+        <i class="fa-solid fa-calendar-days"></i>
+        
+          2026-02-07
+        
+
+         
+          
+        
+      </p>
+      <p>
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://savchenko.tech/tags/java/">java</a></span>
+        <span class="tag"><a href="https://savchenko.tech/tags/software-design/">software design</a></span>
+        
+    </p>
+
+      
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://savchenko.tech/posts/strategicdesign/">The Fast Way, or The Right Way: Do We Really Neen Strategy?</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p><img src="../../images/design.png" alt="design.png"></p>
+<p>AI agents write code fast. Very fast. &ldquo;The fast way&rdquo; has never been more seductive.
+Get the feature working. Ship it. Move on.
+Every shortcut feels justified. There&rsquo;s a deadline. The workaround is &ldquo;temporary.&rdquo; So you add a few annotations and look the other way:
+@SuppressWarnings &ldquo;GodClass&rdquo;, &ldquo;TightCoupling&rdquo;, &ldquo;TooManyParameters&rdquo;. The technical debt will be paid back &ldquo;later&rdquo;.
+Business loves it. Arguments about code that&rsquo;s &ldquo;harder to change in the future&rdquo; rarely land. The future is someone else&rsquo;s problem.
+John K. Ousterhout has a name for this. In his book A Philosophy of Software Design, he calls it tactical programming. And he argues it is quietly destroying your codebase — one suppressed warning at a time.</p>
+<p>But shortcuts compound. What began as a pragmatic workaround becomes, over months and years, a system that takes weeks to modify safely.
+The system has become complex.</p>
+<blockquote>
+<p>Ousterhout defines complexity simply: anything that makes a system harder to understand or modify.</p>
+</blockquote>
+<p>It shows up in three ways.</p>
+<ul>
+<li><strong>Change amplification</strong>. You need to fix one thing. You end up touching twelve files. Each change reveals another change. A one-line fix becomes a two-day excavation.</li>
+<li><strong>Cognitive load</strong>. Nobody can hold the whole system in their head anymore. Every task requires reading old code for an hour before writing a single line.
+New developers take months to become productive. Senior developers become bottlenecks — because they are the only ones who remember why things are the way they are.</li>
+<li><strong>Unknown unknowns</strong>. The worst kind. You don&rsquo;t know what you don&rsquo;t know. You make a change that looks correct. It breaks something three modules away. Nobody saw it coming — because nobody could.
+This is where tactical programming leads. Not in a single catastrophic moment. Gradually, then suddenly.</li>
+</ul>
+<h3 id="what-strategic-programming">What Strategic Programming?</h3>
+<blockquote>
+<p>Strategic programming starts from a different premise: your primary goal is to produce a great design that also happens to work,
+not working code that happens to have some design.</p>
+</blockquote>
+<p>It does not mean over-engineering. It does not mean Big Design Up Front.
+It means treating every feature, every change, every pull request as a chance to leave the system slightly better than you found it.
+The cost is real but small. Ousterhout estimates strategic programming takes roughly 10–15% more time upfront.
+That is one extra hour in a ten-hour week.</p>
+<p>So what does it look like in practice? Here are the key principles Ousterhout builds his case around.</p>
+<h3 id="deep-modules">Deep Modules</h3>
+<p>Deep modules is a main tool of Strategic Programming.
+A module — whether a class, a function, a service, or a library — has two faces: its interface and its implementation. The interface is what users of the module must know. The implementation is what it actually does.
+Ousterhout&rsquo;s insight is that the best modules have a simple, narrow interface concealing a rich, complex implementation.</p>
+<p>Deep module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GeneralLedger</span> {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    String <span style="color:#a6e22e">post</span>(JournalEntry entry);
+</span></span></code></pre></div><p>Deep module caller: One line - caller knows nothing</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String id <span style="color:#f92672">=</span> ledger.<span style="color:#a6e22e">post</span>(entry); 
+</span></span></code></pre></div><p>Shallow module: Three separate interfaces the caller must know about and manage together</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">EntryValidator</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validateBalance</span>(List<span style="color:#f92672">&lt;</span>EntryLine<span style="color:#f92672">&gt;</span> lines);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validateAccountsExist</span>(List<span style="color:#f92672">&lt;</span>EntryLine<span style="color:#f92672">&gt;</span> lines, Map<span style="color:#f92672">&lt;</span>String, AccountType<span style="color:#f92672">&gt;</span> chart);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validatePeriodOpen</span>(LocalDate date, Set<span style="color:#f92672">&lt;</span>YearMonth<span style="color:#f92672">&gt;</span> closedPeriods);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AuditLog</span> {
+</span></span><span style="display:flex;"><span>    String <span style="color:#a6e22e">append</span>(JournalEntry entry);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">BalanceUpdater</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">apply</span>(List<span style="color:#f92672">&lt;</span>EntryLine<span style="color:#f92672">&gt;</span> lines,
+</span></span><span style="display:flex;"><span>               Map<span style="color:#f92672">&lt;</span>String, BigDecimal<span style="color:#f92672">&gt;</span> runningBalances,
+</span></span><span style="display:flex;"><span>               Map<span style="color:#f92672">&lt;</span>String, AccountType<span style="color:#f92672">&gt;</span> chart);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Shallow module caller:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>validator.<span style="color:#a6e22e">validateBalance</span>(entry.<span style="color:#a6e22e">lines</span>());
+</span></span><span style="display:flex;"><span>validator.<span style="color:#a6e22e">validateAccountsExist</span>(entry.<span style="color:#a6e22e">lines</span>(), chart);
+</span></span><span style="display:flex;"><span>validator.<span style="color:#a6e22e">validatePeriodOpen</span>(entry.<span style="color:#a6e22e">date</span>(), closedPeriods);
+</span></span><span style="display:flex;"><span>String id <span style="color:#f92672">=</span> auditLog.<span style="color:#a6e22e">append</span>(entry);
+</span></span><span style="display:flex;"><span>balanceUpdater.<span style="color:#a6e22e">apply</span>(entry.<span style="color:#a6e22e">lines</span>(), runningBalances, chart);
+</span></span></code></pre></div><p>The caller now owns the internal state (chart, runningBalances, closedPeriods),
+must know the correct ordering of operations, and must remember to call all three steps every time.
+If you forget validatePeriodOpen, the system silently posts to a closed period with no error.</p>
+<h3 id="the-danger-of-over-decomposition">The Danger of Over-Decomposition</h3>
+<p>Small classes and short functions are not inherently good.
+Decomposition should be driven by abstraction, not by line counts.
+The right question when splitting a method is not &ldquo;is this too long?&rdquo; but &ldquo;does splitting this create a meaningful new abstraction,
+or does it just make the logic harder to follow?&rdquo;</p>
+<h3 id="information-hiding-and-information-leakage">Information Hiding and Information Leakage</h3>
+<p>Central to deep module design is the concept of <em><strong>information hiding</strong></em>: each module should know as little as possible about the internals of the others it works with.
+When two modules share knowledge of an internal detail — a particular data format, an implementation assumption,
+a specific ordering of operations — that knowledge has leaked. Now a change to one module requires a change to the other.
+The modules are no longer truly independent; they are tightly coupled through hidden shared state.</p>
+<blockquote>
+<p>A module is loosely coupled when it depends only on the narrow public interface of another module — not on its internal structure, implementation details, or internal state.
+A change inside one module should not force changes in others.</p>
+</blockquote>
+<p>The question to ask when designing an interface is: what is the minimum my callers need to know to use me correctly? Everything else should be hidden.</p>
+<h3 id="comments-as-design-writing-code-for-humans">Comments as Design: Writing Code for Humans</h3>
+<p>Comments are not optional, and they are not just for complex code. They are a first-class part of good design.
+Code tells you what a system does. Well-written comments tell you why.</p>
+<h3 id="principle-of-designing-twice">Principle of designing twice</h3>
+<p>Before committing to an implementation, sketch two or three genuinely different approaches to the problem.
+Not minor variations — different abstractions, different decompositions, different ways of thinking about the problem entirely. Then compare them honestly.
+The first solution that comes to mind is rarely the best one.</p>
+<h3 id="team-work">Team work</h3>
+<p>Individual developers can practice strategic programming, but its full benefits require team-level commitment.
+Schedule pressure is real.
+<strong><em>Strategic design is not overriding deadlines</em></strong>. At the same time, teams should be honest about the cost of tactical decisions
+and build in time to address them — not in some hypothetical future sprint, but continuously, as part of normal development.</p>
+<p>Complexity is the root cause of most software failure. Simplicity is a discipline, not a talent. Technical excellence it is not clever architecture.
+It is not elaborate patterns. It is one question, asked at every step: will the next developer find this easier or harder than I did?
+And in the age of AI — that question matters more, not less.
+An AI agent is only as good as the system it writes against. Point it at clean interfaces, hidden information, and meaningful abstractions: it produces good code fast.
+Point it at a tangled, tactical codebase: it produces more tangle, faster.
+AI does not fix complexity. It amplifies whatever is already there.
+The fast way was always an illusion. Now it just moves quicker.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.amazon.de/-/en/Philosophy-Software-Design-John-Ousterhout/dp/1732102201">A Philosophy of Software Design by John Ousterhout</a></li>
+<li><a href="https://www.amazon.de/-/en/Balancing-Coupling-Software-Design-Addison-Wesley/dp/0137353480">Balancing Coupling in Software Design by Vlad Khononov</a></li>
+</ol>
+
+      </div>
+    </article>
+      <hr />
+    <div class="post-info">
+      
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="https://savchenko.tech/posts/valhalla/">
+                    <span class="button__text">Project Valhalla: Codes Like a Class, Works Like an int</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+    
+        <div class="footer__inner">
+          
+        </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.5ee1ab43459d21e9512c2083459b5796fb878237404ac6c6cc916fb66997828afaba1f6f4e050e174e96d13c0a7df7bda9e4296a89ee19bb7ffa0a4129583cd2.js" integrity="sha512-XuGrQ0WdIelRLCCDRZtXlvuHgjdASsbGzJFvtmmXgor6uh9vTgUOF06W0TwKffe9qeQpaonuGbt/&#43;gpBKVg80g=="></script>
+
+
+
+    </body>
+</html>

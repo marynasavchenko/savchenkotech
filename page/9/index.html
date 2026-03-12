@@ -181,6 +181,39 @@
                 <div class="posts">
                 
                 <div class="post on-list">
+                    <h1 class="post-title"><a href="https://savchenko.tech/posts/topsort/">Topological Sort. Algorithms Series</a></h1>
+                    <div class="post-meta">
+                    
+                        <span class="post-date">
+                        2022-09-24
+                        </span>
+                        
+                    
+                        <br>
+                    
+                    </div>
+                    
+                    <div class="post-content">
+                        
+                            
+                                Topological sort can be applied in scheduling problems.
+Those types of problems can be solved when:
+tasks and precedence constraints are defined; cycles are detected and removed. Implementation of cycle detection can be found here.
+Test should check that reverse post order is correct.
+@Test void shouldReturnPostOrder() { DirectedGraph directedGraph = new DirectedGraph(4); directedGraph.addEdge(1, 0); directedGraph.addEdge(0, 3); directedGraph.addEdge(1, 2); TopologicalSort topologicalSort = new TopologicalSort(directedGraph); LinkedList&lt;Integer&gt; expected = new LinkedList&lt;&gt;(Arrays.asList(3, 0, 2, 1)); assertEquals(expected, topologicalSort.
+                            
+                        
+                    </div>
+                    
+                        
+                        <div>
+                            <a class="read-more button" href="/posts/topsort/">Read more ... →</a>
+                        </div>
+                        
+                    
+                </div> 
+            
+                <div class="post on-list">
                     <h1 class="post-title"><a href="https://savchenko.tech/posts/linledlist/">Linked List. Algorithms Series</a></h1>
                     <div class="post-meta">
                     
@@ -207,36 +240,6 @@ private static class Node&lt;E&gt; { E value; Node&lt;E&gt; next; public Node(E 
                         
                         <div>
                             <a class="read-more button" href="/posts/linledlist/">Read more ... →</a>
-                        </div>
-                        
-                    
-                </div> 
-            
-                <div class="post on-list">
-                    <h1 class="post-title"><a href="https://savchenko.tech/posts/greedy/">Prim&rsquo;s Algorithm. Greedy. Algorithms Series</a></h1>
-                    <div class="post-meta">
-                    
-                        <span class="post-date">
-                        2022-08-18
-                        </span>
-                        
-                    
-                        <br>
-                    
-                    </div>
-                    
-                    <div class="post-content">
-                        
-                            
-                                Prim&rsquo;s algorithm is a greedy algorithm for computing Minimum Spanning Tree (MST).
-Greedy algorithms is a technique used in designing and analyzing efficient algorithms. They typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. A greedy algorithm always makes the choice that looks best at the moment. It makes a locally optimal choice in hope that this choice leads to globally optimal solution.
-                            
-                        
-                    </div>
-                    
-                        
-                        <div>
-                            <a class="read-more button" href="/posts/greedy/">Read more ... →</a>
                         </div>
                         
                     

@@ -5,8 +5,122 @@
         <description>Recent content in Posts on savchenko.tech</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Fri, 30 May 2025 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 07 Feb 2026 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://savchenko.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>The Fast Way, or The Right Way: Do We Really Neen Strategy?</title>
+            <link>https://savchenko.tech/posts/strategicdesign/</link>
+            <pubDate>Sat, 07 Feb 2026 00:00:00 +0000</pubDate>
+            
+            <guid>https://savchenko.tech/posts/strategicdesign/</guid>
+            <description>AI agents write code fast. Very fast. &amp;ldquo;The fast way&amp;rdquo; has never been more seductive. Get the feature working. Ship it. Move on. Every shortcut feels justified. There&amp;rsquo;s a deadline. The workaround is &amp;ldquo;temporary.&amp;rdquo; So you add a few annotations and look the other way: @SuppressWarnings &amp;ldquo;GodClass&amp;rdquo;, &amp;ldquo;TightCoupling&amp;rdquo;, &amp;ldquo;TooManyParameters&amp;rdquo;. The technical debt will be paid back &amp;ldquo;later&amp;rdquo;. Business loves it. Arguments about code that&amp;rsquo;s &amp;ldquo;harder to change in the future&amp;rdquo; rarely land.</description>
+            <content type="html"><![CDATA[<p><img src="../../images/design.png" alt="design.png"></p>
+<p>AI agents write code fast. Very fast. &ldquo;The fast way&rdquo; has never been more seductive.
+Get the feature working. Ship it. Move on.
+Every shortcut feels justified. There&rsquo;s a deadline. The workaround is &ldquo;temporary.&rdquo; So you add a few annotations and look the other way:
+@SuppressWarnings &ldquo;GodClass&rdquo;, &ldquo;TightCoupling&rdquo;, &ldquo;TooManyParameters&rdquo;. The technical debt will be paid back &ldquo;later&rdquo;.
+Business loves it. Arguments about code that&rsquo;s &ldquo;harder to change in the future&rdquo; rarely land. The future is someone else&rsquo;s problem.
+John K. Ousterhout has a name for this. In his book A Philosophy of Software Design, he calls it tactical programming. And he argues it is quietly destroying your codebase — one suppressed warning at a time.</p>
+<p>But shortcuts compound. What began as a pragmatic workaround becomes, over months and years, a system that takes weeks to modify safely.
+The system has become complex.</p>
+<blockquote>
+<p>Ousterhout defines complexity simply: anything that makes a system harder to understand or modify.</p>
+</blockquote>
+<p>It shows up in three ways.</p>
+<ul>
+<li><strong>Change amplification</strong>. You need to fix one thing. You end up touching twelve files. Each change reveals another change. A one-line fix becomes a two-day excavation.</li>
+<li><strong>Cognitive load</strong>. Nobody can hold the whole system in their head anymore. Every task requires reading old code for an hour before writing a single line.
+New developers take months to become productive. Senior developers become bottlenecks — because they are the only ones who remember why things are the way they are.</li>
+<li><strong>Unknown unknowns</strong>. The worst kind. You don&rsquo;t know what you don&rsquo;t know. You make a change that looks correct. It breaks something three modules away. Nobody saw it coming — because nobody could.
+This is where tactical programming leads. Not in a single catastrophic moment. Gradually, then suddenly.</li>
+</ul>
+<h3 id="what-strategic-programming">What Strategic Programming?</h3>
+<blockquote>
+<p>Strategic programming starts from a different premise: your primary goal is to produce a great design that also happens to work,
+not working code that happens to have some design.</p>
+</blockquote>
+<p>It does not mean over-engineering. It does not mean Big Design Up Front.
+It means treating every feature, every change, every pull request as a chance to leave the system slightly better than you found it.
+The cost is real but small. Ousterhout estimates strategic programming takes roughly 10–15% more time upfront.
+That is one extra hour in a ten-hour week.</p>
+<p>So what does it look like in practice? Here are the key principles Ousterhout builds his case around.</p>
+<h3 id="deep-modules">Deep Modules</h3>
+<p>Deep modules is a main tool of Strategic Programming.
+A module — whether a class, a function, a service, or a library — has two faces: its interface and its implementation. The interface is what users of the module must know. The implementation is what it actually does.
+Ousterhout&rsquo;s insight is that the best modules have a simple, narrow interface concealing a rich, complex implementation.</p>
+<p>Deep module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GeneralLedger</span> {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    String <span style="color:#a6e22e">post</span>(JournalEntry entry);
+</span></span></code></pre></div><p>Deep module caller: One line - caller knows nothing</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String id <span style="color:#f92672">=</span> ledger.<span style="color:#a6e22e">post</span>(entry); 
+</span></span></code></pre></div><p>Shallow module: Three separate interfaces the caller must know about and manage together</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">EntryValidator</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validateBalance</span>(List<span style="color:#f92672">&lt;</span>EntryLine<span style="color:#f92672">&gt;</span> lines);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validateAccountsExist</span>(List<span style="color:#f92672">&lt;</span>EntryLine<span style="color:#f92672">&gt;</span> lines, Map<span style="color:#f92672">&lt;</span>String, AccountType<span style="color:#f92672">&gt;</span> chart);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validatePeriodOpen</span>(LocalDate date, Set<span style="color:#f92672">&lt;</span>YearMonth<span style="color:#f92672">&gt;</span> closedPeriods);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AuditLog</span> {
+</span></span><span style="display:flex;"><span>    String <span style="color:#a6e22e">append</span>(JournalEntry entry);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">BalanceUpdater</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">apply</span>(List<span style="color:#f92672">&lt;</span>EntryLine<span style="color:#f92672">&gt;</span> lines,
+</span></span><span style="display:flex;"><span>               Map<span style="color:#f92672">&lt;</span>String, BigDecimal<span style="color:#f92672">&gt;</span> runningBalances,
+</span></span><span style="display:flex;"><span>               Map<span style="color:#f92672">&lt;</span>String, AccountType<span style="color:#f92672">&gt;</span> chart);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Shallow module caller:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>validator.<span style="color:#a6e22e">validateBalance</span>(entry.<span style="color:#a6e22e">lines</span>());
+</span></span><span style="display:flex;"><span>validator.<span style="color:#a6e22e">validateAccountsExist</span>(entry.<span style="color:#a6e22e">lines</span>(), chart);
+</span></span><span style="display:flex;"><span>validator.<span style="color:#a6e22e">validatePeriodOpen</span>(entry.<span style="color:#a6e22e">date</span>(), closedPeriods);
+</span></span><span style="display:flex;"><span>String id <span style="color:#f92672">=</span> auditLog.<span style="color:#a6e22e">append</span>(entry);
+</span></span><span style="display:flex;"><span>balanceUpdater.<span style="color:#a6e22e">apply</span>(entry.<span style="color:#a6e22e">lines</span>(), runningBalances, chart);
+</span></span></code></pre></div><p>The caller now owns the internal state (chart, runningBalances, closedPeriods),
+must know the correct ordering of operations, and must remember to call all three steps every time.
+If you forget validatePeriodOpen, the system silently posts to a closed period with no error.</p>
+<h3 id="the-danger-of-over-decomposition">The Danger of Over-Decomposition</h3>
+<p>Small classes and short functions are not inherently good.
+Decomposition should be driven by abstraction, not by line counts.
+The right question when splitting a method is not &ldquo;is this too long?&rdquo; but &ldquo;does splitting this create a meaningful new abstraction,
+or does it just make the logic harder to follow?&rdquo;</p>
+<h3 id="information-hiding-and-information-leakage">Information Hiding and Information Leakage</h3>
+<p>Central to deep module design is the concept of <em><strong>information hiding</strong></em>: each module should know as little as possible about the internals of the others it works with.
+When two modules share knowledge of an internal detail — a particular data format, an implementation assumption,
+a specific ordering of operations — that knowledge has leaked. Now a change to one module requires a change to the other.
+The modules are no longer truly independent; they are tightly coupled through hidden shared state.</p>
+<blockquote>
+<p>A module is loosely coupled when it depends only on the narrow public interface of another module — not on its internal structure, implementation details, or internal state.
+A change inside one module should not force changes in others.</p>
+</blockquote>
+<p>The question to ask when designing an interface is: what is the minimum my callers need to know to use me correctly? Everything else should be hidden.</p>
+<h3 id="comments-as-design-writing-code-for-humans">Comments as Design: Writing Code for Humans</h3>
+<p>Comments are not optional, and they are not just for complex code. They are a first-class part of good design.
+Code tells you what a system does. Well-written comments tell you why.</p>
+<h3 id="principle-of-designing-twice">Principle of designing twice</h3>
+<p>Before committing to an implementation, sketch two or three genuinely different approaches to the problem.
+Not minor variations — different abstractions, different decompositions, different ways of thinking about the problem entirely. Then compare them honestly.
+The first solution that comes to mind is rarely the best one.</p>
+<h3 id="team-work">Team work</h3>
+<p>Individual developers can practice strategic programming, but its full benefits require team-level commitment.
+Schedule pressure is real.
+<strong><em>Strategic design is not overriding deadlines</em></strong>. At the same time, teams should be honest about the cost of tactical decisions
+and build in time to address them — not in some hypothetical future sprint, but continuously, as part of normal development.</p>
+<p>Complexity is the root cause of most software failure. Simplicity is a discipline, not a talent. Technical excellence it is not clever architecture.
+It is not elaborate patterns. It is one question, asked at every step: will the next developer find this easier or harder than I did?
+And in the age of AI — that question matters more, not less.
+An AI agent is only as good as the system it writes against. Point it at clean interfaces, hidden information, and meaningful abstractions: it produces good code fast.
+Point it at a tangled, tactical codebase: it produces more tangle, faster.
+AI does not fix complexity. It amplifies whatever is already there.
+The fast way was always an illusion. Now it just moves quicker.</p>
+<p>Sources:</p>
+<ol>
+<li><a href="https://www.amazon.de/-/en/Philosophy-Software-Design-John-Ousterhout/dp/1732102201">A Philosophy of Software Design by John Ousterhout</a></li>
+<li><a href="https://www.amazon.de/-/en/Balancing-Coupling-Software-Design-Addison-Wesley/dp/0137353480">Balancing Coupling in Software Design by Vlad Khononov</a></li>
+</ol>
+]]></content>
+        </item>
         
         <item>
             <title>Project Valhalla: Codes Like a Class, Works Like an int</title>
