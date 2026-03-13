@@ -13,7 +13,7 @@
       <link>https://savchenko.tech/posts/strategicdesign/</link>
       <pubDate>Sat, 07 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://savchenko.tech/posts/strategicdesign/</guid>
-      <description>AI agents write code fast. Very fast. &amp;ldquo;The fast way&amp;rdquo; has never been more seductive. Get the feature working. Ship it. Move on. Every shortcut feels justified. There&amp;rsquo;s a deadline. The workaround is &amp;ldquo;temporary.&amp;rdquo; So you add a few annotations and look the other way: @SuppressWarnings &amp;ldquo;GodClass&amp;rdquo;, &amp;ldquo;TightCoupling&amp;rdquo;, &amp;ldquo;TooManyParameters&amp;rdquo;. The technical debt will be paid back &amp;ldquo;later&amp;rdquo;. Business loves it. Arguments about code that&amp;rsquo;s &amp;ldquo;harder to change in the future&amp;rdquo; rarely land.</description>
+      <description>With AI agents helping us to write code &amp;ldquo;The fast way&amp;rdquo; has never been more seductive. Get the feature working. Ship it. Move on. Every shortcut feels justified. There&amp;rsquo;s a deadline. The workaround is &amp;ldquo;temporary.&amp;rdquo; So you add a few annotations and look the other way: @SuppressWarnings &amp;ldquo;GodClass&amp;rdquo;, &amp;ldquo;TightCoupling&amp;rdquo;, &amp;ldquo;TooManyParameters&amp;rdquo;. The technical debt will be paid back &amp;ldquo;later&amp;rdquo;. Business loves it. Arguments about code that&amp;rsquo;s &amp;ldquo;harder to change in the future&amp;rdquo; rarely land.</description>
     </item>
     <item>
       <title>Project Valhalla: Codes Like a Class, Works Like an int</title>
