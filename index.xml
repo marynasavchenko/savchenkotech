@@ -268,11 +268,11 @@
       <description>Learning is the crucial tool on the road to mastery and true driver of the software craftsman career. There is no way one can become successful at software development without becoming an expert in learning.&#xA;I believe that effective learning contains of components so called learning framework. This framework can be applied to any kind of learning. It does not meter if it is learning the language or preparing for the OCP (Oracle Certified Professional) exam.</description>
     </item>
     <item>
-      <title>About Maryna</title>
+      <title>About Maryna Savchenko</title>
       <link>https://savchenko.tech/about/</link>
       <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://savchenko.tech/about/</guid>
-      <description>I&amp;rsquo;m Maryna Savchenko. I&amp;rsquo;m a software engineer with 6+ years of experience, based in Munich, Germany. I design systems, think in architectures, and care about solving the right problems - not just writing code. Software development is full of hard challenges. This blog is my way of thinking through them - and finding the least worst solutions.</description>
+      <description>Servus, I&#39;m Maryna&#xA;Software engineer with 6+ years of experience, based in Munich, Germany.&#xD;I design systems, think in architectures, and care about solving the right problems - not just writing code.&#xD;Software development is full of hard challenges. This blog is my way of thinking through them - and finding the least worst solutions.</description>
     </item>
     <item>
       <title>Contact information</title>
@@ -280,6 +280,13 @@
       <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://savchenko.tech/contactinformation/</guid>
       <description> Email address maryna@savchenko.tech LinkedIn https://www.linkedin.com/in/maryna-savchenko-7061a8223/ Github https://github.com/marynasavchenko Photo blog photo.savchenko.tech </description>
+    </item>
+    <item>
+      <title>Recommended Resources</title>
+      <link>https://savchenko.tech/resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://savchenko.tech/resources/</guid>
+      <description>Books Designing Data-Intensive Applications&#xA;Martin Kleppmann&#xA;The Pragmatic Programmer&#xA;Thomas &amp; Hunt&#xA;A Philosophy of Software Design&#xA;John K. Ousterhout&#xA;Software Architecture: The Hard Parts&#xA;Neal Ford, Mark Richards, Pramod Sadalage, Zhamak Dehghani&#xA;Blogs Martin Fowler&#xA;Serhii Ivashchuk&#xA;Gergely Orosz</description>
     </item>
   </channel>
 </rss>
